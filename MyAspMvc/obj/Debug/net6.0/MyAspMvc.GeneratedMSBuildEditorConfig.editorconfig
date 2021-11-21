@@ -8,109 +8,109 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MyAspMvc
 build_property.RootNamespace = MyAspMvc
-build_property.ProjectDir = /Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/
+build_property.ProjectDir = /Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc
+build_property.MSBuildProjectDirectory = /Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Components/Filter.razor]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Components/Filter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9GaWx0ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Auth/Index.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Auth/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0aC9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Home/Index.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Home/Privacy.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Order/Create.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Order/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXIvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Order/Index.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Order/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXIvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Partner/Create.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Partner/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFydG5lci9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Partner/Index.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Partner/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFydG5lci9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Product/Create.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Product/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Product/Index.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Product/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZHVjdC9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Return/Create.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Return/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmV0dXJuL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Return/Index.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Return/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmV0dXJuL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Shared/Error.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Supply/Create.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Supply/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3VwcGx5L0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Supply/Index.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Supply/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3VwcGx5L0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/TTN/Create.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/TTN/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVFROL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/TTN/Index.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/TTN/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVFROL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/User/Index.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/User/Work.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/User/Work.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXNlci9Xb3JrLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Util/Create.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Util/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXRpbC9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Util/Index.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Util/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVXRpbC9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/_ViewImports.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/_ViewStart.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/Views/Shared/_Layout.cshtml]
+[/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-0a7cp0bl86
