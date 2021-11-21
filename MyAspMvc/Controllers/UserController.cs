@@ -13,7 +13,6 @@ namespace MyAspMvc.Controllers
         {
             return View();
         }
-
         
         public IActionResult Work(string id)
         {

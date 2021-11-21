@@ -646,19 +646,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/izuard/.nuget/packages/": {}
+    "/Users/tekkenthug/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/MyAspMvc.csproj",
+      "projectUniqueName": "/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/MyAspMvc.csproj",
       "projectName": "MyAspMvc",
-      "projectPath": "/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/MyAspMvc.csproj",
-      "packagesPath": "/Users/izuard/.nuget/packages/",
-      "outputPath": "/Users/izuard/Projects/RiderProjects/MyAspMvc/MyAspMvc/obj/",
+      "projectPath": "/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/MyAspMvc.csproj",
+      "packagesPath": "/Users/tekkenthug/.nuget/packages/",
+      "outputPath": "/Users/tekkenthug/Desktop/TestMVCASP/MyAspMvc/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/izuard/.nuget/NuGet/NuGet.Config"
+        "/Users/tekkenthug/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -705,7 +705,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/Users/tekkenthug/.dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }

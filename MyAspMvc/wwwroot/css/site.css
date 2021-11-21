@@ -1,18 +1,27 @@
 html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
   position: relative;
   min-height: 100%;
 }
 
 body {
   margin-bottom: 60px;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+.create-form .row {
+  margin-bottom: 10px;
+}
+
+.create-form textarea {
+  width: 100%;
+  resize: none;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.create-table {
+  overflow-x: scroll;
+  display: inline-block;
 }

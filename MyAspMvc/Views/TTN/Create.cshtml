@@ -1,0 +1,28 @@
+@using MyAspMvc.Controllers
+@{
+    ViewData["Title"] = "Создать ТТН";
+}
+<div class="order__create">
+    <h2 class="order__title">Создать ТТН</h2>
+    <form class="create-form">
+        <div class="row">
+            <div class="col">
+                <label>Тип ТТН</label>
+                <select class="form-control">
+                    <option>Расход</option>
+                </select>
+            </div>
+            <div class="col">
+                <label>Форма ТТН</label>
+                <select class="form-control">
+                    <option>УТП-12</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Создать</button>
+            </div>
+        </div>
+    </form>
+</div>
