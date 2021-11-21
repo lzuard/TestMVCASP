@@ -1,0 +1,52 @@
+@using MyAspMvc.Controllers
+@{
+    ViewData["Title"] = "Создать контрагента";
+}
+<div class="order__create">
+  <h2 class="order__title">Создать контрагента</h2>
+  <form class="create-form">
+    <div class="row">
+      <div class="col">
+        <label>Тип</label>
+        <select class="form-control">
+          <option>Утилизатор</option>
+        </select>
+      </div>
+      <div class="col">
+        <label>Адрес</label>
+        <select class="form-control">
+          <option>г. Москва, ул. Авиамоторная</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label>Наименование</label>
+        <input type="text" class="form-control" placeholder="Наименование">
+      </div>
+      <div class="col">
+        <label>ИНН</label>
+        <input type="text" class="form-control" placeholder="ИНН">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label>Расчетный счет</label>
+        <input type="text" class="form-control" placeholder="р/с">
+      </div>
+      <div class="col">
+        <label>Телефон</label>
+        <input type="text" class="form-control" placeholder="Телефон">
+      </div>
+      <div class="col">
+        <label>Эл. почта</label>
+        <input type="text" class="Электронная почта">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button type="submit" class="btn btn-primary">Создать</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,66 @@
+@using MyAspMvc.Controllers
+@{
+  ViewData["Title"] = "Заказы";
+  string[] filterList =
+  {
+    "Клиент",
+    "ТК",
+    "Адрес",
+    "Номер ТТН"
+  };
+}
+<div class="order">
+  <a asp-controller="Order" asp-action="Create" class="btn btn-primary mb-5">Создать заказ</a>
+  <div class="order__list">
+    <h2 class="order__title">Список заказов</h2>
+    <div class="view__filter my-5">
+      <h3 class="mb-1">Поиск по:</h3>
+      <div class="view__filter-search">
+        <input type="text" placeholder="Поиск" class="form-control mb-1 w-25">
+      </div>
+      <div class="view__filter-radio">
+        @foreach(var filter in filterList)
+        {
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="flexRadioDefault">
+            <label class="form-check-label">
+              @filter
+            </label>
+          </div>
+        }
+      </div>
+    </div>
+    <table class="order__list-table create-table table">
+      <tr>
+        <th>Клиент</th>
+        <th>ТК</th>
+        <th>Адрес</th>
+        <th>Номер ТТН</th>
+        <th>Стоимость заказа</th>
+        <th>Номер платежного док.</th>
+        <th>Дата заказа</th>
+        <th>Дата отгрузки</th>
+        <th>Дата доставки</th>
+        <th>Статус</th>
+        <th>Принято ТК</th>
+        <th>Принято клиентом</th>
+        <th>Примечание</th>
+      </tr>
+      <tr>
+        <td>МеталлПром</td>
+        <td>Автотрейд</td>
+        <td>г. Санкт-Петербург, ул. Ленина</td>
+        <td>9432418534</td>
+        <td>12 000</td>
+        <td>4209543534</td>
+        <td>21.10.2021</td>
+        <td>24.10.2021</td>
+        <td>30.10.2021</td>
+        <td>К отправке</td>
+        <td>Нет</td>
+        <td>Нет</td>
+        <td>-</td>
+      </tr>
+    </table>
+  </div>
+</div>

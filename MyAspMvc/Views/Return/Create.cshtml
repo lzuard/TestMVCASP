@@ -1,0 +1,40 @@
+@using MyAspMvc.Controllers
+@{
+    ViewData["Title"] = "Создать возврат";
+}
+<div class="order__create">
+  <h2 class="order__title">Создать возврат</h2>
+  <form class="create-form">
+    <div class="row">
+      <div class="col">
+        <label>Номер ТТН</label>
+        <select class="form-control">
+          <option>931184324</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <label>Дата возврата</label>
+        <input type="date" class="form-control">
+      </div>
+      <div class="col">
+        <label>Номер акта возврата</label>
+        <input type="number" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-check form-check-inline">
+          <label>Принято</label>
+          <input type="checkbox" class="form-check-input">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button type="submit" class="btn btn-primary">Создать</button>
+      </div>
+    </div>
+  </form>
+</div>
