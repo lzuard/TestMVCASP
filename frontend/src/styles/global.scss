@@ -1,9 +1,38 @@
-@import 'variables.scss';
+@import 'variables';
 @import 'mixins';
 
 /** Global Overrides */
+body, html {
+  min-height: 100%;
+}
+
+body {
+  font-family: $primaryFont, $secondaryFont sans-serif;
+  background-color: $grey;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+
 button {
   outline: none;
+}
+
+a {
+  @include trans();
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: inherit;
+    opacity: .6;
+  }
+}
+
+ul, li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 /** Global Classes */
