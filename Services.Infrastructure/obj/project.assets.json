@@ -943,7 +943,8 @@
         "framework": ".NETCoreApp,Version=v5.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "5.0.0",
-          "Newtonsoft.Json": "13.0.1"
+          "Newtonsoft.Json": "13.0.1",
+          "Services.Contracts": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Data.LTS.dll": {}

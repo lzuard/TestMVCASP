@@ -35,7 +35,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Services.Contracts\\Services.Contracts.csproj": {
+                "projectPath": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Services.Contracts\\Services.Contracts.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -124,6 +128,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"

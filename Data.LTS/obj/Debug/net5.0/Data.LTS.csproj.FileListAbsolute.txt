@@ -10,3 +10,6 @@ D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\obj\Debug\net5.0\Data.LTS.
 D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\obj\Debug\net5.0\Data.LTS.dll
 D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\obj\Debug\net5.0\ref\Data.LTS.dll
 D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\obj\Debug\net5.0\Data.LTS.pdb
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\bin\Debug\net5.0\Services.Contracts.dll
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\bin\Debug\net5.0\Services.Contracts.pdb
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\obj\Debug\net5.0\Data.LTS.csproj.CopyComplete

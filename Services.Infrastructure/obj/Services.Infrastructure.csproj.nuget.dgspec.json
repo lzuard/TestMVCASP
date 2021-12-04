@@ -35,7 +35,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Services.Contracts\\Services.Contracts.csproj": {
+                "projectPath": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Services.Contracts\\Services.Contracts.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

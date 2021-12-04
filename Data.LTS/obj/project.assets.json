@@ -169,6 +169,16 @@
         "runtime": {
           "lib/net5.0/System.Diagnostics.DiagnosticSource.dll": {}
         }
+      },
+      "Services.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Services.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Services.Contracts.dll": {}
+        }
       }
     }
   },
@@ -555,12 +565,18 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Services.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../Services.Contracts/Services.Contracts.csproj",
+      "msbuildProject": "../Services.Contracts/Services.Contracts.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "Microsoft.EntityFrameworkCore >= 5.0.0",
-      "Newtonsoft.Json >= 13.0.1"
+      "Newtonsoft.Json >= 13.0.1",
+      "Services.Contracts >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -600,7 +616,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Services.Contracts\\Services.Contracts.csproj": {
+              "projectPath": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Services.Contracts\\Services.Contracts.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
