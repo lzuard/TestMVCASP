@@ -1,0 +1,17 @@
+@import 'variables.scss';
+@import 'mixins';
+
+/** Global Overrides */
+button {
+  outline: none;
+}
+
+/** Global Classes */
+.gradient-custom {
+  border: none;
+  @include gradientSupport;
+
+  &:hover {
+    border-color: transparent;
+  }
+}
