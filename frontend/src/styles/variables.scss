@@ -14,16 +14,22 @@ $secondaryFont: 'Helvetica';
 
 /** Layouts */
 $sidebarWidth: 280px;
+$filterWidth: 480px;
 
 $gap-s: 14px;
 $gap-m: 24px;
+$gap-l: 36px;
 
 $font-size-xs: 14px;
 $font-size-s: 16px;
 $font-size-m: 18px;
 $font-size-l: 24px;
-$font-size-xl: 36px;
+$font-size-xl: 48px;
 
 $lh-m: 21px;
 $lh-l: 28px;
 $lh-xl: 42px;
+
+/** Breakpoints */
+$mediaMobile: 'max-width: 768px'
+
