@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Auth from '@/views/Auth/Auth'
+import Main from '@/views/Main/Main'
+
+import AgentList from '@/views/Main/Agent/AgentList'
 
 const routes = [
   {
@@ -9,6 +12,21 @@ const routes = [
     meta: {
       title: 'Войти в систему'
     }
+  },
+  {
+    path: '/',
+    name: 'Main page',
+    component: Main,
+    children: [
+      {
+        path: '/agents',
+        name: 'Show agents',
+        component: AgentList,
+        meta: {
+          title: 'Список контрагентов'
+        }
+      }
+    ]
   }
 ]
 
