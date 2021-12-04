@@ -1,0 +1,15 @@
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\bin\Debug\net5.0\Data.LTS.deps.json
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\bin\Debug\net5.0\Data.LTS.dll
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\bin\Debug\net5.0\ref\Data.LTS.dll
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\bin\Debug\net5.0\Data.LTS.pdb
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\obj\Debug\net5.0\Data.LTS.csprojAssemblyReference.cache
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\obj\Debug\net5.0\Data.LTS.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\obj\Debug\net5.0\Data.LTS.AssemblyInfoInputs.cache
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\obj\Debug\net5.0\Data.LTS.AssemblyInfo.cs
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\obj\Debug\net5.0\Data.LTS.csproj.CoreCompileInputs.cache
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\obj\Debug\net5.0\Data.LTS.dll
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\obj\Debug\net5.0\ref\Data.LTS.dll
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\obj\Debug\net5.0\Data.LTS.pdb
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\bin\Debug\net5.0\Services.Contracts.dll
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\bin\Debug\net5.0\Services.Contracts.pdb
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Data.LTS\obj\Debug\net5.0\Data.LTS.csproj.CopyComplete

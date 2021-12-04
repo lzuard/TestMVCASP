@@ -1,9 +1,0 @@
-@using MyAspMvc.Controllers
-@{
-    ViewData["Title"] = "User";
-    UserData user = new UserData();
-}
-<h1>This is user page @user.name</h1>
-<input type="text" name="UserID"/>
-<button onclick="location.href='@Url.Action("Work")'"></button>
-
