@@ -28,6 +28,7 @@
       }
     }
   },
+  "AllowedHosts": "*",
   "ConnectionStrings" : {
     "DefaultConnectionString" : "Строка подкоючения"
   }

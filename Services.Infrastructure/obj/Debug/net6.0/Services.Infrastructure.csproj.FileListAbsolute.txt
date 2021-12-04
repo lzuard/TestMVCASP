@@ -1,0 +1,17 @@
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\bin\Debug\net6.0\Services.Infrastructure.deps.json
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\bin\Debug\net6.0\Services.Infrastructure.dll
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\bin\Debug\net6.0\ref\Services.Infrastructure.dll
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\bin\Debug\net6.0\Services.Infrastructure.pdb
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\bin\Debug\net6.0\Data.LTS.dll
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\bin\Debug\net6.0\Services.Contracts.dll
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\bin\Debug\net6.0\Data.LTS.pdb
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\bin\Debug\net6.0\Services.Contracts.pdb
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\obj\Debug\net6.0\Services.Infrastructure.csproj.AssemblyReference.cache
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\obj\Debug\net6.0\Services.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\obj\Debug\net6.0\Services.Infrastructure.AssemblyInfoInputs.cache
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\obj\Debug\net6.0\Services.Infrastructure.AssemblyInfo.cs
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\obj\Debug\net6.0\Services.Infrastructure.csproj.CoreCompileInputs.cache
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\obj\Debug\net6.0\Services.Infrastructure.csproj.CopyComplete
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\obj\Debug\net6.0\Services.Infrastructure.dll
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\obj\Debug\net6.0\ref\Services.Infrastructure.dll
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Services.Infrastructure\obj\Debug\net6.0\Services.Infrastructure.pdb
