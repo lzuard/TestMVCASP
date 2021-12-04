@@ -1,44 +1,40 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Contracts.Contracts;
 using Data.LTS.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Services.Infrastructure.Repositories;
+using Services.Infrastructure.Services;
 
 namespace Presentation.ConsoleHost
 {
     public class Startup
     {
-        private readonly string _connectionString;
-        
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
-            _connectionString = Configuration.GetConnectionString("DefaultConnectionString");
+            _connectionString = configuration.GetConnectionString("DefaultConnectionString");
         }
-
-        public IConfiguration Configuration { get; }
+        
+        private readonly string _connectionString;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //Подключение к БД
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(_connectionString));
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Presentation.ConsoleHost", Version = "v1" });
             });
+            
+            services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(_connectionString));
+
+            services.AddScoped<RepositoryBase<AddressDto>>();
+            services.AddScoped<ServiceBase<RepositoryBase<AddressDto>, AddressDto>>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,9 +48,7 @@ namespace Presentation.ConsoleHost
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

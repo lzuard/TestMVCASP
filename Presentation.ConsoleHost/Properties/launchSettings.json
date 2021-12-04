@@ -27,9 +27,5 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
-  },
-  "AllowedHosts": "*",
-  "ConnectionStrings" : {
-    "DefaultConnectionString" : "Строка подкоючения"
   }
 }

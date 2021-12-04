@@ -65,3 +65,5 @@ D:\MyProjectProgramm\RiderProject\TestMVCASP\Presentation.ConsoleHost\obj\Debug\
 D:\MyProjectProgramm\RiderProject\TestMVCASP\Presentation.ConsoleHost\obj\Debug\net6.0\ref\Presentation.ConsoleHost.dll
 D:\MyProjectProgramm\RiderProject\TestMVCASP\Presentation.ConsoleHost\obj\Debug\net6.0\Presentation.ConsoleHost.pdb
 D:\MyProjectProgramm\RiderProject\TestMVCASP\Presentation.ConsoleHost\obj\Debug\net6.0\Presentation.ConsoleHost.genruntimeconfig.cache
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Presentation.ConsoleHost\bin\Debug\net6.0\Npgsql.dll
+D:\MyProjectProgramm\RiderProject\TestMVCASP\Presentation.ConsoleHost\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

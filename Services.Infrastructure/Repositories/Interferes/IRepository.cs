@@ -4,7 +4,7 @@ using Contracts.Contracts.Base;
 
 namespace Services.Infrastructure.Repositories.Interferes
 {
-    public interface IBaseRepository<TModelDto> where TModelDto : DtoBase
+    public interface IRepository<TModelDto> where TModelDto : DtoBase
     {
         public Task<List<TModelDto>> GetAll();
         

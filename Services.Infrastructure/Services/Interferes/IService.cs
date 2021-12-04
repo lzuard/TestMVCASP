@@ -4,7 +4,7 @@ using Contracts.Contracts.Base;
 
 namespace Services.Infrastructure.Services.Interferes
 {
-    public interface IEntityService<TModelDto> where TModelDto : DtoBase
+    public interface IService<TModelDto> where TModelDto : DtoBase
     {
         public Task<(bool IsSuccess, IEnumerable<TModelDto> Result)> TryGetAll();
         

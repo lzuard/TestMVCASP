@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Services.Infrastructure.Repositories
 {
-    public class BaseRepository<TModelDto> : IBaseRepository<TModelDto> where TModelDto : DtoBase
+    public class RepositoryBase<TModelDto> : IRepository<TModelDto> where TModelDto : DtoBase
     {
         private readonly ApplicationContext _context;
-        
-        public BaseRepository(ApplicationContext context)
+
+        public RepositoryBase(ApplicationContext context)
         {
             _context = context;
         }

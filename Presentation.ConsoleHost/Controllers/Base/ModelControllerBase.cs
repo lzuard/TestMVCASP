@@ -1,22 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Contracts.Contracts.Base;
+using Data.LTS.Database;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Services.Infrastructure.Repositories;
+using Services.Infrastructure.Services;
 using Services.Infrastructure.Services.Interferes;
 
 namespace Presentation.ConsoleHost.Controllers.Base
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RepositoryControllerBase<TService, TModelDto> : ControllerBase
-        where TService : IEntityService<TModelDto> where TModelDto : DtoBase
+    public class ModelControllerBase<TService, TModelDto> : ControllerBase
+        where TService : IService<TModelDto> where TModelDto : DtoBase
     {
-        private readonly ILogger<RepositoryControllerBase<TService, TModelDto>> _logger;
+        private readonly ILogger<ModelControllerBase<TService, TModelDto>> _logger;
         private readonly TService _service;
 
-        public RepositoryControllerBase(TService service,
-            ILogger<RepositoryControllerBase<TService, TModelDto>> logger)
+        public ModelControllerBase(TService service,
+            ILogger<ModelControllerBase<TService, TModelDto>> logger)
         {
             _service = service;
             _logger = logger;
