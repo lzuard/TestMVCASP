@@ -56,6 +56,10 @@ export default {
           title: 'Возвраты'
         },
         {
+          path: '/',
+          title: 'Утилизации'
+        },
+        {
           path: '/agents',
           title: 'Контрагенты'
         },
