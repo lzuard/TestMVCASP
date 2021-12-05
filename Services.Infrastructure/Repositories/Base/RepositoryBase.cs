@@ -9,36 +9,36 @@ namespace Services.Infrastructure.Repositories.Base
 {
     public class RepositoryBase<TModelDto> : IRepository<TModelDto> where TModelDto : DtoBase
     {
-        private readonly ApplicationContext _context;
+        protected readonly ApplicationContext Context;
 
         public RepositoryBase(ApplicationContext context)
         {
-            _context = context;
+            Context = context;
         }
         
         public virtual async Task<List<TModelDto>> GetAll()
         {
-            return await _context.Set<TModelDto>().ToListAsync();
+            return await Context.Set<TModelDto>().ToListAsync();
         }
 
         public virtual async Task<TModelDto> Get(int modelId)
         {
-            TModelDto model = await _context.Set<TModelDto>().FirstOrDefaultAsync(x => x.Id == modelId);
+            TModelDto model = await Context.Set<TModelDto>().FirstOrDefaultAsync(x => x.Id == modelId);
 
             return model;
         }
 
         public virtual async Task<TModelDto> Create(TModelDto model)
         {
-            await _context.Set<TModelDto>().AddAsync(model);
-            await _context.SaveChangesAsync();
+            await Context.Set<TModelDto>().AddAsync(model);
+            await Context.SaveChangesAsync();
             
             return model;
         }
 
         public virtual async Task<TModelDto> Update(TModelDto model)
         {
-            TModelDto toUpdateModel = await _context.Set<TModelDto>().FirstOrDefaultAsync(x => x.Id == model.Id);
+            TModelDto toUpdateModel = await Context.Set<TModelDto>().FirstOrDefaultAsync(x => x.Id == model.Id);
             
             if (toUpdateModel == null)
             {
@@ -47,25 +47,25 @@ namespace Services.Infrastructure.Repositories.Base
             
             toUpdateModel = model;
             
-            _context.Update(toUpdateModel);
+            Context.Update(toUpdateModel);
             
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
             
             return toUpdateModel;
         }
 
         public virtual async Task<bool> Delete(int modelId)
         {
-            TModelDto toDeleteModel = await _context.Set<TModelDto>().FirstOrDefaultAsync(x => x.Id == modelId);
+            TModelDto toDeleteModel = await Context.Set<TModelDto>().FirstOrDefaultAsync(x => x.Id == modelId);
 
             if (toDeleteModel == null)
             {
                 return false;
             }
             
-            _context.Set<TModelDto>().Remove(toDeleteModel);
+            Context.Set<TModelDto>().Remove(toDeleteModel);
             
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
 
             return true;
         }

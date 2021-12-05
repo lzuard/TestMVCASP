@@ -12,20 +12,20 @@ namespace Presentation.ConsoleHost.Controllers.Base
     public class ModelControllerBase<TService, TModelDto> : ControllerBase
         where TService : IService<TModelDto> where TModelDto : DtoBase
     {
-        private readonly ILogger<ModelControllerBase<TService, TModelDto>> _logger;
-        private readonly TService _service;
+        protected readonly ILogger<ModelControllerBase<TService, TModelDto>> Logger;
+        protected readonly TService Service;
 
         public ModelControllerBase(TService service,
             ILogger<ModelControllerBase<TService, TModelDto>> logger)
         {
-            _service = service;
-            _logger = logger;
+            Service = service;
+            Logger = logger;
         }
 
         [HttpGet]
         public virtual async Task<ActionResult<IEnumerable<TModelDto>>> GetAll()
         {
-            var result = await _service.TryGetAll();
+            var result = await Service.TryGetAll();
             
             if (result.IsSuccess)
             {
@@ -38,7 +38,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         [HttpGet("{id}")]
         public virtual async Task<ActionResult<TModelDto>> Get(int id)
         {
-            var result = await _service.TryGet(id);
+            var result = await Service.TryGet(id);
             
             if (result.IsSuccess)
             {
@@ -51,7 +51,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         [HttpPut]
         public virtual async Task<ActionResult<TModelDto>> Create(TModelDto model)
         {
-            var result = await _service.TryCreate(model);
+            var result = await Service.TryCreate(model);
             
             if (result.IsSuccess)
             {
@@ -64,7 +64,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         [HttpPost]
         public virtual async Task<ActionResult<TModelDto>> Update(TModelDto model)
         {
-            var result = await _service.TryUpdate(model);
+            var result = await Service.TryUpdate(model);
             
             if (result.IsSuccess)
             {
@@ -77,7 +77,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         [HttpDelete("{id}")]
         public virtual async Task<ActionResult> Delete(int modelId)
         {
-            var result = await _service.TryDelete(modelId);
+            var result = await Service.TryDelete(modelId);
             
             if (result.IsSuccess)
             {
