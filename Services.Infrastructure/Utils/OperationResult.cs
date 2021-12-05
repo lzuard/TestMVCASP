@@ -31,6 +31,7 @@ namespace Services.Infrastructure.Utils
 
         public OperationResult(string error)
         {
+            IsSuccess = false;
             Error = error;
         }
     }
