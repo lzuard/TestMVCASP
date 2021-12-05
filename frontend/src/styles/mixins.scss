@@ -1,0 +1,25 @@
+@import 'variables';
+
+@mixin gradientSupport {
+  /* fallback for old browsers */
+  background: $gradientOldBrowser;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-repeating-radial-gradient($gradient);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: radial-gradient($gradient);
+}
+
+@mixin cover($opacity: .3) {
+  background-color: $black;
+  opacity: $opacity;
+}
+
+@mixin boxShadow {
+  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+}
+
+@mixin trans($duration: .1s) {
+  transition: all $duration ease-in;
+}

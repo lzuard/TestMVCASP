@@ -1,0 +1,40 @@
+/** Colors */
+$grey: #eeeeee;
+$darkGrey: #A9A9A9;
+$white: #ffffff;
+$black: #000000;
+$blue: #5558DAFF;
+
+$gradient: (circle farthest-corner at 12.3% 19.3%,  rgba(85,88,218,1) 0%, rgba(95,209,249,1) 100.2%);
+$gradientOldBrowser: #fccb90;
+
+/** Fonts */
+$primaryFont: 'Roboto';
+$secondaryFont: 'Helvetica';
+
+/** Layouts */
+$sidebarButtonPos: 0px;
+$sidebarZIndex: 1000;
+$sidebarWidth: 280px;
+
+$filterWidth: 480px;
+
+$coverZIndex: 500;
+
+$gap-s: 14px;
+$gap-m: 24px;
+$gap-l: 36px;
+
+$font-size-xs: 14px;
+$font-size-s: 16px;
+$font-size-m: 18px;
+$font-size-l: 24px;
+$font-size-xl: 48px;
+
+$lh-m: 21px;
+$lh-l: 28px;
+$lh-xl: 42px;
+
+/** Breakpoints */
+$mediaMobile: 'max-width: 768px'
+
