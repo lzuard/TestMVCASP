@@ -1,10 +1,10 @@
 <template>
   <div class="showcase">
     <header class="showcase__header">
-      <div class="showcase__title">
+      <showcase-title>
         {{ title }}
-      </div>
-      <router-link class="link showcase__header-create" to="/">
+      </showcase-title>
+      <router-link class="link showcase__header-create" :to="linkToCreate">
         <file-plus-icon />
         {{ createCaption }}
       </router-link>
@@ -67,6 +67,7 @@
 </template>
 
 <script>
+import ShowcaseTitle from './showcase-title'
 import InputField from '@/components/UI/inputField'
 import FilterBoard from '@/components/Filterboard'
 import { FilePlusIcon } from '@iconicicons/vue3'
@@ -74,6 +75,7 @@ import { FilePlusIcon } from '@iconicicons/vue3'
 export default {
   name: 'Showcase',
   components: {
+    ShowcaseTitle,
     InputField,
     FilterBoard,
     FilePlusIcon
@@ -86,6 +88,10 @@ export default {
   },
   props: {
     title: {
+      type: String,
+      require: true
+    },
+    linkToCreate: {
       type: String,
       require: true
     },
@@ -114,25 +120,11 @@ export default {
 
 .showcase {
   text-align: left;
-  max-width: 100%;
 
   &__header {
     &-create {
       font-weight: 600;
       display: flex;
-    }
-  }
-
-  &__title {
-    font-weight: 700;
-    font-size: $font-size-xl;
-    line-height: $lh-xl;
-    margin: $gap-m 0;
-
-    @media ($mediaMobile) {
-      font-size: $font-size-l;
-      line-height: $lh-l;
-      margin: $gap-s 0;
     }
   }
 
