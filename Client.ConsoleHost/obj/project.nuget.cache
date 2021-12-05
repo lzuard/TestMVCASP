@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rAuI/XXRALUdeYpbfSsdBco8B3ylb8kbKq9LCpwNe6/AcMMMoyG/+zhzFKlxLyBZuO/TBrd1m2oLDNDFpZp5Tg==",
+  "dgSpecHash": "8UMFuYANwJmtVEmX5rxWc8QO5Qh+8GdspxDClJJ+blpPMVNHHsvdgFTmDJxlaXMndlH9HtABrT4/9+72JYxUcg==",
   "success": true,
-  "projectFilePath": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Presentation.ConsoleHost\\Presentation.ConsoleHost.csproj",
+  "projectFilePath": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Client.ConsoleHost\\Client.ConsoleHost.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mi\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Mi\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

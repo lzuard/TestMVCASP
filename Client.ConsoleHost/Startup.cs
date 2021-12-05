@@ -26,7 +26,7 @@ namespace Presentation.ConsoleHost
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Presentation.ConsoleHost", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Client.ConsoleHost", Version = "v1" });
             });
             
             services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(_connectionString));
@@ -43,7 +43,7 @@ namespace Presentation.ConsoleHost
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Presentation.ConsoleHost v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Client.ConsoleHost v1"));
             }
 
             app.UseHttpsRedirection();
