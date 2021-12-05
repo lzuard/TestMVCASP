@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Contracts.Contracts.Base;
+using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Services.Interferes
 {
     public interface IService<TModelDto> where TModelDto : DtoBase
     {
-        public Task<(bool IsSuccess, IEnumerable<TModelDto> Result)> TryGetAll();
+        public Task<OperationResult<List<TModelDto>>> TryGetAll();
         
-        public Task<(bool IsSuccess, TModelDto Result)> TryGet(int modelId);
+        public Task<OperationResult<TModelDto>> TryGet(int modelId);
         
-        public Task<(bool IsSuccess, TModelDto Result)>TryCreate(TModelDto model);
+        public Task<OperationResult<TModelDto>>TryCreate(TModelDto model);
         
-        public Task<(bool IsSuccess, TModelDto Result)> TryUpdate(TModelDto model);
+        public Task<OperationResult<TModelDto>> TryUpdate(TModelDto model);
         
-        public Task<(bool IsSuccess, object Result)> TryDelete(int modelId);
+        public Task<OperationResult<bool>> TryDelete(int modelId);
     }
 }

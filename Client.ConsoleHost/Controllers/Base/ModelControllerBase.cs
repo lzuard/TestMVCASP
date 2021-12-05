@@ -31,6 +31,8 @@ namespace Presentation.ConsoleHost.Controllers.Base
             {
                 return Ok(result.Result);
             }
+            
+            Logger.LogError(result.Error);
 
             return NoContent();
         }
@@ -44,6 +46,8 @@ namespace Presentation.ConsoleHost.Controllers.Base
             {
                 return Ok(result.Result);
             }
+            
+            Logger.LogError(result.Error);
 
             return NotFound();
         }
@@ -57,6 +61,8 @@ namespace Presentation.ConsoleHost.Controllers.Base
             {
                 return Ok(result.Result);
             }
+            
+            Logger.LogError(result.Error);
 
             return NoContent();
         }
@@ -70,6 +76,8 @@ namespace Presentation.ConsoleHost.Controllers.Base
             {
                 return Ok(result.Result);
             }
+            
+            Logger.LogError(result.Error);
 
             return NotFound();
         }
@@ -83,6 +91,8 @@ namespace Presentation.ConsoleHost.Controllers.Base
             {
                 return Ok();
             }
+            
+            Logger.LogError(result.Error);
 
             return NotFound();
         }

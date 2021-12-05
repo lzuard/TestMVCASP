@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Contracts.Contracts.Base;
 using Services.Infrastructure.Repositories.Interferes;
 using Services.Infrastructure.Services.Interferes;
+using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Services.Base
 {
@@ -17,39 +18,29 @@ namespace Services.Infrastructure.Services.Base
             Repository = repository;
         }
 
-        public virtual async Task<(bool IsSuccess, IEnumerable<TModelDto> Result)>TryGetAll()
+        public virtual async Task<OperationResult<List<TModelDto>>>TryGetAll()
         {
-            List<TModelDto> result = await Repository.GetAll();
-
-            return (true, result);
+            return await Repository.GetAll();
         }
 
-        public virtual async Task<(bool IsSuccess, TModelDto Result)> TryGet(int modelId)
+        public virtual async Task<OperationResult<TModelDto>> TryGet(int modelId)
         {
-            TModelDto result = await Repository.Get(modelId);
-
-            return (result != null, result);
+            return await Repository.Get(modelId);
         }
 
-        public virtual async Task<(bool IsSuccess, TModelDto Result)> TryCreate(TModelDto model)
+        public virtual async Task<OperationResult<TModelDto>> TryCreate(TModelDto model)
         {
-            TModelDto result = await Repository.Create(model);
-
-            return (result != null, result);
+            return await Repository.Create(model);
         }
 
-        public virtual async Task<(bool IsSuccess, TModelDto Result)> TryUpdate(TModelDto model)
+        public virtual async Task<OperationResult<TModelDto>> TryUpdate(TModelDto model)
         {
-            TModelDto result = await Repository.Update(model);
-
-            return (result != null, result);
+            return await Repository.Update(model);
         }
 
-        public virtual async Task<(bool IsSuccess, object Result)> TryDelete(int modelId)
+        public virtual async Task<OperationResult<bool>> TryDelete(int modelId)
         {
-            bool result = await Repository.Delete(modelId);
-
-            return (result, null);
+            return await Repository.Delete(modelId);
         }
     }
 }

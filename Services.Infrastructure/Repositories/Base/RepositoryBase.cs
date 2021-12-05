@@ -4,6 +4,7 @@ using Data.LTS.Database;
 using Services.Infrastructure.Repositories.Interferes;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Repositories.Base
 {
@@ -16,58 +17,82 @@ namespace Services.Infrastructure.Repositories.Base
             Context = context;
         }
         
-        public virtual async Task<List<TModelDto>> GetAll()
+        public virtual async Task<OperationResult<List<TModelDto>>> GetAll()
         {
-            return await Context.Set<TModelDto>().ToListAsync();
+            List<TModelDto> result = await Context.Set<TModelDto>().ToListAsync();
+            
+            return new OperationResult<List<TModelDto>>(result);
         }
 
-        public virtual async Task<TModelDto> Get(int modelId)
+        public virtual async Task<OperationResult<TModelDto>> Get(int modelId)
         {
             TModelDto model = await Context.Set<TModelDto>().FirstOrDefaultAsync(x => x.Id == modelId);
 
-            return model;
+            if (model == null)
+            {
+                string error = $"Model with {modelId} not found";
+
+                return new OperationResult<TModelDto>(error);
+            }
+
+            return new OperationResult<TModelDto>(model);
         }
 
-        public virtual async Task<TModelDto> Create(TModelDto model)
+        public virtual async Task<OperationResult<TModelDto>> Create(TModelDto model)
         {
             await Context.Set<TModelDto>().AddAsync(model);
-            await Context.SaveChangesAsync();
             
-            return model;
+            return await TrySaveChanges(model);
         }
 
-        public virtual async Task<TModelDto> Update(TModelDto model)
+        public virtual async Task<OperationResult<TModelDto>> Update(TModelDto model)
         {
             TModelDto toUpdateModel = await Context.Set<TModelDto>().FirstOrDefaultAsync(x => x.Id == model.Id);
             
             if (toUpdateModel == null)
             {
-                return null;
+                string error = $"Model with {model.Id} not found";
+
+                return new OperationResult<TModelDto>(error);
             }
             
             toUpdateModel = model;
             
             Context.Update(toUpdateModel);
             
-            await Context.SaveChangesAsync();
-            
-            return toUpdateModel;
+            return await TrySaveChanges(toUpdateModel);
         }
 
-        public virtual async Task<bool> Delete(int modelId)
+        public virtual async Task<OperationResult<bool>> Delete(int modelId)
         {
             TModelDto toDeleteModel = await Context.Set<TModelDto>().FirstOrDefaultAsync(x => x.Id == modelId);
 
             if (toDeleteModel == null)
             {
-                return false;
+                string error = $"Model with {modelId} not found";
+
+                return new OperationResult<bool>(error);
             }
             
             Context.Set<TModelDto>().Remove(toDeleteModel);
-            
-            await Context.SaveChangesAsync();
 
-            return true;
+            return await TrySaveChanges(result: true);
+        }
+
+        private async Task<OperationResult<TResult>> TrySaveChanges<TResult>(TResult result)
+        {
+            try
+            {
+                await Context.SaveChangesAsync();
+            }
+            catch
+            {
+                string error = $"Failed to save changes";
+
+                return new OperationResult<TResult>(error);
+            }
+
+            return new OperationResult<TResult>(result);
         }
     }
 }
