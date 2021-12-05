@@ -5,6 +5,8 @@ import Main from '@/views/Main/Main'
 import AgentList from '@/views/Main/Agent/AgentList'
 import AgentCreate from '@/views/Main/Agent/AgentCreate'
 
+import Report from '@/views/Main/Report/Report'
+
 const routes = [
   {
     path: '/auth',
@@ -33,6 +35,14 @@ const routes = [
         component: AgentCreate,
         meta: {
           title: 'Создать контрагента'
+        }
+      },
+      {
+        path: '/reports',
+        name: 'Show reports',
+        component: Report,
+        meta: {
+          title: 'Отчеты'
         }
       }
     ]
