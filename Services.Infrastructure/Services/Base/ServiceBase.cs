@@ -4,7 +4,7 @@ using Contracts.Contracts.Base;
 using Services.Infrastructure.Repositories.Interferes;
 using Services.Infrastructure.Services.Interferes;
 
-namespace Services.Infrastructure.Services
+namespace Services.Infrastructure.Services.Base
 {
     public class ServiceBase<TRepository, TModelDto> : IService<TModelDto>
         where TRepository : IRepository<TModelDto>

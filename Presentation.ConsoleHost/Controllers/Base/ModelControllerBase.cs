@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Contracts.Contracts.Base;
-using Data.LTS.Database;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Services.Infrastructure.Repositories;
-using Services.Infrastructure.Services;
 using Services.Infrastructure.Services.Interferes;
 
 namespace Presentation.ConsoleHost.Controllers.Base
@@ -26,7 +23,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TModelDto>>> GetAll()
+        public virtual async Task<ActionResult<IEnumerable<TModelDto>>> GetAll()
         {
             var result = await _service.TryGetAll();
             
@@ -39,7 +36,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<TModelDto>> Get(int id)
+        public virtual async Task<ActionResult<TModelDto>> Get(int id)
         {
             var result = await _service.TryGet(id);
             
@@ -52,7 +49,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         }
 
         [HttpPut]
-        public async Task<ActionResult<TModelDto>> Create(TModelDto model)
+        public virtual async Task<ActionResult<TModelDto>> Create(TModelDto model)
         {
             var result = await _service.TryCreate(model);
             
@@ -65,7 +62,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         }
 
         [HttpPost]
-        public async Task<ActionResult<TModelDto>> Update(TModelDto model)
+        public virtual async Task<ActionResult<TModelDto>> Update(TModelDto model)
         {
             var result = await _service.TryUpdate(model);
             
@@ -78,7 +75,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int modelId)
+        public virtual async Task<ActionResult> Delete(int modelId)
         {
             var result = await _service.TryDelete(modelId);
             

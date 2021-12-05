@@ -1,4 +1,3 @@
-using Contracts.Contracts;
 using Data.LTS.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,8 +31,8 @@ namespace Presentation.ConsoleHost
             
             services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(_connectionString));
 
-            services.AddScoped<RepositoryBase<AddressDto>>();
-            services.AddScoped<ServiceBase<RepositoryBase<AddressDto>, AddressDto>>();
+            services.AddScoped<ClientRepository>();
+            services.AddScoped<ClientService>();
 
         }
 

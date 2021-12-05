@@ -5,7 +5,7 @@ using Services.Infrastructure.Repositories.Interferes;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace Services.Infrastructure.Repositories
+namespace Services.Infrastructure.Repositories.Base
 {
     public class RepositoryBase<TModelDto> : IRepository<TModelDto> where TModelDto : DtoBase
     {
