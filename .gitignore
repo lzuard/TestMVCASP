@@ -2,6 +2,9 @@
 frontend/node_modules
 frontend/dist
 
+#.net debug folders
+Debug/
+
 # local env files
 .env.local
 .env.*.local
