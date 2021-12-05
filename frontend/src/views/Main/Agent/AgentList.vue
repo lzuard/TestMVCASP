@@ -14,6 +14,7 @@ export default {
     return {
       showCaseData: {
         title: 'Список контрагентов',
+        linkToCreate: '/agents/create',
         createCaption: 'Создать контрагента',
         tableHeaders: [
           'Тип',
