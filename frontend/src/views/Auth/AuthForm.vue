@@ -31,9 +31,9 @@
 <script>
 import { required } from '@vuelidate/validators'
 import { useVuelidate } from '@vuelidate/core'
-import LayoutButton from '@/components/layouts/layout-button'
+import LayoutButton from '@/components/Layouts/layout-button'
 import InputField from '@/components/UI/inputField'
-import LayoutAlert from '@/components/layouts/layout-alert'
+import LayoutAlert from '@/components/Layouts/layout-alert'
 
 export default {
   name: 'AuthForm',

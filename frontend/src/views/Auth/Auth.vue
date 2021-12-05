@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import LayoutFullPage from '@/components/layouts/layout-full-page'
+import LayoutFullPage from '@/components/Layouts/layout-full-page'
 import AuthImage from './AuthImage'
 import AuthForm from './AuthForm'
 import { BoxIcon } from '@iconicicons/vue3'

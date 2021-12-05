@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import LayoutButton from '@/components/layouts/layout-button'
+import LayoutButton from '@/components/Layouts/layout-button'
 
 export default {
   name: 'showcase-submit-button',
