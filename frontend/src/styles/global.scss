@@ -43,6 +43,24 @@ ul, li {
   list-style: none;
 }
 
+.nav-tabs {
+  .nav-link {
+    cursor: pointer;
+    opacity: 1;
+    color: $black;
+
+    &.active {
+      background-color: $blue;
+      font-weight: 600;
+      color: $white;
+
+      &:hover {
+        background-color: $blue;
+      }
+    }
+  }
+}
+
 /** Global Classes */
 .gradient-custom {
   border: none;
