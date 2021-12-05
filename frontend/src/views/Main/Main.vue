@@ -1,8 +1,22 @@
 <template>
   <div class="main">
-    <div class="main__sidebar">
+    <component
+      :is="mobileSidebarState ? 'CloseIcon' : 'MenuIcon'"
+      class="main__sidebar-mobile-btn"
+      @click="mobileSidebarState = !mobileSidebarState"
+    />
+
+    <div
+      :class="[
+        'main__sidebar',
+        {
+         'main__sidebar--mobile-open': mobileSidebarState
+        }
+      ]"
+    >
       <navbar />
     </div>
+
     <div class="main__body">
       <router-view />
     </div>
@@ -11,11 +25,28 @@
 
 <script>
 import Navbar from '@/components/Sidebar'
+import { CloseIcon, MenuIcon } from '@iconicicons/vue3'
 
 export default {
   name: 'Main',
   components: {
-    Navbar
+    Navbar,
+    MenuIcon,
+    CloseIcon
+  },
+  data: () => {
+    return {
+      mobileSidebarState: null
+    }
+  },
+  watch: {
+    mobileSidebarState (value) {
+      if (value && document.body.offsetWidth <= 768) {
+        this.$cover(true)
+      } else {
+        this.$cover(false)
+      }
+    }
   }
 }
 </script>
@@ -26,16 +57,36 @@ export default {
 .main {
   display: flex;
 
+  &__sidebar-mobile-btn {
+    display: none;
+
+    @media ($mediaMobile) {
+      display: block;
+      position: fixed;
+      top: $sidebarButtonPos;
+      left: $sidebarButtonPos;
+      color: $blue;
+      z-index: $sidebarZIndex + 1;
+    }
+  }
+
   &__sidebar {
     max-width: $sidebarWidth;
+    z-index: $sidebarZIndex;
     height: 100vh;
     position: sticky;
     top: 0;
-    bottom: 0;
+    left: 0;
 
     @media ($mediaMobile) {
-      position: absolute;
-      left: -$sidebarWidth;
+      position: fixed;
+      transform: translateX(-$sidebarWidth);
+    }
+
+    &--mobile-open {
+      @media ($mediaMobile) {
+        transform: translateX(0);
+      }
     }
   }
 
