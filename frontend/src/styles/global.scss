@@ -18,6 +18,14 @@ button {
   outline: none;
 }
 
+.btn-primary {
+  background-color: $blue;
+
+  &:hover {
+    background-color: darken($blue, 10%);
+  }
+}
+
 a {
   @include trans();
   color: inherit;
