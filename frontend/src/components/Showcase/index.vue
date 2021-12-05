@@ -124,7 +124,7 @@ export default {
   &__header {
     &-create {
       font-weight: 600;
-      display: flex;
+      display: inline-flex;
     }
   }
 
