@@ -1,5 +1,17 @@
 <template>
-  <div class="sidebar">
+  <div
+    :class="[
+      'sidebar',
+      {
+        'sidebar--mobile-open': openOnMobile
+      }
+    ]"
+  >
+    <component
+      :is="openOnMobile ? 'CloseIcon' : 'MenuIcon'"
+      class="sidebar__mobile-btn"
+      @click="openOnMobile = !openOnMobile"
+    />
     <router-link tag="div" to="/auth" class="sidebar__head">
       <box-icon class="sidebar__head-icon" />
       <div>
@@ -28,13 +40,15 @@
 </template>
 
 <script>
-import { BoxIcon, LogOutIcon } from '@iconicicons/vue3'
+import { BoxIcon, LogOutIcon, MenuIcon, CloseIcon } from '@iconicicons/vue3'
 
 export default {
   name: 'Sidebar',
   components: {
     BoxIcon,
-    LogOutIcon
+    LogOutIcon,
+    MenuIcon,
+    CloseIcon
   },
   data: () => {
     return {
@@ -72,7 +86,8 @@ export default {
           title: 'Отчеты'
         }
       ],
-      fullName: 'Иванов И.И.'
+      fullName: 'Иванов И.И.',
+      openOnMobile: false
     }
   }
 }
@@ -90,10 +105,27 @@ export default {
   flex-direction: column;
   align-items: stretch;
   border-right: 1px solid $darkGrey;
+  background-color: $grey;
+  z-index: $sidebarZIndex;
   position: relative;
 
-  @media ($mediaMobile) {
+  &--mobile-open {
+    @media ($mediaMobile) {
+      transform: translateX($sidebarWidth);
+    }
+  }
+
+  &__mobile-btn {
     display: none;
+    position: fixed;
+    top: $sidebarButtonPos;
+    left: $sidebarButtonPos;
+    color: $blue;
+    z-index: 10;
+
+    @media ($mediaMobile) {
+      display: block;
+    }
   }
 
   &__head {

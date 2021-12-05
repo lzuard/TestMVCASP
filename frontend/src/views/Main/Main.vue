@@ -32,6 +32,11 @@ export default {
     position: sticky;
     top: 0;
     bottom: 0;
+
+    @media ($mediaMobile) {
+      position: absolute;
+      left: -$sidebarWidth;
+    }
   }
 
   &__body {
