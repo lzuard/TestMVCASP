@@ -3,6 +3,7 @@ import Auth from '@/views/Auth/Auth'
 import Main from '@/views/Main/Main'
 
 import AgentList from '@/views/Main/Agent/AgentList'
+import AgentCreate from '@/views/Main/Agent/AgentCreate'
 
 const routes = [
   {
@@ -24,6 +25,14 @@ const routes = [
         component: AgentList,
         meta: {
           title: 'Список контрагентов'
+        }
+      },
+      {
+        path: '/agents/create',
+        name: 'Create agent',
+        component: AgentCreate,
+        meta: {
+          title: 'Создать контрагента'
         }
       }
     ]
