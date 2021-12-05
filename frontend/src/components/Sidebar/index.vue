@@ -42,7 +42,7 @@ export default {
     return {
       sidebarRoutes: [
         {
-          path: '/',
+          path: '/orders',
           title: 'Заказы'
         },
         {
@@ -66,7 +66,7 @@ export default {
           title: 'Контрагенты'
         },
         {
-          path: '/',
+          path: '/ttn',
           title: 'ТТН'
         },
         {

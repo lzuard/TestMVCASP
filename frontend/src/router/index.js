@@ -7,6 +7,10 @@ import AgentCreate from '@/views/Main/Agent/AgentCreate'
 
 import Report from '@/views/Main/Report/Report'
 
+import TTNList from '@/views/Main/TTN/TTNList'
+
+import OrderList from '@/views/Main/Order/OrderList'
+
 const routes = [
   {
     path: '/auth',
@@ -40,7 +44,7 @@ const routes = [
       {
         path: '/ttn',
         name: 'Show TTN',
-        component: AgentList,
+        component: TTNList,
         meta: {
           title: 'Список ТТН'
         }
@@ -51,6 +55,30 @@ const routes = [
         component: AgentList,
         meta: {
           title: 'Создать ТТН'
+        }
+      },
+      {
+        path: '/orders',
+        name: 'Show orders',
+        component: OrderList,
+        meta: {
+          title: 'Список заказов'
+        }
+      },
+      {
+        path: '/orders/create',
+        name: 'Create orders',
+        component: OrderList,
+        meta: {
+          title: 'Создать заказов'
+        }
+      },
+      {
+        path: '/ttn',
+        name: 'Show TTN',
+        component: TTNList,
+        meta: {
+          title: 'Список ТТН'
         }
       },
       {
