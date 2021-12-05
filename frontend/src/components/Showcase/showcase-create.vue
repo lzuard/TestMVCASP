@@ -5,11 +5,11 @@
         {{ title }}
       </showcase-title>
     </header>
-    <form @submit.prevent class="showcase-create__fields">
+    <div class="showcase-create__fields">
       <div class="row">
         <slot />
       </div>
-    </form>
+    </div>
   </div>
 </template>
 
