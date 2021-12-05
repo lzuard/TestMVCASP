@@ -38,6 +38,22 @@ const routes = [
         }
       },
       {
+        path: '/ttn',
+        name: 'Show TTN',
+        component: AgentList,
+        meta: {
+          title: 'Список ТТН'
+        }
+      },
+      {
+        path: '/ttn/create',
+        name: 'Create TTN',
+        component: AgentList,
+        meta: {
+          title: 'Создать ТТН'
+        }
+      },
+      {
         path: '/reports',
         name: 'Show reports',
         component: Report,
