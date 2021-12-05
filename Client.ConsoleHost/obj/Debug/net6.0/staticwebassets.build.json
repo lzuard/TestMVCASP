@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "7wKJIVIT1w7Ujl0SSyYzMyj37OA2F44CepdDoQyodq4=",
+  "Source": "Client.ConsoleHost",
+  "BasePath": "_content/Client.ConsoleHost",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

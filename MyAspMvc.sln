@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.LTS", "Data.LTS\Data.L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services.Infrastructure", "Services.Infrastructure\Services.Infrastructure.csproj", "{148A3003-365A-4FAF-A849-99FF4BB2413C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation.ConsoleHost", "Presentation.ConsoleHost\Presentation.ConsoleHost.csproj", "{C1FF310D-BCB8-4686-84F7-3D252709BCEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.ConsoleHost", "Client.ConsoleHost\Client.ConsoleHost.csproj", "{C1FF310D-BCB8-4686-84F7-3D252709BCEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
