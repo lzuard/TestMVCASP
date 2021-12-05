@@ -70,7 +70,7 @@ export default {
           title: 'ТТН'
         },
         {
-          path: '/',
+          path: '/reports',
           title: 'Отчеты'
         }
       ],
