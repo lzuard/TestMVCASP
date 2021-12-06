@@ -181,7 +181,7 @@
       title="Популярные товары"
       v-if="activeTab('Популярные товары')"
     >
-      Тут будет график
+      <chart :chart-data="chartData"/>
     </showcase-report-cell>
   </showcase-create>
 </template>
@@ -191,10 +191,12 @@ import ShowcaseCreate from '@/components/Showcase/showcase-create'
 import ShowcaseReportCell from '@/components/Showcase/showcase-report-cell'
 import ShowcaseLabelField from '@/components/Showcase/showcase-label-field'
 import LayoutButton from '@/components/Layouts/layout-button'
+import Chart from '@/components/Chart'
 
 export default {
   name: 'Report',
   components: {
+    Chart,
     LayoutButton,
     ShowcaseLabelField,
     ShowcaseReportCell,
@@ -202,6 +204,20 @@ export default {
   },
   data: () => {
     return {
+      chartData: [
+        {
+          label: 'Цемент',
+          value: 15000
+        },
+        {
+          label: 'Арматура',
+          value: 12000
+        },
+        {
+          label: 'Утеплитель',
+          value: 9000
+        }
+      ],
       outDate: {
         art: '97232',
         manufacture: 'Цемент-Завод 12',
