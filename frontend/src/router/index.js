@@ -17,6 +17,8 @@ import SupplyList from '@/views/Main/Supply/SupplyList'
 
 import ReturnList from '@/views/Main/Return/ReturnList'
 
+import UtilList from '@/views/Main/Util/UtilList'
+
 const routes = [
   {
     path: '/auth',
@@ -69,6 +71,14 @@ const routes = [
         component: ReturnList,
         meta: {
           title: 'Список возвратов'
+        }
+      },
+      {
+        path: '/utils',
+        name: 'Show utils',
+        component: UtilList,
+        meta: {
+          title: 'Список утилизаций'
         }
       },
       {
