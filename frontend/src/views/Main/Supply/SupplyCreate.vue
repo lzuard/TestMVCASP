@@ -3,7 +3,7 @@
     <showcase-label class="col-md-6" label="Поставщик">
       <select class="form-select" v-model="dataToSend.supplier">
         <option disabled value="">
-          Постащик
+          Поставщик
         </option>
         <option
           v-for="(item, index) in supplierList"
