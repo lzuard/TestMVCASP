@@ -47,6 +47,10 @@ export default createI18n({
       extra: 'Примечание',
       count: 'Кол-во',
       accept: 'Принято',
+      client: 'Клиент',
+      orderCost: 'Стоимость заказа',
+      orderDate: 'Дата заказа',
+      deliveryDate: 'Дата доставки',
       validations: {
         required: 'Поле обязательно к заполнению',
         email: 'Поле должно соответствовать электронной почте',

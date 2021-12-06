@@ -11,6 +11,7 @@ import TTNList from '@/views/Main/TTN/TTNList'
 import TTNCreate from '@/views/Main/TTN/TTNCreate'
 
 import OrderList from '@/views/Main/Order/OrderList'
+import OrderCreate from '@/views/Main/Order/OrderCreate'
 
 import ProductList from '@/views/Main/Product/ProductList'
 import ProductCreate from '@/views/Main/Product/ProductCreate'
@@ -137,7 +138,7 @@ const routes = [
       {
         path: '/orders/create',
         name: 'Create orders',
-        component: OrderList,
+        component: OrderCreate,
         meta: {
           title: 'Создать заказ'
         }
