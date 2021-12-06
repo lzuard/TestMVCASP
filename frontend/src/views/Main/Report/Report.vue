@@ -1,5 +1,5 @@
 <template>
-  <showcase-create title="Отчеты">
+  <showcase-create class="report" title="Отчеты">
     <ul class="nav nav-tabs mb-5">
       <li
         v-for="(tab, index) in tabs"
@@ -26,6 +26,51 @@
       <showcase-label-field label="Введите номер заказа">
         <input type="text" class="form-control">
       </showcase-label-field>
+
+      <layout-button class="mb-2">
+        Найти
+      </layout-button>
+
+      <div>
+        <span class="fw-bolder d-block">Заказ №34525</span>
+        <span class="fw-bolder d-block">Общая стоимость: 50 000</span>
+        <div style="width: 100%; overflow-x: auto">
+          <table class="table table-responsive">
+            <thead>
+            <tr>
+              <th>
+                Артикул
+              </th>
+              <th>
+                Производитель
+              </th>
+              <th>
+                Наименование
+              </th>
+              <th>
+                Тип
+              </th>
+              <th>
+                Категория
+              </th>
+              <th>
+                Кол-во
+              </th>
+              <th>
+                Стоимость
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td v-for="(item, index) in outDate" :key="index">
+                {{ item }}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </showcase-report-cell>
 
     <showcase-report-cell
@@ -130,6 +175,15 @@ export default {
   },
   data: () => {
     return {
+      outDate: {
+        art: '97232',
+        manufacture: 'Цемент-Завод 12',
+        name: 'Цемент A500',
+        type: 'Материал',
+        category: 'Цемент',
+        price: '5000',
+        total: '50 000'
+      },
       tabs: [
         {
           title: 'Стоимость заказа и список его товаров',
@@ -163,6 +217,10 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss">
+.report {
+  .filter__items {
+    display: block;
+  }
+}
 </style>
