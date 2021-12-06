@@ -42,15 +42,6 @@
       >
     </showcase-label>
 
-    <showcase-label class="col-md-6" label="Название товара">
-      <input
-        class="form-control"
-        type="text"
-        v-model="dataToSend.name"
-        placeholder="Название"
-      >
-    </showcase-label>
-
     <showcase-label class="col-md-6" label="Сотрудник">
       <select class="form-select" v-model="dataToSend.employee">
         <option disabled value="">
@@ -75,7 +66,7 @@
       >
     </showcase-label>
 
-    <showcase-label class="col-md-6" label="Причина">
+    <showcase-label class="col-md-12" label="Причина">
       <input
         class="form-control"
         type="text"
@@ -83,6 +74,27 @@
         placeholder="Причина"
       >
     </showcase-label>
+
+    <showcase-label class="col-md-6" label="Артикул товара">
+      <input
+        class="form-control"
+        type="text"
+        v-model="dataToSend.art"
+        placeholder="Артикул"
+      >
+    </showcase-label>
+
+    <showcase-label class="col-md-6" label="Кол-во">
+      <input
+        class="form-control"
+        type="number"
+        v-model="dataToSend.count"
+      >
+    </showcase-label>
+
+    <showcase-submit>
+      Добавить ещё один товар
+    </showcase-submit>
 
     <showcase-errors-list
       v-if="v$.$errors.length"
@@ -127,7 +139,7 @@ export default {
         actOfUtil: { required },
         shippingDate: { required },
         employee: { required },
-        name: { required },
+        art: { required },
         reason: { required },
         count: { required }
       }
@@ -160,7 +172,7 @@ export default {
         actOfUtil: '',
         shippingDate: '',
         employee: '',
-        name: '',
+        art: '',
         reason: '',
         count: ''
       }
