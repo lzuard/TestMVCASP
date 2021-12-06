@@ -11,6 +11,8 @@ import TTNList from '@/views/Main/TTN/TTNList'
 
 import OrderList from '@/views/Main/Order/OrderList'
 
+import ProductList from '@/views/Main/Product/ProductList'
+
 const routes = [
   {
     path: '/auth',
@@ -42,11 +44,11 @@ const routes = [
         }
       },
       {
-        path: '/ttn',
-        name: 'Show TTN',
-        component: TTNList,
+        path: '/products',
+        name: 'Show product',
+        component: ProductList,
         meta: {
-          title: 'Список ТТН'
+          title: 'Список товаров'
         }
       },
       {
@@ -70,7 +72,7 @@ const routes = [
         name: 'Create orders',
         component: OrderList,
         meta: {
-          title: 'Создать заказов'
+          title: 'Создать заказ'
         }
       },
       {
