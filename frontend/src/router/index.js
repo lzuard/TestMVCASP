@@ -38,6 +38,7 @@ const routes = [
     path: '/',
     name: 'Main page',
     component: Main,
+    redirect: '/orders',
     children: [
       {
         path: '/agents',
