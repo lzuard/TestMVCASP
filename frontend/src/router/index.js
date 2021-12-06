@@ -16,6 +16,7 @@ import ProductList from '@/views/Main/Product/ProductList'
 import ProductCreate from '@/views/Main/Product/ProductCreate'
 
 import SupplyList from '@/views/Main/Supply/SupplyList'
+import SupplyCreate from '@/views/Main/Supply/SupplyCreate'
 
 import ReturnList from '@/views/Main/Return/ReturnList'
 import ReturnCreate from '@/views/Main/Return/ReturnCreate'
@@ -75,6 +76,14 @@ const routes = [
         component: SupplyList,
         meta: {
           title: 'Список поставок'
+        }
+      },
+      {
+        path: '/supplies/create',
+        name: 'Create supply',
+        component: SupplyCreate,
+        meta: {
+          title: 'Создать поставку'
         }
       },
       {
