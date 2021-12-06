@@ -46,19 +46,19 @@ export default {
           title: 'Заказы'
         },
         {
-          path: '/',
+          path: '/products',
           title: 'Товары'
         },
         {
-          path: '/',
+          path: '/supplies',
           title: 'Поставки'
         },
         {
-          path: '/',
+          path: '/returns',
           title: 'Возвраты'
         },
         {
-          path: '/',
+          path: '/utils',
           title: 'Утилизации'
         },
         {
