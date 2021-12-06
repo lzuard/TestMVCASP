@@ -13,6 +13,8 @@ import OrderList from '@/views/Main/Order/OrderList'
 
 import ProductList from '@/views/Main/Product/ProductList'
 
+import SupplyList from '@/views/Main/Supply/SupplyList'
+
 const routes = [
   {
     path: '/auth',
@@ -49,6 +51,14 @@ const routes = [
         component: ProductList,
         meta: {
           title: 'Список товаров'
+        }
+      },
+      {
+        path: '/supplies',
+        name: 'Show supplies',
+        component: SupplyList,
+        meta: {
+          title: 'Список поставок'
         }
       },
       {
