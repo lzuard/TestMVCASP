@@ -13,6 +13,7 @@ import TTNCreate from '@/views/Main/TTN/TTNCreate'
 import OrderList from '@/views/Main/Order/OrderList'
 
 import ProductList from '@/views/Main/Product/ProductList'
+import ProductCreate from '@/views/Main/Product/ProductCreate'
 
 import SupplyList from '@/views/Main/Supply/SupplyList'
 
@@ -58,6 +59,14 @@ const routes = [
         component: ProductList,
         meta: {
           title: 'Список товаров'
+        }
+      },
+      {
+        path: '/products/create',
+        name: 'Create product',
+        component: ProductCreate,
+        meta: {
+          title: 'Создать товар'
         }
       },
       {
