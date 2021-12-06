@@ -11,6 +11,10 @@ export default createI18n({
       bill: 'Расчетный счет',
       phone: 'Телефон',
       email: 'Электронная почта',
+      number: 'Номер',
+      issueDate: 'Дата оформления',
+      ttnType: 'Тип ТТН',
+      ttnForm: 'Форма ТТН',
       validations: {
         required: 'Поле обязательно к заполнению',
         email: 'Поле должно соответствовать электронной почте',

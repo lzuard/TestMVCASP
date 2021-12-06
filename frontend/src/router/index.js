@@ -8,6 +8,7 @@ import AgentCreate from '@/views/Main/Agent/AgentCreate'
 import Report from '@/views/Main/Report/Report'
 
 import TTNList from '@/views/Main/TTN/TTNList'
+import TTNCreate from '@/views/Main/TTN/TTNCreate'
 
 import OrderList from '@/views/Main/Order/OrderList'
 
@@ -84,7 +85,7 @@ const routes = [
       {
         path: '/ttn/create',
         name: 'Create TTN',
-        component: AgentList,
+        component: TTNCreate,
         meta: {
           title: 'Создать ТТН'
         }
