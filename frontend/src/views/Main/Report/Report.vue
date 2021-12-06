@@ -148,6 +148,33 @@
       <showcase-label-field label="Введите номер клиента">
         <input type="text" class="form-control">
       </showcase-label-field>
+
+      <layout-button class="mb-2">
+        Найти
+      </layout-button>
+
+      <div>
+        <span class="fw-bolder d-block">Клиент №312523</span>
+        <span class="fw-bolder d-block">Общая стоимость заказов: 50 000</span>
+        <div style="width: 100%; overflow-x: auto">
+          <table class="table table-responsive">
+            <thead>
+            <tr>
+              <th v-for="(item, index) in thirdTab.tableHeaders" :key="index">
+                {{ item }}
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td v-for="(item, index) in thirdTab.tableData[0]" :key="index">
+                {{ item }}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </showcase-report-cell>
 
     <showcase-report-cell
@@ -183,6 +210,40 @@ export default {
         category: 'Цемент',
         price: '5000',
         total: '50 000'
+      },
+      thirdTab: {
+        tableHeaders: [
+          'Номер заказа',
+          'Сотрудник',
+          'ТК',
+          'Номер адреса',
+          'ТТН',
+          'Платежный документ',
+          'Дата заказа',
+          'Дата отгрузки',
+          'Дата доставки',
+          'Статус',
+          'Принят ТК',
+          'Принят клиентом',
+          'Примечание'
+        ],
+        tableData: [
+          {
+            id: '7823',
+            employee: 'Иванов И.И.',
+            tc: 'Паровёз',
+            address: '1732',
+            ttn: '29873/НУ1',
+            payment_doc: '597824',
+            order_date: '27.06.2021',
+            shipment_date: '29.06.2021',
+            delivery_date: '01.07.2021',
+            status: 'Завершен',
+            accept_tc: 'Да',
+            accept_client: 'Да',
+            extra: ''
+          }
+        ]
       },
       tabs: [
         {
