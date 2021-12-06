@@ -17,6 +17,7 @@ import ProductList from '@/views/Main/Product/ProductList'
 import SupplyList from '@/views/Main/Supply/SupplyList'
 
 import ReturnList from '@/views/Main/Return/ReturnList'
+import ReturnCreate from '@/views/Main/Return/ReturnCreate'
 
 import UtilList from '@/views/Main/Util/UtilList'
 import UtilCreate from '@/views/Main/Util/UtilCreate'
@@ -73,6 +74,14 @@ const routes = [
         component: ReturnList,
         meta: {
           title: 'Список возвратов'
+        }
+      },
+      {
+        path: '/returns/create',
+        name: 'Create return',
+        component: ReturnCreate,
+        meta: {
+          title: 'Создать возврат'
         }
       },
       {

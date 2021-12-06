@@ -19,6 +19,10 @@ export default createI18n({
       shippingDate: 'Дата отгрузки',
       ttnType: 'Тип ТТН',
       ttnForm: 'Форма ТТН',
+      ttnOrder: 'Номер ТТН заказа',
+      ttnReturn: 'Номер ТТН возврата',
+      returnDate: 'Дата возврата',
+      actOfReturn: 'Номер акта возврата',
       validations: {
         required: 'Поле обязательно к заполнению',
         email: 'Поле должно соответствовать электронной почте',
