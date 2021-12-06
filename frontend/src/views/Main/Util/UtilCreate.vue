@@ -42,6 +42,48 @@
       >
     </showcase-label>
 
+    <showcase-label class="col-md-6" label="Название товара">
+      <input
+        class="form-control"
+        type="text"
+        v-model="dataToSend.name"
+        placeholder="Название"
+      >
+    </showcase-label>
+
+    <showcase-label class="col-md-6" label="Сотрудник">
+      <select class="form-select" v-model="dataToSend.employee">
+        <option disabled value="">
+          Сотрудник
+        </option>
+        <option
+          v-for="(item, index) in employeeList"
+          :key="index"
+          :value="item.value"
+        >
+          {{ item.text }}
+        </option>
+      </select>
+    </showcase-label>
+
+    <showcase-label class="col-md-6" label="Кол-во">
+      <input
+        class="form-control"
+        type="number"
+        v-model="dataToSend.count"
+        placeholder="Кол-во"
+      >
+    </showcase-label>
+
+    <showcase-label class="col-md-6" label="Причина">
+      <input
+        class="form-control"
+        type="text"
+        v-model="dataToSend.reason"
+        placeholder="Причина"
+      >
+    </showcase-label>
+
     <showcase-errors-list
       v-if="v$.$errors.length"
       :errors="v$.$errors"
@@ -83,7 +125,11 @@ export default {
         ttnNumber: { required },
         utilizator: { required },
         actOfUtil: { required },
-        shippingDate: { required }
+        shippingDate: { required },
+        employee: { required },
+        name: { required },
+        reason: { required },
+        count: { required }
       }
     }
   },
@@ -92,6 +138,12 @@ export default {
       createData: {
         title: 'Создать утилизацию'
       },
+      employeeList: [
+        {
+          text: 'Птушкин Александр',
+          value: 1
+        }
+      ],
       utilizatorList: [
         {
           text: 'УтилПро',
@@ -106,7 +158,11 @@ export default {
         ttnNumber: '',
         utilizator: '',
         actOfUtil: '',
-        shippingDate: ''
+        shippingDate: '',
+        employee: '',
+        name: '',
+        reason: '',
+        count: ''
       }
     }
   },

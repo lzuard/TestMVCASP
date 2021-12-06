@@ -51,6 +51,8 @@ export default createI18n({
       orderCost: 'Стоимость заказа',
       orderDate: 'Дата заказа',
       deliveryDate: 'Дата доставки',
+      reason: 'Причина',
+      employee: 'Сотрудник',
       validations: {
         required: 'Поле обязательно к заполнению',
         email: 'Поле должно соответствовать электронной почте',
