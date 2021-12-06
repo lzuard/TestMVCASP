@@ -14,7 +14,7 @@ export default {
     return {
       showCaseData: {
         title: 'Список утилизаций',
-        linkToCreate: '/util/create',
+        linkToCreate: '/utils/create',
         createCaption: 'Создать утилизацию',
         tableHeaders: [
           'Номер ТТН',

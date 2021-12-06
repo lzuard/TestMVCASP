@@ -13,6 +13,10 @@ export default createI18n({
       email: 'Электронная почта',
       number: 'Номер',
       issueDate: 'Дата оформления',
+      ttnNumber: 'Номер ТТН',
+      utilizator: 'Утилизатор',
+      actOfUtil: 'Номер акта утилизации',
+      shippingDate: 'Дата отгрузки',
       ttnType: 'Тип ТТН',
       ttnForm: 'Форма ТТН',
       validations: {

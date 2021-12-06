@@ -19,6 +19,7 @@ import SupplyList from '@/views/Main/Supply/SupplyList'
 import ReturnList from '@/views/Main/Return/ReturnList'
 
 import UtilList from '@/views/Main/Util/UtilList'
+import UtilCreate from '@/views/Main/Util/UtilCreate'
 
 const routes = [
   {
@@ -80,6 +81,14 @@ const routes = [
         component: UtilList,
         meta: {
           title: 'Список утилизаций'
+        }
+      },
+      {
+        path: '/utils/create',
+        name: 'Create util',
+        component: UtilCreate,
+        meta: {
+          title: 'Создать утилизацию'
         }
       },
       {
