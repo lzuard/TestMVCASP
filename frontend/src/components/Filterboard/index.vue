@@ -48,7 +48,6 @@ export default {
   &__items {
     display: flex;
     flex-wrap: wrap;
-    align-items: end;
 
     & > *:not(:last-child) {
       margin-right: 15px;
