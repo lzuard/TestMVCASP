@@ -1,4 +1,5 @@
-﻿using Contracts.Contracts.Base;
+﻿using System;
+using Contracts.Contracts.Base;
 
 namespace Contracts.Contracts
 {
@@ -22,6 +23,6 @@ namespace Contracts.Contracts
         /// <summary>
         /// Возвращает или восстанавливает дату оформления.
         /// </summary>
-        public string Date { get; set; } //TODO: date format
+        public DateTime Date { get; set; }
     }
 }

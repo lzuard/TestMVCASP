@@ -1,4 +1,5 @@
-﻿using Contracts.Contracts.Base;
+﻿using System;
+using Contracts.Contracts.Base;
 
 namespace Contracts.Contracts
 {
@@ -37,7 +38,7 @@ namespace Contracts.Contracts
         /// <summary>
         /// Восстанавливает или возвращает дату поставки
         /// </summary>
-        public string SupplyDate { get; set; } //TODO: date type
+        public DateTime SupplyDate { get; set; }
 
         /// <summary>
         /// Восстанавливает или возвращает принято ли поставка

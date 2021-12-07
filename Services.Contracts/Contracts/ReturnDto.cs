@@ -1,4 +1,5 @@
-﻿using Contracts.Contracts.Base;
+﻿using System;
+using Contracts.Contracts.Base;
 
 namespace Contracts.Contracts
 {
@@ -27,7 +28,7 @@ namespace Contracts.Contracts
         /// <summary>
         /// Восстанавливает или возвращает дату возврата
         /// </summary>
-        public string ReturnDate { get; set; } //TODO: date type
+        public DateTime ReturnDate { get; set; }
         
         /// <summary>
         /// Восстанавливает или возвращает акт возврата
