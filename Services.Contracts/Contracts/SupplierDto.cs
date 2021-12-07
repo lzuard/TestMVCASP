@@ -5,11 +5,6 @@ namespace Contracts.Contracts
     public class SupplierDto: DtoBase
     {
         /// <summary>
-        /// Возвращает или восстанавливает идентификатор поставщика.
-        /// </summary>
-        public int SupplierID { get; set; }
-
-        /// <summary>
         /// Возвращает или восстанавливает идентификатор адреса.
         /// </summary>
         public int AddressId { get; set; }

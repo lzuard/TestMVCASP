@@ -6,11 +6,6 @@ namespace Contracts.Contracts
     public class UtilizationDto: DtoBase
     {
         /// <summary>
-        /// Восстанавливает или возвращает идентификатор утилизации
-        /// </summary>
-        public int UtilizationID { get; set; }
-
-        /// <summary>
         /// Восстанавливает или возвращает идентификатор сотрудника
         /// </summary>
         public int EmployeeID { get; set; }

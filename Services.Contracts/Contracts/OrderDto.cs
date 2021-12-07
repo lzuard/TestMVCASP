@@ -6,11 +6,6 @@ namespace Contracts.Contracts
     public class OrderDto: DtoBase
     {
         /// <summary>
-        /// Восстанавливает или возвращает идентификатор заказа
-        /// </summary>
-        public int OrderID { get; set; }
-        
-        /// <summary>
         /// Восстанавливает или возвращает идентификатор клиента
         /// </summary>
         public int ClientID { get; set; }

@@ -6,11 +6,6 @@ namespace Contracts.Contracts
     public class EmployeeDto: DtoBase
     {
         /// <summary>
-        /// Восстанавливает или возвращает идентификатор сотрудника
-        /// </summary>
-        public int EmployeeID { get; set; }
-        
-        /// <summary>
         /// Восстанавливает или возвращает фамилию 
         /// </summary>
         public string SecondName { get; set; }

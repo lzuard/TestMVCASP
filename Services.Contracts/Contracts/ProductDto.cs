@@ -6,11 +6,6 @@ namespace Contracts.Contracts
     public class ProductDto: DtoBase
     {
         /// <summary>
-        /// Восстанавливает или возвращает идентификатор товара
-        /// </summary>
-        public int ProductID { get; set; }
-        
-        /// <summary>
         /// Восстанавливает или возвращает артикул
         /// </summary>
         public int Art { get; set; }

@@ -7,6 +7,7 @@ namespace Contracts.Contracts
     {
         /// <summary>
         /// Возвращает или восстанавливает идентификатор (номер) ТТН.
+        /// Является ключевым полем, и имеет смысл
         /// </summary>
         public string TtnID { get; set; }
         

@@ -5,11 +5,6 @@ namespace Contracts.Contracts
     public class TcDto: DtoBase
     {
         /// <summary>
-        /// Возвращает или восстанавливает идентификатор ТК.
-        /// </summary>
-        public int TransportCompanyID { get; set; }
-
-        /// <summary>
         /// Возвращает или восстанавливает идентификатор адреса.
         /// </summary>
         public int AddressId { get; set; }

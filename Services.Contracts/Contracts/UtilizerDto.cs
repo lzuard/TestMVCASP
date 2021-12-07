@@ -5,11 +5,6 @@ namespace Contracts.Contracts
     public class UtilizerDto: DtoBase
     {
         /// <summary>
-        /// Возвращает или восстанавливает идентификатор утилизатора.
-        /// </summary>
-        public int UtilizerID { get; set; }
-
-        /// <summary>
         /// Возвращает или восстанавливает идентификатор адреса.
         /// </summary>
         public int AddressId { get; set; }
