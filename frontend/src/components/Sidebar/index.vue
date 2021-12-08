@@ -196,7 +196,7 @@ export default {
   &__status {
     border-top: 1px solid $darkGrey;
     margin-top: auto;
-    padding: $gap-s $gap-s $gap-s calc(#{$gap-m} + var(--offset-from-icon));
+    padding: $gap-s $gap-s $gap-s calc(#{$gap-m} + 6px + var(--offset-from-icon));
     display: flex;
     align-items: center;
 
