@@ -1,5 +1,5 @@
 <template>
-  <showcase-create title="Отчеты">
+  <showcase-create class="report" title="Отчеты">
     <ul class="nav nav-tabs mb-5">
       <li
         v-for="(tab, index) in tabs"
@@ -26,6 +26,51 @@
       <showcase-label-field label="Введите номер заказа">
         <input type="text" class="form-control">
       </showcase-label-field>
+
+      <layout-button class="mb-2">
+        Найти
+      </layout-button>
+
+      <div>
+        <span class="fw-bolder d-block">Заказ №34525</span>
+        <span class="fw-bolder d-block">Общая стоимость: 50 000</span>
+        <div style="width: 100%; overflow-x: auto">
+          <table class="table table-responsive">
+            <thead>
+            <tr>
+              <th>
+                Артикул
+              </th>
+              <th>
+                Производитель
+              </th>
+              <th>
+                Наименование
+              </th>
+              <th>
+                Тип
+              </th>
+              <th>
+                Категория
+              </th>
+              <th>
+                Кол-во
+              </th>
+              <th>
+                Стоимость
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td v-for="(item, index) in outDate" :key="index">
+                {{ item }}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </showcase-report-cell>
 
     <showcase-report-cell
@@ -103,13 +148,40 @@
       <showcase-label-field label="Введите номер клиента">
         <input type="text" class="form-control">
       </showcase-label-field>
+
+      <layout-button class="mb-2">
+        Найти
+      </layout-button>
+
+      <div>
+        <span class="fw-bolder d-block">Клиент №312523</span>
+        <span class="fw-bolder d-block">Общая стоимость заказов: 50 000</span>
+        <div style="width: 100%; overflow-x: auto">
+          <table class="table table-responsive">
+            <thead>
+            <tr>
+              <th v-for="(item, index) in thirdTab.tableHeaders" :key="index">
+                {{ item }}
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td v-for="(item, index) in thirdTab.tableData[0]" :key="index">
+                {{ item }}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </showcase-report-cell>
 
     <showcase-report-cell
       title="Популярные товары"
       v-if="activeTab('Популярные товары')"
     >
-      Тут будет график
+      <chart :chart-data="chartData"/>
     </showcase-report-cell>
   </showcase-create>
 </template>
@@ -119,10 +191,12 @@ import ShowcaseCreate from '@/components/Showcase/showcase-create'
 import ShowcaseReportCell from '@/components/Showcase/showcase-report-cell'
 import ShowcaseLabelField from '@/components/Showcase/showcase-label-field'
 import LayoutButton from '@/components/Layouts/layout-button'
+import Chart from '@/components/Chart'
 
 export default {
   name: 'Report',
   components: {
+    Chart,
     LayoutButton,
     ShowcaseLabelField,
     ShowcaseReportCell,
@@ -130,6 +204,63 @@ export default {
   },
   data: () => {
     return {
+      chartData: [
+        {
+          label: 'Цемент',
+          value: 15000
+        },
+        {
+          label: 'Арматура',
+          value: 12000
+        },
+        {
+          label: 'Утеплитель',
+          value: 9000
+        }
+      ],
+      outDate: {
+        art: '97232',
+        manufacture: 'Цемент-Завод 12',
+        name: 'Цемент A500',
+        type: 'Материал',
+        category: 'Цемент',
+        price: '5000',
+        total: '50 000'
+      },
+      thirdTab: {
+        tableHeaders: [
+          'Номер заказа',
+          'Сотрудник',
+          'ТК',
+          'Номер адреса',
+          'ТТН',
+          'Платежный документ',
+          'Дата заказа',
+          'Дата отгрузки',
+          'Дата доставки',
+          'Статус',
+          'Принят ТК',
+          'Принят клиентом',
+          'Примечание'
+        ],
+        tableData: [
+          {
+            id: '7823',
+            employee: 'Иванов И.И.',
+            tc: 'Паровёз',
+            address: '1732',
+            ttn: '29873/НУ1',
+            payment_doc: '597824',
+            order_date: '27.06.2021',
+            shipment_date: '29.06.2021',
+            delivery_date: '01.07.2021',
+            status: 'Завершен',
+            accept_tc: 'Да',
+            accept_client: 'Да',
+            extra: ''
+          }
+        ]
+      },
       tabs: [
         {
           title: 'Стоимость заказа и список его товаров',
@@ -163,6 +294,10 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="scss">
+.report {
+  .filter__items {
+    display: block;
+  }
+}
 </style>
