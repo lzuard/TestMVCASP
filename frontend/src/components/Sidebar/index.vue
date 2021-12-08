@@ -14,7 +14,15 @@
           v-for="(route, index) in sidebarRoutes"
           :key="index"
         >
-          <router-link :to="route.path">
+          <router-link
+            :to="route.path"
+            active-class="sidebar__navigation-link--active"
+            class="sidebar__navigation-link"
+          >
+            <component
+              :is="route.icon"
+              class="sidebar__navigation-icon"
+            />
             {{ route.title }}
           </router-link>
         </li>
@@ -30,46 +38,73 @@
 </template>
 
 <script>
-import { BoxIcon, LogOutIcon } from '@iconicicons/vue3'
+import {
+  BoxIcon,
+  LogOutIcon,
+  IndentRightIcon,
+  ShoppingBagIcon,
+  UndoIcon,
+  UserIcon,
+  TrashIcon,
+  TruckIcon,
+  FileTextIcon,
+  PieChartIcon
+} from '@iconicicons/vue3'
 
 export default {
   name: 'Sidebar',
   components: {
     BoxIcon,
-    LogOutIcon
+    LogOutIcon,
+    IndentRightIcon,
+    ShoppingBagIcon,
+    UndoIcon,
+    FileTextIcon,
+    TrashIcon,
+    TruckIcon,
+    UserIcon,
+    PieChartIcon
   },
   data: () => {
     return {
       sidebarRoutes: [
         {
+          icon: 'IndentRightIcon',
           path: '/orders',
           title: 'Заказы'
         },
         {
+          icon: 'ShoppingBagIcon',
           path: '/products',
           title: 'Товары'
         },
         {
+          icon: 'TruckIcon',
           path: '/supplies',
           title: 'Поставки'
         },
         {
+          icon: 'UndoIcon',
           path: '/returns',
           title: 'Возвраты'
         },
         {
+          icon: 'TrashIcon',
           path: '/utils',
           title: 'Утилизации'
         },
         {
+          icon: 'UserIcon',
           path: '/agents',
           title: 'Контрагенты'
         },
         {
+          icon: 'FileTextIcon',
           path: '/ttn',
           title: 'ТТН'
         },
         {
+          icon: 'PieChartIcon',
           path: '/reports',
           title: 'Отчеты'
         }
@@ -121,7 +156,7 @@ export default {
   }
 
   &__content {
-    padding: $gap-m calc(#{$gap-m} + var(--offset-from-icon));
+    padding: $gap-m 0;
     overflow-y: scroll;
   }
 
@@ -133,6 +168,28 @@ export default {
 
     li:not(:first-child) {
       margin-top: 15px;
+    }
+
+    &-link {
+      padding: 5px calc(#{$gap-m} + var(--offset-from-icon));
+      display: flex;
+      align-items: center;
+
+      &--active {
+        color: $white;
+        @include gradientSupport;
+
+        &:hover {
+          opacity: 1;
+          color: $white;
+          cursor: default;
+          //pointer-events: none;
+        }
+      }
+    }
+
+    &-icon {
+      margin-right: 8px;
     }
   }
 
