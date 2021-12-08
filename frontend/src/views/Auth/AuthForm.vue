@@ -16,7 +16,7 @@
       </layout-alert>
     </div>
 
-    <div class="text-center pt-1 mb-5 pb-1">
+    <div class="text-center pt-1 mb-3 pb-1">
       <layout-button
         class="w-100"
         :is-gradient="true"
@@ -24,6 +24,11 @@
       >
         Войти
       </layout-button>
+    </div>
+
+    <div class="auth-form__forget">
+      Проблемы со входом в аккаунт? <br>
+      Обратитесь к системному администратору
     </div>
   </form>
 </template>
@@ -67,3 +72,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+@import "~@/styles/variables";
+
+.auth-form {
+  &__forget {
+    font-size: $font-size-xs;
+    font-weight: 600;
+    color: $blue;
+  }
+}
+</style>
