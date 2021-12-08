@@ -47,6 +47,10 @@ export default {
   methods: {
     authenticateUser (data) {
       this.isLoading = true
+
+      this.$api.authorizeUser().then(() => {
+        this.isLoading = false
+      })
     }
   }
 }
