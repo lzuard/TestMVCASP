@@ -16,6 +16,11 @@ body {
 
 button {
   outline: none;
+  @include trans;
+
+  &:hover {
+    @include boxShadow;
+  }
 }
 
 .btn-primary {
@@ -23,6 +28,7 @@ button {
 
   &:hover {
     background-color: darken($blue, 10%);
+    //@include boxShadow;
   }
 }
 
