@@ -6,6 +6,7 @@ import locale from './localization'
 
 /** Plugins */
 import coverPlugin from './plugins/cover'
+import apiPlugin from './plugins/api'
 
 /** Global components */
 import Preloader from '@/components/UI/preloader'
@@ -19,5 +20,6 @@ createApp(App)
   .use(store)
   .use(router)
   .use(coverPlugin)
+  .use(apiPlugin)
   .component('Preloader', Preloader)
   .mount('#app')
