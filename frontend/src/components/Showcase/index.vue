@@ -34,10 +34,8 @@
         </filter-board>
       </div>
     </section>
-    <section
-      class="showcase__result"
-    >
-      <table class="table">
+    <section class="showcase__result table-responsive">
+      <table class="table table-bordered border-dark">
         <thead>
         <tr>
           <th
@@ -141,12 +139,6 @@ export default {
       max-width: $filterWidth;
       margin-top: 20px;
     }
-  }
-
-  &__result {
-    width: 100%;
-    text-align: left;
-    overflow-x: auto;
   }
 }
 </style>
