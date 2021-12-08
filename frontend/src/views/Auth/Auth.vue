@@ -3,7 +3,11 @@
     <div class="auth-card rounded-3">
       <div class="row g-0">
         <div class="col-lg-6">
-          <div class="auth-card__body p-5 mx-md-4">
+          <div class="auth-card__body">
+            <preloader
+              v-show="isLoading"
+              :with-cover="true"
+            />
 
             <div class="text-center">
               <box-icon class="auth-card__icon" />
@@ -35,9 +39,14 @@ export default {
     AuthForm,
     BoxIcon
   },
+  data: () => {
+    return {
+      isLoading: false
+    }
+  },
   methods: {
     authenticateUser (data) {
-      console.log(data)
+      this.isLoading = true
     }
   }
 }
@@ -55,6 +64,11 @@ export default {
     width: 48px;
     height: 48px;
     color: $blue;
+  }
+
+  &__body {
+    position: relative;
+    padding: $gap-l;
   }
 }
 
