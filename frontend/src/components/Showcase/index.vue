@@ -109,6 +109,11 @@ export default {
       type: Array,
       default: () => ([])
     }
+  },
+  mounted () {
+    if (this.sortTypes && this.sortTypes.length) {
+      this.sortValue = this.sortTypes[0]
+    }
   }
 }
 </script>
