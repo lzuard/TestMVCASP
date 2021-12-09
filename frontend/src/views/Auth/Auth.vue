@@ -30,6 +30,7 @@ import LayoutFullPage from '@/components/Layouts/layout-full-page'
 import AuthImage from './AuthImage'
 import AuthForm from './AuthForm'
 import { BoxIcon } from '@iconicicons/vue3'
+import { useToast } from 'vue-toastification'
 
 export default {
   name: 'Auth',
@@ -38,6 +39,10 @@ export default {
     AuthImage,
     AuthForm,
     BoxIcon
+  },
+  setup () {
+    const toast = useToast()
+    return { toast }
   },
   data: () => {
     return {
@@ -48,9 +53,14 @@ export default {
     authenticateUser (data) {
       this.isLoading = true
 
-      this.$api.authorizeUser().then(() => {
-        this.isLoading = false
-      })
+      this.$api.authorizeUser()
+        .then(() => {
+          this.$router.push({ name: 'Main page' })
+        })
+        .catch((e) => {
+          this.isLoading = false
+          this.toast.error('Ошибка при авторизации')
+        })
     }
   }
 }
