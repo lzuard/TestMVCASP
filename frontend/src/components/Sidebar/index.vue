@@ -2,7 +2,7 @@
   <div
     class="sidebar"
   >
-    <router-link tag="div" to="/auth" class="sidebar__head">
+    <router-link tag="div" :to="{ name: 'Main page' }" class="sidebar__head">
       <box-icon class="sidebar__head-icon" />
       <div>
         WareHouse<br>Store
