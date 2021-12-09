@@ -4,9 +4,19 @@ namespace Services.Infrastructure.Utils
 {
     public class OperationResult<TResult>
     {
+        public class OperationResultError
+        {
+            public string Message { get; }
+
+            public OperationResultError(string message)
+            {
+                this.Message = message;
+            }
+        }
+        
         public bool IsSuccess { get; }
         
-        public string Error { get; }
+        public OperationResultError Error { get; }
         
         public TResult Result
         {
@@ -17,7 +27,7 @@ namespace Services.Infrastructure.Utils
                     return _result;
                 }
                 
-                throw new Exception(Error);
+                throw new Exception(Error.Message);
             }
         }
 
@@ -29,7 +39,7 @@ namespace Services.Infrastructure.Utils
             _result = result;
         }
 
-        public OperationResult(string error)
+        public OperationResult(OperationResultError error)
         {
             IsSuccess = false;
             Error = error;

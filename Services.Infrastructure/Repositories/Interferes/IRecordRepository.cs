@@ -5,7 +5,7 @@ using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Repositories.Interferes
 {
-    public interface IRepository<TModelDto> where TModelDto : DtoBase
+    public interface IRecordRepository<TModelDto> where TModelDto : RecordDtoBase
     {
         public Task<OperationResult<List<TModelDto>>> GetAll();
         

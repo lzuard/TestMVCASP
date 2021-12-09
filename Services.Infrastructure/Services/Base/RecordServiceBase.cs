@@ -7,15 +7,15 @@ using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Services.Base
 {
-    public class ServiceBase<TRepository, TModelDto> : IService<TModelDto>
-        where TRepository : IRepository<TModelDto>
-        where TModelDto : DtoBase
+    public class RecordServiceBase<TRepository, TModelDto> : IRecordService<TModelDto>
+        where TRepository : IRecordRepository<TModelDto>
+        where TModelDto : RecordDtoBase
     {
         protected readonly TRepository Repository;
 
-        public ServiceBase(TRepository repository)
+        public RecordServiceBase(TRepository recordRepository)
         {
-            Repository = repository;
+            Repository = recordRepository;
         }
 
         public virtual async Task<OperationResult<List<TModelDto>>>TryGetAll()

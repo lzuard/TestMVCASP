@@ -8,11 +8,11 @@ using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Repositories.Base
 {
-    public class RepositoryBase<TModelDto> : IRepository<TModelDto> where TModelDto : DtoBase
+    public class RecordRepositoryBase<TModelDto> : IRecordRepository<TModelDto> where TModelDto : RecordDtoBase
     {
         protected readonly ApplicationContext Context;
 
-        public RepositoryBase(ApplicationContext context)
+        public RecordRepositoryBase(ApplicationContext context)
         {
             Context = context;
         }
@@ -32,7 +32,7 @@ namespace Services.Infrastructure.Repositories.Base
             {
                 string error = $"Model with {modelId} not found";
 
-                return new OperationResult<TModelDto>(error);
+                return new OperationResult<TModelDto>(new OperationResult<TModelDto>.OperationResultError(error));
             }
 
             return new OperationResult<TModelDto>(model);
@@ -53,7 +53,7 @@ namespace Services.Infrastructure.Repositories.Base
             {
                 string error = $"Model with {model.Id} not found";
 
-                return new OperationResult<TModelDto>(error);
+                return new OperationResult<TModelDto>(new OperationResult<TModelDto>.OperationResultError(error));
             }
             
             toUpdateModel = model;
@@ -71,7 +71,7 @@ namespace Services.Infrastructure.Repositories.Base
             {
                 string error = $"Model with {modelId} not found";
 
-                return new OperationResult<bool>(error);
+                return new OperationResult<bool>(new OperationResult<bool>.OperationResultError(error));
             }
             
             Context.Set<TModelDto>().Remove(toDeleteModel);
@@ -89,7 +89,7 @@ namespace Services.Infrastructure.Repositories.Base
             {
                 string error = $"Failed to save changes";
 
-                return new OperationResult<TResult>(error);
+                return new OperationResult<TResult>(new OperationResult<TResult>.OperationResultError(error));
             }
 
             return new OperationResult<TResult>(result);

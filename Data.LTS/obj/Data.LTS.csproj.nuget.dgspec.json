@@ -1,33 +1,43 @@
 {
   "format": 1,
   "restore": {
-    "/Users/izuard/Projects/RiderProjects/MyAspMvc/Data.LTS/Data.LTS.csproj": {}
+    "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Data.LTS\\Data.LTS.csproj": {}
   },
   "projects": {
-    "/Users/izuard/Projects/RiderProjects/MyAspMvc/Data.LTS/Data.LTS.csproj": {
+    "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Data.LTS\\Data.LTS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/izuard/Projects/RiderProjects/MyAspMvc/Data.LTS/Data.LTS.csproj",
+        "projectUniqueName": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Data.LTS\\Data.LTS.csproj",
         "projectName": "Data.LTS",
-        "projectPath": "/Users/izuard/Projects/RiderProjects/MyAspMvc/Data.LTS/Data.LTS.csproj",
-        "packagesPath": "/Users/izuard/.nuget/packages/",
-        "outputPath": "/Users/izuard/Projects/RiderProjects/MyAspMvc/Data.LTS/obj/",
+        "projectPath": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Data.LTS\\Data.LTS.csproj",
+        "packagesPath": "C:\\Users\\Mi\\.nuget\\packages\\",
+        "outputPath": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Data.LTS\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/izuard/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Mi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.emzi0767.com/api/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/izuard/Projects/RiderProjects/MyAspMvc/Services.Contracts/Services.Contracts.csproj": {
-                "projectPath": "/Users/izuard/Projects/RiderProjects/MyAspMvc/Services.Contracts/Services.Contracts.csproj"
+              "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Services.Contracts\\Services.Contracts.csproj": {
+                "projectPath": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Services.Contracts\\Services.Contracts.csproj"
               }
             }
           }
@@ -70,27 +80,37 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/izuard/Projects/RiderProjects/MyAspMvc/Services.Contracts/Services.Contracts.csproj": {
+    "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Services.Contracts\\Services.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/izuard/Projects/RiderProjects/MyAspMvc/Services.Contracts/Services.Contracts.csproj",
+        "projectUniqueName": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Services.Contracts\\Services.Contracts.csproj",
         "projectName": "Services.Contracts",
-        "projectPath": "/Users/izuard/Projects/RiderProjects/MyAspMvc/Services.Contracts/Services.Contracts.csproj",
-        "packagesPath": "/Users/izuard/.nuget/packages/",
-        "outputPath": "/Users/izuard/Projects/RiderProjects/MyAspMvc/Services.Contracts/obj/",
+        "projectPath": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Services.Contracts\\Services.Contracts.csproj",
+        "packagesPath": "C:\\Users\\Mi\\.nuget\\packages\\",
+        "outputPath": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Services.Contracts\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/izuard/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Mi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.emzi0767.com/api/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -122,7 +142,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

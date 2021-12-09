@@ -9,16 +9,16 @@ namespace Presentation.ConsoleHost.Controllers.Base
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ModelControllerBase<TService, TModelDto> : ControllerBase
-        where TService : IService<TModelDto> where TModelDto : DtoBase
+    public class RecordControllerBase<TService, TModelDto> : ControllerBase
+        where TService : IRecordService<TModelDto> where TModelDto : RecordDtoBase
     {
-        protected readonly ILogger<ModelControllerBase<TService, TModelDto>> Logger;
+        protected readonly ILogger<RecordControllerBase<TService, TModelDto>> Logger;
         protected readonly TService Service;
 
-        public ModelControllerBase(TService service,
-            ILogger<ModelControllerBase<TService, TModelDto>> logger)
+        public RecordControllerBase(TService recordService,
+            ILogger<RecordControllerBase<TService, TModelDto>> logger)
         {
-            Service = service;
+            Service = recordService;
             Logger = logger;
         }
 
@@ -32,7 +32,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
                 return Ok(result.Result);
             }
             
-            Logger.LogError(result.Error);
+            Logger.LogError(result.Error.Message);
 
             return NoContent();
         }
@@ -47,7 +47,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
                 return Ok(result.Result);
             }
             
-            Logger.LogError(result.Error);
+            Logger.LogError(result.Error.Message);
 
             return NotFound();
         }
@@ -62,7 +62,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
                 return Ok(result.Result);
             }
             
-            Logger.LogError(result.Error);
+            Logger.LogError(result.Error.Message);
 
             return NoContent();
         }
@@ -77,7 +77,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
                 return Ok(result.Result);
             }
             
-            Logger.LogError(result.Error);
+            Logger.LogError(result.Error.Message);
 
             return NotFound();
         }
@@ -92,7 +92,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
                 return Ok();
             }
             
-            Logger.LogError(result.Error);
+            Logger.LogError(result.Error.Message);
 
             return NotFound();
         }

@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "net6.0": {
+      "Antlr/3.4.1.9004": {
+        "type": "package",
+        "compile": {
+          "lib/Antlr3.Runtime.dll": {}
+        },
+        "runtime": {
+          "lib/Antlr3.Runtime.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authentication.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -1452,6 +1461,19 @@
           }
         }
       },
+      "WebGrease/1.6.0": {
+        "type": "package",
+        "dependencies": {
+          "Antlr": "3.4.1.9004",
+          "Newtonsoft.Json": "5.0.4"
+        },
+        "compile": {
+          "lib/WebGrease.dll": {}
+        },
+        "runtime": {
+          "lib/WebGrease.dll": {}
+        }
+      },
       "Data.LTS/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1496,6 +1518,19 @@
     }
   },
   "libraries": {
+    "Antlr/3.4.1.9004": {
+      "sha512": "c1S+HBE+KYA5EBxtn25LEK02hHPH/tDQ6RviUTTCJpZIPoputtn8ArsQJy9lVJWZOnw37ufByO2Fmf1M8wpr8Q==",
+      "type": "package",
+      "path": "antlr/3.4.1.9004",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "antlr.3.4.1.9004.nupkg.sha512",
+        "antlr.nuspec",
+        "lib/Antlr3.Runtime.dll",
+        "lib/Antlr3.Runtime.pdb"
+      ]
+    },
     "Microsoft.AspNetCore.Authentication.Abstractions/2.2.0": {
       "sha512": "VloMLDJMf3n/9ic5lCBOa42IBYJgyB1JhzLsL68Zqg+2bEPWfGBj/xCJy/LrKTArN0coOcZp3wyVTZlx0y9pHQ==",
       "type": "package",
@@ -4871,6 +4906,20 @@
         "version.txt"
       ]
     },
+    "WebGrease/1.6.0": {
+      "sha512": "1d29edoh4IZPLig82coowiPBS1ltxT97PwEIkOk0dHqtJwD9v5C7gPm6Ot1hKHT86otKm04oDQ00x5c+PyVyxw==",
+      "type": "package",
+      "path": "webgrease/1.6.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/WebGrease.dll",
+        "tools/WG.EXE",
+        "webgrease.1.6.0.nupkg.sha512",
+        "webgrease.nuspec"
+      ]
+    },
     "Data.LTS/1.0.0": {
       "type": "project",
       "path": "../Data.LTS/Data.LTS.csproj",
@@ -4891,36 +4940,50 @@
     "net6.0": [
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.0",
       "Services.Infrastructure >= 1.0.0",
-      "Swashbuckle.AspNetCore >= 6.0.0"
+      "Swashbuckle.AspNetCore >= 6.0.0",
+      "WebGrease >= 1.6.0"
     ]
   },
   "packageFolders": {
-    "/Users/izuard/.nuget/packages/": {}
+    "C:\\Users\\Mi\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/izuard/Projects/RiderProjects/MyAspMvc/Client.ConsoleHost/Client.ConsoleHost.csproj",
+      "projectUniqueName": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Client.ConsoleHost\\Client.ConsoleHost.csproj",
       "projectName": "Client.ConsoleHost",
-      "projectPath": "/Users/izuard/Projects/RiderProjects/MyAspMvc/Client.ConsoleHost/Client.ConsoleHost.csproj",
-      "packagesPath": "/Users/izuard/.nuget/packages/",
-      "outputPath": "/Users/izuard/Projects/RiderProjects/MyAspMvc/Client.ConsoleHost/obj/",
+      "projectPath": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Client.ConsoleHost\\Client.ConsoleHost.csproj",
+      "packagesPath": "C:\\Users\\Mi\\.nuget\\packages\\",
+      "outputPath": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Client.ConsoleHost\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "/Users/izuard/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Mi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.emzi0767.com/api/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "/Users/izuard/Projects/RiderProjects/MyAspMvc/Services.Infrastructure/Services.Infrastructure.csproj": {
-              "projectPath": "/Users/izuard/Projects/RiderProjects/MyAspMvc/Services.Infrastructure/Services.Infrastructure.csproj"
+            "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Services.Infrastructure\\Services.Infrastructure.csproj": {
+              "projectPath": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Services.Infrastructure\\Services.Infrastructure.csproj"
             }
           }
         }
@@ -4942,6 +5005,10 @@
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[6.0.0, )"
+          },
+          "WebGrease": {
+            "target": "Package",
+            "version": "[1.6.0, )"
           }
         },
         "imports": [
@@ -4962,8 +5029,30 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"Antlr 3.4.1.9004\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net6.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "Antlr",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"WebGrease 1.6.0\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net6.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "WebGrease",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

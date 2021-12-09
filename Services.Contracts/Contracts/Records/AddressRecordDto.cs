@@ -1,8 +1,8 @@
 ﻿using Contracts.Contracts.Base;
 
-namespace Contracts.Contracts
+namespace Contracts.Contracts.Records
 {
-    public class AddressDto : DtoBase
+    public class AddressRecordDto : RecordDtoBase
     {
         /// <summary>
         /// Возвращает или устанавливает индекс.
