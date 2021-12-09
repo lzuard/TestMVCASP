@@ -3,17 +3,22 @@
     <p>Пожалуйста, войдите в аккаунт</p>
 
     <div class="auth-form__field form-outline mb-2">
-      <input-field v-model="v$.login.$model" placeholder="Логин" />
-      <layout-alert class="auth-form__error" type="danger" v-if="v$.login.$error">
-        Логин обязателен к заполнению
-      </layout-alert>
+      <input-field
+        v-model="v$.login.$model"
+        placeholder="Логин"
+        :is-error="v$.login.$error"
+        error-text="Логин обязателен к заполнению"
+      />
     </div>
 
     <div class="auth-form__field form-outline mb-2">
-      <input-field v-model="v$.password.$model" placeholder="Пароль" type="password" />
-      <layout-alert class="auth-form__error" type="danger" v-if="v$.password.$error">
-        Пароль обязателен к заполнению
-      </layout-alert>
+      <input-field
+        v-model="v$.password.$model"
+        placeholder="Пароль"
+        type="password"
+        :is-error="v$.password.$error"
+        error-text="Пароль обязателен к заполнению"
+      />
     </div>
 
     <div class="text-center pt-1 mb-3 pb-1">
@@ -38,14 +43,12 @@ import { required } from '@vuelidate/validators'
 import { useVuelidate } from '@vuelidate/core'
 import LayoutButton from '@/components/Layouts/layout-button'
 import InputField from '@/components/UI/inputField'
-import LayoutAlert from '@/components/Layouts/layout-alert'
 
 export default {
   name: 'AuthForm',
   components: {
     LayoutButton,
-    InputField,
-    LayoutAlert
+    InputField
   },
   setup () {
     return { v$: useVuelidate() }
