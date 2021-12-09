@@ -17,6 +17,7 @@ export default {
   background-size: cover;
   position: relative;
   overflow: hidden;
+  background-repeat: no-repeat;
 
   &::before {
      position: absolute;
