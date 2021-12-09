@@ -109,8 +109,7 @@ export default {
           title: 'Отчеты'
         }
       ],
-      fullName: 'Иванов И.И.',
-      openOnMobile: false
+      fullName: 'Иванов И.И.'
     }
   }
 }
