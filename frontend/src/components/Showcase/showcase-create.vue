@@ -7,7 +7,6 @@
     </header>
     <div class="showcase-create__fields">
       <div class="row">
-
         <showcase-label-field
           v-for="(item, index) in fields"
           :class="[item.cols && item.cols.length ? item.cols.join(' ') : 'col-md-6']"
@@ -49,7 +48,6 @@ import ShowcaseSubmit from './showcase-submit-button'
 import { EditIcon } from '@iconicicons/vue3'
 import InputField from '@/components/UI/inputField'
 import SelectField from '@/components/UI/selectField'
-import * as validationRules from '@/utils/validation/i18n-validators'
 
 export default {
   name: 'showcase-create',
@@ -68,12 +66,7 @@ export default {
     return {
       dataToSend: {
         ...Object.keys(this.dataToSend).reduce((result, key, index) => {
-          result[key] = {}
-
-          this.fields[index].validation.forEach(rule => {
-            result[key][rule] = validationRules[rule]
-          })
-
+          result[key] = { ...this.fields[index].validation }
           return result
         }, {})
       }
