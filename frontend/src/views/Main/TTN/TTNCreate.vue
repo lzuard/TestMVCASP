@@ -30,6 +30,7 @@ export default {
             label: 'Тип ТТН',
             placeholder: 'Тип ТТН',
             type: 'select',
+            modelValue: 'ttnType',
             values: [
               {
                 text: 'Расход',

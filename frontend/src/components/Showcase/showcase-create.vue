@@ -16,21 +16,17 @@
           :key="index"
           :label="item.label"
         >
-          <input
+          <input-field
             v-if="item.type !== 'select'"
-            :class="[
-             'form-control'
-            ]"
             :type="item.type ?? 'text'"
-            v-model="dataToSend.modelValue"
-            :data-bebra="dataToSend.modelValue"
+            v-model="dataToSend[item.modelValue]"
             :placeholder="item.placeholder"
           />
 
           <select
             v-else
             class="form-select"
-            v-model="dataToSend"
+            v-model="dataToSend[item.modelValue]"
           >
             <option selected disabled>
               {{ item.placeholder }}
@@ -65,11 +61,13 @@ import ShowcaseTitle from './showcase-title'
 import ShowcaseLabelField from './showcase-label-field'
 import ShowcaseSubmit from './showcase-submit-button'
 import { EditIcon } from '@iconicicons/vue3'
+import InputField from '@/components/UI/inputField'
 // import { required } from '@/utils/validation/i18n-validators'
 
 export default {
   name: 'showcase-create',
   components: {
+    InputField,
     ShowcaseLabelField,
     ShowcaseSubmit,
     ShowcaseTitle,
