@@ -10,9 +10,7 @@
 
         <showcase-label-field
           v-for="(item, index) in fields"
-          :class="[
-             'col-md-6'
-          ]"
+          :class="[item.cols && item.cols.length ? item.cols.join(' ') : 'col-md-6']"
           :key="index"
           :label="item.label"
         >
@@ -21,30 +19,18 @@
             :type="item.type ?? 'text'"
             v-model="dataToSend[item.modelValue]"
             :placeholder="item.placeholder"
+            :is-error="hasError(item.modelValue)"
+            :error-text="getErrorText(item.modelValue)"
           />
 
-          <select
+          <select-field
             v-else
-            class="form-select"
             v-model="dataToSend[item.modelValue]"
-          >
-            <option selected disabled>
-              {{ item.placeholder }}
-            </option>
-            <option
-              v-for="(selectItem, index) in item.values"
-              :key="index"
-              :value="selectItem.value"
-            >
-              {{ selectItem.text }}
-            </option>
-          </select>
+            :is-error="hasError(item.modelValue)"
+            :error-text="getErrorText(item.modelValue)"
+            :values="item.values"
+          />
         </showcase-label-field>
-
-<!--        <showcase-errors-list-->
-<!--          v-if="v$.$errors.length"-->
-<!--          :errors="v$.$errors"-->
-<!--        />-->
 
         <showcase-submit @click="onSend">
           <edit-icon />
@@ -62,23 +48,35 @@ import ShowcaseLabelField from './showcase-label-field'
 import ShowcaseSubmit from './showcase-submit-button'
 import { EditIcon } from '@iconicicons/vue3'
 import InputField from '@/components/UI/inputField'
-// import { required } from '@/utils/validation/i18n-validators'
+import SelectField from '@/components/UI/selectField'
+import * as validationRules from '@/utils/validation/i18n-validators'
 
 export default {
   name: 'showcase-create',
   components: {
     InputField,
+    SelectField,
     ShowcaseLabelField,
     ShowcaseSubmit,
     ShowcaseTitle,
     EditIcon
   },
   setup () {
-    return { v$: useVuelidate() }
+    return { v$: useVuelidate({ $autoDirty: true }) }
   },
   validations () {
     return {
-      dataToSend: {}
+      dataToSend: {
+        ...Object.keys(this.dataToSend).reduce((result, key, index) => {
+          result[key] = {}
+
+          this.fields[index].validation.forEach(rule => {
+            result[key][rule] = validationRules[rule]
+          })
+
+          return result
+        }, {})
+      }
     }
   },
   props: {
@@ -96,16 +94,38 @@ export default {
       dataToSend: {}
     }
   },
+  created () {
+    this.dataToSend = {
+      ...this.fields.reduce((result, current) => {
+        result[current.modelValue] = ''
+        return result
+      }, {})
+    }
+  },
   emits: ['onSend'],
   methods: {
     async onSend () {
       const isReady = await this.v$.$validate()
 
-      if (!isReady) {
-        console.log('Ошибка!')
-      } else {
+      if (isReady) {
         this.$emit('onSend', this.dataToSend)
       }
+    },
+
+    hasError (field) {
+      return Boolean(this.v$.dataToSend[field].$errors && this.v$.dataToSend[field].$errors.length)
+    },
+
+    getErrorText (field) {
+      return this.hasError(field) ? this.v$.dataToSend[field].$errors[0].$message : ''
+    },
+
+    clearForm () {
+      Object.keys(this.dataToSend).forEach((key) => {
+        this.dataToSend[key] = ''
+      })
+
+      this.v$.$reset()
     }
   }
 }
