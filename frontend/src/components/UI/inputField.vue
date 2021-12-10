@@ -15,7 +15,7 @@
 
     <span
       v-if="isError"
-      class="input-field__error"
+      class="input-error-caption"
     >
       {{ errorText }}
     </span>
@@ -63,19 +63,5 @@ export default {
 
 .input-field {
   position: relative;
-
-  &__error {
-    position: absolute;
-    top: 50%;
-    right: 30px;
-    transform: translateY(-50%);
-    font-size: $font-size-xs - 2px;
-    font-weight: 600;
-    color: $red;
-    max-width: calc(100% - #{$gap-s});
-    text-align: right;
-    line-height: $lh-xs - 2px;
-    pointer-events: none;
-  }
 }
 </style>
