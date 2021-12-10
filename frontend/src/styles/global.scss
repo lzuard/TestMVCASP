@@ -112,4 +112,9 @@ ul, li {
   &--select {
     right: 58px;
   }
+
+  &--textarea {
+    transform: none;
+    top: 12px;
+  }
 }
