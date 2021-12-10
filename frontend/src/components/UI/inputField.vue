@@ -3,15 +3,16 @@
     <input
       v-maska="type === 'tel' ? mask : ''"
       :class="[
-        'form-control',
+        type === 'checkbox' ? 'form-check-input' : 'form-control',
         {
-          'is-invalid': isError
+          'is-invalid': isError,
         }
       ]"
       :placeholder="placeholder"
       :type="type"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
+      @change="emitCheckboxEvent($event.target.checked)"
     />
 
     <span
@@ -38,7 +39,7 @@ export default {
       type: String,
       default: 'text',
       validation (value) {
-        return ['text', 'number', 'date', 'password'].includes(value)
+        return ['text', 'number', 'date', 'password', 'checkbox'].includes(value)
       }
     },
 
@@ -48,7 +49,7 @@ export default {
     },
 
     modelValue: {
-      type: String,
+      type: [String, Boolean],
       default: ''
     },
 
@@ -63,7 +64,15 @@ export default {
     }
   },
   emits: ['update:modelValue'],
-  directives: { maska }
+  directives: { maska },
+  methods: {
+    emitCheckboxEvent (value) {
+      if (this.type === 'checkbox') {
+        console.log('emiting', value)
+        this.$emit('update:modelValue', value)
+      }
+    }
+  }
 }
 </script>
 
