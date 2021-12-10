@@ -13,21 +13,14 @@
           :key="index"
           :label="item.label"
         >
-          <input-field
-            v-if="item.type !== 'select'"
+          <component
+            :is="getComponentWithType(item.type)"
             :type="item.type ?? 'text'"
             v-model="dataToSend[item.modelValue]"
             :placeholder="item.placeholder"
             :is-error="hasError(item.modelValue)"
             :error-text="getErrorText(item.modelValue)"
-          />
-
-          <select-field
-            v-else
-            v-model="dataToSend[item.modelValue]"
-            :is-error="hasError(item.modelValue)"
-            :error-text="getErrorText(item.modelValue)"
-            :values="item.values"
+            :values="item.values ?? null"
           />
         </showcase-label-field>
 
@@ -48,10 +41,12 @@ import ShowcaseSubmit from './showcase-submit-button'
 import { EditIcon } from '@iconicicons/vue3'
 import InputField from '@/components/UI/inputField'
 import SelectField from '@/components/UI/selectField'
+import TextareaField from '@/components/UI/textareaField'
 
 export default {
   name: 'showcase-create',
   components: {
+    TextareaField,
     InputField,
     SelectField,
     ShowcaseLabelField,
@@ -119,6 +114,14 @@ export default {
       })
 
       this.v$.$reset()
+    },
+
+    getComponentWithType (type) {
+      if (type === 'select') return 'select-field'
+
+      if (type === 'textarea') return 'textarea-field'
+
+      return 'input-field'
     }
   }
 }
