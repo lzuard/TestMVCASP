@@ -75,6 +75,7 @@ export default {
     max-width: calc(100% - #{$gap-s});
     text-align: right;
     line-height: $lh-xs - 2px;
+    pointer-events: none;
   }
 }
 </style>
