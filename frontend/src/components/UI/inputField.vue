@@ -1,6 +1,7 @@
 <template>
   <div class="input-field">
     <input
+      v-maska="type === 'tel' ? mask : ''"
       :class="[
         'form-control',
         {
@@ -23,8 +24,15 @@
 </template>
 
 <script>
+import { maska } from 'maska'
+
 export default {
   name: 'InputField',
+  data: () => {
+    return {
+      mask: '+7(###)###-##-##'
+    }
+  },
   props: {
     type: {
       type: String,
@@ -54,7 +62,8 @@ export default {
       default: ''
     }
   },
-  emits: ['update:modelValue']
+  emits: ['update:modelValue'],
+  directives: { maska }
 }
 </script>
 
