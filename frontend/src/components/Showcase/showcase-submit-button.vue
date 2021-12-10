@@ -1,6 +1,6 @@
 <template>
   <div class="col-12 mt-3">
-    <layout-button class="showcase-submit">
+    <layout-button @click="$emit('click')" class="showcase-submit">
       <slot />
     </layout-button>
   </div>
@@ -13,7 +13,8 @@ export default {
   name: 'showcase-submit-button',
   components: {
     LayoutButton
-  }
+  },
+  emits: ['click']
 }
 </script>
 
