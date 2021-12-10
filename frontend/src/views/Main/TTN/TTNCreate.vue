@@ -8,6 +8,7 @@
 
 <script>
 import ShowcaseCreate from '@/components/Showcase/showcase-create'
+import { required } from '@/utils/validation/i18n-validators'
 
 export default {
   name: 'TTNCreate',
@@ -23,21 +24,21 @@ export default {
             label: 'Номер',
             placeholder: 'Номер',
             modelValue: 'number',
-            validation: ['required']
+            validation: { required }
           },
           {
             label: 'Дата оформления',
             placeholder: '01.01.1990',
             type: 'date',
             modelValue: 'issueDate',
-            validation: ['required']
+            validation: { required }
           },
           {
             label: 'Тип ТТН',
             placeholder: 'Тип ТТН',
             type: 'select',
             modelValue: 'ttnType',
-            validation: ['required'],
+            validation: { required },
             values: [
               {
                 text: 'Расход',
@@ -53,7 +54,7 @@ export default {
             label: 'Форма ТТН',
             placeholder: 'УТП-12',
             modelValue: 'ttnForm',
-            validation: ['required']
+            validation: { required }
           }
         ]
       }
