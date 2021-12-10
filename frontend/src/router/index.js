@@ -121,14 +121,6 @@ const routes = [
         }
       },
       {
-        path: '/ttn/create',
-        name: 'Create TTN',
-        component: TTNCreate,
-        meta: {
-          title: 'Создать ТТН'
-        }
-      },
-      {
         path: '/orders',
         name: 'Show orders',
         component: OrderList,
@@ -150,6 +142,14 @@ const routes = [
         component: TTNList,
         meta: {
           title: 'Список ТТН'
+        }
+      },
+      {
+        path: '/ttn/create',
+        name: 'Create TTN',
+        component: TTNCreate,
+        meta: {
+          title: 'Создать ТТН'
         }
       },
       {
