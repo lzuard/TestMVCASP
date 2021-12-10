@@ -1,12 +1,16 @@
 <template>
-  <showcase-create v-bind="createData" />
+  <showcase-create
+    v-bind="createData"
+    @onSend="createTTN($event)"
+    ref="form"
+  />
 </template>
 
 <script>
 import ShowcaseCreate from '@/components/Showcase/showcase-create'
 
 export default {
-  name: 'AgentCreate',
+  name: 'TTNCreate',
   components: {
     ShowcaseCreate
   },
@@ -18,19 +22,22 @@ export default {
           {
             label: 'Номер',
             placeholder: 'Номер',
-            modelValue: 'number'
+            modelValue: 'number',
+            validation: ['required']
           },
           {
             label: 'Дата оформления',
             placeholder: '01.01.1990',
             type: 'date',
-            modelValue: 'issueDate'
+            modelValue: 'issueDate',
+            validation: ['required']
           },
           {
             label: 'Тип ТТН',
             placeholder: 'Тип ТТН',
             type: 'select',
             modelValue: 'ttnType',
+            validation: ['required'],
             values: [
               {
                 text: 'Расход',
@@ -45,10 +52,17 @@ export default {
           {
             label: 'Форма ТТН',
             placeholder: 'УТП-12',
-            modelValue: 'ttnForm'
+            modelValue: 'ttnForm',
+            validation: ['required']
           }
         ]
       }
+    }
+  },
+  methods: {
+    createTTN (data) {
+      console.log(data)
+      this.$refs.form.clearForm()
     }
   }
 }
