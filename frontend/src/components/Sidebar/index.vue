@@ -1,40 +1,47 @@
 <template>
-  <div
-    class="sidebar"
-  >
-    <div class="sidebar__head">
-      <box-icon class="sidebar__head-icon" />
-      <div>
-        WareHouse<br>Store
+  <transition name="fade">
+    <div
+      v-if="modelValue"
+      class="sidebar"
+      @click.self="changeSidebarVisible"
+    >
+      <div class="sidebar__inner">
+        <div class="sidebar__head">
+          <box-icon class="sidebar__head-icon" />
+          <div>
+            WareHouse<br>Store
+          </div>
+        </div>
+        <div class="sidebar__content">
+          <ul class="sidebar__navigation">
+            <li
+              v-for="(route, index) in sidebarRoutes"
+              :key="index"
+            >
+              <router-link
+                :to="route.path"
+                active-class="sidebar__navigation-link--active"
+                @click="changeSidebarVisible"
+                class="sidebar__navigation-link"
+              >
+                <component
+                  :is="route.icon"
+                  class="sidebar__navigation-icon"
+                />
+                {{ route.title }}
+              </router-link>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar__status">
+          <h5 class="sidebar__status-name">
+            {{ fullName }}
+          </h5>
+          <log-out-icon class="sidebar__status-logout" />
+        </div>
       </div>
     </div>
-    <div class="sidebar__content">
-      <ul class="sidebar__navigation">
-        <li
-          v-for="(route, index) in sidebarRoutes"
-          :key="index"
-        >
-          <router-link
-            :to="route.path"
-            active-class="sidebar__navigation-link--active"
-            class="sidebar__navigation-link"
-          >
-            <component
-              :is="route.icon"
-              class="sidebar__navigation-icon"
-            />
-            {{ route.title }}
-          </router-link>
-        </li>
-      </ul>
-    </div>
-    <div class="sidebar__status">
-      <h5 class="sidebar__status-name">
-        {{ fullName }}
-      </h5>
-      <log-out-icon class="sidebar__status-logout" />
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -64,6 +71,12 @@ export default {
     TruckIcon,
     UserIcon,
     PieChartIcon
+  },
+  props: {
+    modelValue: {
+      type: Boolean,
+      default: false
+    }
   },
   data: () => {
     return {
@@ -109,9 +122,15 @@ export default {
           title: 'Отчеты'
         }
       ],
-      fullName: 'Иванов И.И.'
+      fullName: 'USER_NAME'
     }
-  }
+  },
+  methods: {
+    changeSidebarVisible (event, state = false) {
+      this.$emit('update:modelValue', state)
+    }
+  },
+  emits: ['update:modelValue']
 }
 </script>
 
@@ -120,19 +139,29 @@ export default {
 @import "~@/styles/mixins";
 
 .sidebar {
-  --offset-from-icon: 10px;
+  z-index: $sidebarZIndex;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  background-color: rgba($black, .3);
 
-  @include boxShadow;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  border-right: 1px solid $darkGrey;
-  background-color: $grey;
-  position: relative;
-  max-width: $sidebarWidth;
-  border-top-right-radius: $borderR-s;
-  border-bottom-right-radius: $borderR-s;
+  &__inner {
+    --offset-from-icon: 10px;
+
+    @include boxShadow;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border-right: 1px solid $darkGrey;
+    background-color: $grey;
+    position: relative;
+    max-width: $sidebarWidth;
+    border-top-right-radius: $borderR-s;
+    border-bottom-right-radius: $borderR-s;
+  }
 
   &__head {
     padding: $gap-m;
@@ -179,13 +208,13 @@ export default {
 
       &--active {
         color: $white;
+        pointer-events: none;
         @include gradientSupport;
 
         &:hover {
           opacity: 1;
           color: $white;
           cursor: default;
-          //pointer-events: none;
         }
       }
     }
