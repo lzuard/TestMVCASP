@@ -1,21 +1,20 @@
 <template>
   <div class="main">
     <component
-      :is="mobileSidebarState ? 'CloseIcon' : 'MenuIcon'"
-      class="main__sidebar-mobile-btn"
-      @click="mobileSidebarState = !mobileSidebarState"
+      :is="showSidebar ? 'CloseIcon' : 'MenuIcon'"
+      class="main__sidebar-btn"
+      @click="showSidebar = !showSidebar"
     />
 
-    <div
-      :class="[
-        'main__sidebar',
-        {
-         'main__sidebar--mobile-open': mobileSidebarState
-        }
-      ]"
-    >
-      <navbar />
-    </div>
+    <transition name="fade">
+      <div
+        @click.self="showSidebar = false"
+        v-if="showSidebar"
+        class="main__sidebar"
+      >
+        <navbar />
+      </div>
+    </transition>
 
     <div class="main__body">
       <router-view />
@@ -36,16 +35,7 @@ export default {
   },
   data: () => {
     return {
-      mobileSidebarState: null
-    }
-  },
-  watch: {
-    mobileSidebarState (value) {
-      if (value && document.body.offsetWidth <= 768) {
-        this.$cover(true)
-      } else {
-        this.$cover(false)
-      }
+      showSidebar: false
     }
   }
 }
@@ -57,43 +47,38 @@ export default {
 .main {
   display: flex;
 
-  &__sidebar-mobile-btn {
-    display: none;
-
-    @media ($mediaMobile) {
-      display: block;
-      position: fixed;
-      top: $sidebarButtonPos;
-      left: $sidebarButtonPos;
-      color: $blue;
-      z-index: $sidebarZIndex + 1;
-    }
+  &__sidebar-btn {
+    position: fixed;
+    top: $sidebarButtonPos;
+    left: $sidebarButtonPos;
+    color: $blue;
+    z-index: $sidebarZIndex + 1;
   }
 
   &__sidebar {
-    max-width: $sidebarWidth;
     z-index: $sidebarZIndex;
     height: 100vh;
-    position: sticky;
     top: 0;
     left: 0;
-
-    @media ($mediaMobile) {
-      position: fixed;
-      transform: translateX(-$sidebarWidth);
-    }
-
-    &--mobile-open {
-      @media ($mediaMobile) {
-        transform: translateX(0);
-      }
-    }
+    position: fixed;
+    width: 100%;
+    background-color: rgba($black, .3);
   }
 
   &__body {
     flex-grow: 1;
-    padding: $gap-m;
+    padding: $mainGapY $mainGapX;
     overflow-y: scroll;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
