@@ -2,12 +2,12 @@
   <div
     class="sidebar"
   >
-    <router-link tag="div" :to="{ name: 'Main page' }" class="sidebar__head">
+    <div class="sidebar__head">
       <box-icon class="sidebar__head-icon" />
       <div>
         WareHouse<br>Store
       </div>
-    </router-link>
+    </div>
     <div class="sidebar__content">
       <ul class="sidebar__navigation">
         <li
@@ -122,6 +122,7 @@ export default {
 .sidebar {
   --offset-from-icon: 10px;
 
+  @include boxShadow;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -129,6 +130,9 @@ export default {
   border-right: 1px solid $darkGrey;
   background-color: $grey;
   position: relative;
+  max-width: $sidebarWidth;
+  border-top-right-radius: $borderR-s;
+  border-bottom-right-radius: $borderR-s;
 
   &__head {
     padding: $gap-m;
@@ -140,7 +144,6 @@ export default {
     text-align: left;
     align-items: center;
     border-bottom: 1px solid $darkGrey;
-    cursor: pointer;
 
     &:hover {
       color: inherit;
