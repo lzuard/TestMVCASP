@@ -1,22 +1,20 @@
 <template>
   <div class="showcase">
-    <header class="showcase__header">
-      <showcase-title>
-        {{ title }}
-      </showcase-title>
-      <router-link class="link showcase__header-create" :to="linkToCreate">
-        <file-plus-icon />
-        {{ createCaption }}
-      </router-link>
-    </header>
+    <showcase-header
+      :title="title"
+      :create-caption="createCaption"
+      :link-to-create="linkToCreate"
+    />
+
     <section class="showcase__search">
       <div class="showcase__search-title">
-        Поиск по:
+        Поиск:
       </div>
       <div class="showcase__search-row">
         <input-field
           v-model="searchValue"
           placeholder="Поиск"
+          class="showcase__search-input"
         />
         <filter-board class="showcase__search-radio" title="Поле поиска">
           <label
@@ -34,49 +32,29 @@
         </filter-board>
       </div>
     </section>
-    <section class="showcase__result table-responsive">
-      <table class="table table-bordered border-dark">
-        <thead>
-        <tr>
-          <th
-            v-for="(head, index) in tableHeaders"
-            :key="index"
-          >
-            {{ head }}
-          </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr
-          v-for="(row, index) in tableData"
-          :key="index"
-        >
-          <td
-            v-for="(cell, innerIndex) in row"
-            :key="innerIndex"
-          >
-            {{ cell }}
-          </td>
-        </tr>
-        </tbody>
-      </table>
+
+    <section class="showcase__result">
+      <editing-table
+        :table-headers="tableHeaders"
+        :table-data="tableData"
+      />
     </section>
   </div>
 </template>
 
 <script>
-import ShowcaseTitle from './showcase-title'
+import ShowcaseHeader from './showcase-header'
+import EditingTable from '@/components/EditingTable'
 import InputField from '@/components/UI/inputField'
 import FilterBoard from '@/components/Filterboard'
-import { FilePlusIcon } from '@iconicicons/vue3'
 
 export default {
   name: 'Showcase',
   components: {
-    ShowcaseTitle,
     InputField,
-    FilterBoard,
-    FilePlusIcon
+    ShowcaseHeader,
+    EditingTable,
+    FilterBoard
   },
   data: () => {
     return {
@@ -124,15 +102,12 @@ export default {
 .showcase {
   text-align: left;
 
-  &__header {
-    &-create {
-      font-weight: 600;
-      display: inline-flex;
-    }
-  }
-
   &__search {
     margin: $gap-l 0;
+
+    &-input {
+      max-width: 320px;
+    }
 
     &-title {
       font-size: $font-size-l;
