@@ -1,37 +1,28 @@
 <template>
   <div class="main">
-    <component
-      :is="showSidebar ? 'CloseIcon' : 'MenuIcon'"
-      class="main__sidebar-btn"
-      @click="showSidebar = !showSidebar"
-    />
+    <sidebar-burger v-model="showSidebar" class="main__sidebar-btn" />
 
-    <transition name="fade">
-      <div
-        @click.self="showSidebar = false"
-        v-if="showSidebar"
-        class="main__sidebar"
-      >
-        <navbar />
-      </div>
-    </transition>
+    <navbar v-model="showSidebar" />
 
     <div class="main__body">
-      <router-view />
+      <router-view v-slot="{ Component }">
+        <transition name="scale" mode="out-in">
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </div>
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/Sidebar'
-import { CloseIcon, MenuIcon } from '@iconicicons/vue3'
+import SidebarBurger from '@/components/Sidebar/sidebar-burger'
 
 export default {
   name: 'Main',
   components: {
     Navbar,
-    MenuIcon,
-    CloseIcon
+    SidebarBurger
   },
   data: () => {
     return {
@@ -55,30 +46,10 @@ export default {
     z-index: $sidebarZIndex + 1;
   }
 
-  &__sidebar {
-    z-index: $sidebarZIndex;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    position: fixed;
-    width: 100%;
-    background-color: rgba($black, .3);
-  }
-
   &__body {
     flex-grow: 1;
     padding: $mainGapY $mainGapX;
     overflow-y: scroll;
   }
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 </style>
