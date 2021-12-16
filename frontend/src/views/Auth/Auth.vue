@@ -53,7 +53,7 @@ export default {
     authenticateUser (data) {
       this.isLoading = true
 
-      this.$api.authorizeUser()
+      this.$store.dispatch('auth/authenticateUser', data)
         .then(() => {
           this.$router.push({ name: 'Main page' })
         })
