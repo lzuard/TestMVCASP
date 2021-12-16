@@ -14,9 +14,12 @@ $primaryFont: Roboto;
 $secondaryFont: Helvetica;
 
 /** Layouts */
-$sidebarButtonPos: 0px;
+$sidebarButtonPos: 10px;
 $sidebarZIndex: 1000;
 $sidebarWidth: 280px;
+
+$mainGapX: 42px;
+$mainGapY: 18px;
 
 $filterWidth: 640px;
 
@@ -31,6 +34,8 @@ $font-size-s: 16px;
 $font-size-m: 18px;
 $font-size-l: 24px;
 $font-size-xl: 48px;
+
+$borderR-s: 12px;
 
 $lh-xs: 16px;
 $lh-m: 21px;
