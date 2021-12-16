@@ -39,6 +39,9 @@ const routes = [
     name: 'Main page',
     component: Main,
     redirect: '/orders',
+    meta: {
+      auth: true
+    },
     children: [
       {
         path: '/agents',
@@ -167,6 +170,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.auth) {
+    next({ name: 'Authenticate' })
+  }
+
+  next()
 })
 
 router.beforeEach((to, from, next) => {
