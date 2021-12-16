@@ -1,8 +1,8 @@
 import { UPDATE_AUTH_STATE } from '@/store/modules/auth/mutation-types'
 import { authorizeUser } from '@/services/api'
 
-const state = {
-  isAuth: false
+export const state = {
+  isAuth: true
 }
 
 const mutations = {
