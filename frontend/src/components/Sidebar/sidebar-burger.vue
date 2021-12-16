@@ -3,7 +3,7 @@
     <component
       :is="modelValue ? 'CloseIcon' : 'MenuIcon'"
       class="main__sidebar-btn"
-      @click="changeBtnState"
+      @click="changeBtnState($event, !modelValue)"
     />
   </transition>
 </template>
