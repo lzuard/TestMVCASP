@@ -58,6 +58,7 @@ export default {
     justify-content: center;
     align-items: center;
     background-color: rgba($grey, .8);
+    z-index: $preloaderZIndex;
 
     svg path {
       fill: $blue;
