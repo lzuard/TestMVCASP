@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "jpgyQcr1PFWJBsNUTwNnjjAu1YSgAjdk8U7Qtlsec5GeaOLaqQX5P0J2bPECqojPNy7kpOVjmIpvEfwrMVGvfQ==",
+  "dgSpecHash": "97qbmsdoiI7BRbZTvCd3QtMiwxJ4Sc9OXu2v1y8JoKDYAoGeBx/hBD8axV2ohHisviTNhUH2gyzQPF3cXCr8Sw==",
   "success": true,
   "projectFilePath": "D:\\MyProjectProgramm\\RiderProject\\TestMVCASP\\Data.LTS\\Data.LTS.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Mi\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Mi\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.0\\microsoft.entityframeworkcore.6.0.0.nupkg.sha512",
     "C:\\Users\\Mi\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.0\\microsoft.entityframeworkcore.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\Mi\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.0\\microsoft.entityframeworkcore.analyzers.6.0.0.nupkg.sha512",
+    "C:\\Users\\Mi\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.0\\microsoft.entityframeworkcore.design.6.0.0.nupkg.sha512",
     "C:\\Users\\Mi\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.0\\microsoft.entityframeworkcore.relational.6.0.0.nupkg.sha512",
     "C:\\Users\\Mi\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\Mi\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.0\\microsoft.extensions.caching.memory.6.0.0.nupkg.sha512",
