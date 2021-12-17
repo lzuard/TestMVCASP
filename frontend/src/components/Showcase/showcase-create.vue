@@ -23,12 +23,45 @@
             :values="item.values ?? null"
           />
         </showcase-label-field>
+      </div>
 
-        <showcase-submit @click="onSend">
-          <edit-icon />
-          Создать
+      <div
+        v-if="enableAddedFields"
+        class="row showcase-create__added-fields"
+      >
+        <h4>{{ subtitle }}</h4>
+
+        <div
+          class="col-12 row py-2 showcase-create__added-fields-row"
+          v-for="(outerItem, key) in additionalItems"
+          :key="key"
+        >
+          <showcase-label-field
+            v-for="(item, index) in addedFields"
+            :class="[item.cols && item.cols.length ? item.cols.join(' ') : 'col-md-6']"
+            :key="index"
+            :label="item.label"
+          >
+            <component
+              :is="getComponentWithType(item.type)"
+              :type="item.type ?? 'text'"
+              v-model="outerItem[item.modelValue]"
+              :placeholder="item.placeholder"
+              :values="item.values ?? null"
+            />
+          </showcase-label-field>
+        </div>
+
+        <showcase-submit @click="addItem">
+          <plus-icon />
+          Добавить ещё
         </showcase-submit>
       </div>
+
+      <showcase-submit @click="onSend">
+        <floppy-disc-icon />
+        Сохранить
+      </showcase-submit>
     </div>
   </div>
 </template>
@@ -38,7 +71,7 @@ import { useVuelidate } from '@vuelidate/core'
 import ShowcaseTitle from './showcase-title'
 import ShowcaseLabelField from './showcase-label-field'
 import ShowcaseSubmit from './showcase-submit-button'
-import { EditIcon } from '@iconicicons/vue3'
+import { FloppyDiscIcon, PlusIcon } from '@iconicicons/vue3'
 import InputField from '@/components/UI/inputField'
 import SelectField from '@/components/UI/selectField'
 import TextareaField from '@/components/UI/textareaField'
@@ -52,7 +85,8 @@ export default {
     ShowcaseLabelField,
     ShowcaseSubmit,
     ShowcaseTitle,
-    EditIcon
+    FloppyDiscIcon,
+    PlusIcon
   },
   setup () {
     return { v$: useVuelidate({ $autoDirty: true }) }
@@ -75,11 +109,24 @@ export default {
     fields: {
       type: Array,
       default: () => ([])
+    },
+    enableAddedFields: {
+      type: Boolean,
+      default: false
+    },
+    subtitle: {
+      type: String,
+      default: ''
+    },
+    addedFields: {
+      type: Array,
+      default: () => ([])
     }
   },
   data: () => {
     return {
-      dataToSend: {}
+      dataToSend: {},
+      additionalItems: [{}]
     }
   },
   created () {
@@ -122,13 +169,30 @@ export default {
       if (type === 'textarea') return 'textarea-field'
 
       return 'input-field'
+    },
+
+    addItem () {
+      this.additionalItems.push({})
     }
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+@import "~@/styles/variables";
+
 .showcase-create {
   text-align: left;
+
+  &__added-fields {
+    margin-top: 40px;
+    padding-top: $gap-m;
+
+    &-row {
+      &:not(:first-of-type) {
+        border-top: 1px solid $black;
+      }
+    }
+  }
 }
 </style>
