@@ -96,8 +96,8 @@ export default {
   validations () {
     return {
       dataToSend: {
-        ...Object.keys(this.dataToSend).reduce((result, key, index) => {
-          result[key] = { ...this.fields[index].validation }
+        ...Object.keys(this.dataToSend).reduce((result, current) => {
+          result[current] = { ...this.fields.find(item => item.modelValue === current).validation }
           return result
         }, {})
       }
