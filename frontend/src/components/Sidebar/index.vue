@@ -188,14 +188,14 @@ export default {
 
   &__content {
     padding: $gap-m 0;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   &__navigation {
     font-weight: 600;
     font-size: $font-size-m;
     text-align: left;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     li:not(:first-child) {
       margin-top: 15px;
