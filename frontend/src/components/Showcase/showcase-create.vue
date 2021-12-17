@@ -29,27 +29,29 @@
         v-if="enableAddedFields"
         class="row showcase-create__added-fields"
       >
-        <h4>{{ subtitle }}</h4>
+        <h4 class="col-12">{{ subtitle }}</h4>
 
         <div
-          class="col-12 row py-2 showcase-create__added-fields-row"
+          class="col-12 py-2 showcase-create__added-fields-row"
           v-for="(outerItem, key) in additionalItems"
           :key="key"
         >
-          <showcase-label-field
-            v-for="(item, index) in addedFields"
-            :class="[item.cols && item.cols.length ? item.cols.join(' ') : 'col-md-6']"
-            :key="index"
-            :label="item.label"
-          >
-            <component
-              :is="getComponentWithType(item.type)"
-              :type="item.type ?? 'text'"
-              v-model="outerItem[item.modelValue]"
-              :placeholder="item.placeholder"
-              :values="item.values ?? null"
-            />
-          </showcase-label-field>
+          <div class="row">
+            <showcase-label-field
+              v-for="(item, index) in addedFields"
+              :class="[item.cols && item.cols.length ? item.cols.join(' ') : 'col-md-6']"
+              :key="index"
+              :label="item.label"
+            >
+              <component
+                :is="getComponentWithType(item.type)"
+                :type="item.type ?? 'text'"
+                v-model="outerItem[item.modelValue]"
+                :placeholder="item.placeholder"
+                :values="item.values ?? null"
+              />
+            </showcase-label-field>
+          </div>
         </div>
 
         <showcase-submit @click="addItem">
