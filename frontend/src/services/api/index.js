@@ -1,6 +1,6 @@
 import api from './axiosInstance'
 
-const authorizeUser = (payload) => {
+export const authorizeUser = (payload) => {
   return api.post('/auth', payload).then(({ data }) => {
     console.log(data)
   })

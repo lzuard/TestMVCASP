@@ -1,18 +1,18 @@
 <template>
   <div class="col-12 showcase-report-cell">
-    <filterboard :title="title">
+    <frame-decorator :title="title">
       <slot />
-    </filterboard>
+    </frame-decorator>
   </div>
 </template>
 
 <script>
-import Filterboard from '@/components/Filterboard'
+import FrameDecorator from '@/components/UI/frameDecorator'
 
 export default {
   name: 'showcase-report-cell',
   components: {
-    Filterboard
+    FrameDecorator
   },
   props: {
     title: {

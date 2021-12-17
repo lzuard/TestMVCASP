@@ -1,4 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { state as stateOnFront } from '@/store/modules/auth'
+
 import Auth from '@/views/Auth/Auth'
 import Main from '@/views/Main/Main'
 
@@ -6,6 +8,10 @@ import AgentList from '@/views/Main/Agent/AgentList'
 import AgentCreate from '@/views/Main/Agent/AgentCreate'
 
 import Report from '@/views/Main/Report/Report'
+import ReportProductOfOrder from '@/views/Main/Report/ReportProductOfOrder'
+import ReportSupplierWithSupply from '@/views/Main/Report/ReportSupplierWithSupply'
+import ReportClientOrders from '@/views/Main/Report/ReportClientOrders'
+import ReportPopularProducts from '@/views/Main/Report/ReportPopularProducts'
 
 import TTNList from '@/views/Main/TTN/TTNList'
 import TTNCreate from '@/views/Main/TTN/TTNCreate'
@@ -158,10 +164,42 @@ const routes = [
       {
         path: '/reports',
         name: 'Show reports',
+        redirect: { name: 'Product in order' },
         component: Report,
-        meta: {
-          title: 'Отчеты'
-        }
+        children: [
+          {
+            path: '/products-in-order',
+            name: 'Product in order',
+            component: ReportProductOfOrder,
+            meta: {
+              title: 'Список товаров в заказе'
+            }
+          },
+          {
+            path: '/suppliers-period',
+            name: 'Suppliers with supply',
+            component: ReportSupplierWithSupply,
+            meta: {
+              title: 'Поставщики с кол-вом поставок'
+            }
+          },
+          {
+            path: '/client-orders',
+            name: 'Client orders',
+            component: ReportClientOrders,
+            meta: {
+              title: 'Заказы клиента'
+            }
+          },
+          {
+            path: '/popular',
+            name: 'Popular products',
+            component: ReportPopularProducts,
+            meta: {
+              title: 'Популярные товары'
+            }
+          }
+        ]
       }
     ]
   }
@@ -173,7 +211,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.auth) {
+  if (to.meta.auth && !stateOnFront.isAuth) {
     next({ name: 'Authenticate' })
   }
 
