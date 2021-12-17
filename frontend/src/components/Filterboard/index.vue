@@ -31,8 +31,9 @@ export default {
 .filter {
   border-radius: 10px;
   border: 3px solid $blue;
-  padding: 10px;
+  padding: 10px $gap-s;
   position: relative;
+  display: inline-block;
 
   &__title {
     position: absolute;
