@@ -18,7 +18,7 @@ namespace Presentation.ConsoleHost.Controllers
         {
         }
         
-        [HttpPost ("{employeeLoginSearchParameters}")]
+        [HttpPost ("special/{employeeLoginSearchParameters}")]
         public virtual async Task<ActionResult<IEnumerable<bool>>> Authorization(string employeeLoginSearchParameters)
         {
             EmployeeLoginSearchParameters employeeLoginAndPassword;

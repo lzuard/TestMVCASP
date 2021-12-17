@@ -30,9 +30,11 @@ namespace Presentation.ConsoleHost
             });
             
             services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(_connectionString));
-
+            
             services.AddScoped<OrderRepository>();
-            services.AddScoped<OrderRecordService>();
+            services.AddScoped<OrderService>();
+            services.AddScoped<EmployeeRepository>();
+            services.AddScoped<EmployeeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

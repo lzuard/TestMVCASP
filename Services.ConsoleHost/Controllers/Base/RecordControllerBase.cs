@@ -15,10 +15,10 @@ namespace Presentation.ConsoleHost.Controllers.Base
         protected readonly ILogger<RecordControllerBase<TService, TModelDto>> Logger;
         protected readonly TService Service;
 
-        public RecordControllerBase(TService recordService,
+        public RecordControllerBase(TService service,
             ILogger<RecordControllerBase<TService, TModelDto>> logger)
         {
-            Service = recordService;
+            Service = service;
             Logger = logger;
         }
 

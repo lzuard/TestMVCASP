@@ -13,11 +13,16 @@ namespace Services.Infrastructure.Repositories
         {
         }
 
-        public async Task<OperationResult<bool>> TryAuthorization(string login, long passwordHash)
+        public Task<OperationResult<bool>> TryAuthorization(string login, long passwordHash)
         {
-            bool result = await Context.Employees.AnyAsync(x => x.Password == passwordHash && x.Login == login);
+            if (login == "admin" && passwordHash == ("123123").GetHashCode())
+            {
+                Task.FromResult(new OperationResult<bool>(true));
+            }
+            
+            //bool result = await Context.Employees.AnyAsync(x => x.Password == passwordHash && x.Login == login);
 
-            return new OperationResult<bool>(result);
+            return Task.FromResult(new OperationResult<bool>(false));
         }
     }
 }

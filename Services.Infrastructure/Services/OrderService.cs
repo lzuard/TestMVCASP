@@ -8,9 +8,9 @@ using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Services
 {
-    public class OrderRecordService : RecordServiceBase<OrderRepository, OrderRecordDto>
+    public class OrderService : RecordServiceBase<OrderRepository, OrderRecordDto>
     {
-        public OrderRecordService(OrderRepository recordRepository) : base(recordRepository)
+        public OrderService(OrderRepository recordRepository) : base(recordRepository)
         {
         }
 

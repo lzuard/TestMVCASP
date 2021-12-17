@@ -11,13 +11,13 @@ using Services.Infrastructure.Services;
 
 namespace Presentation.ConsoleHost.Controllers
 {
-    public class OrderController : RecordControllerBase<OrderRecordService, OrderRecordDto>
+    public class OrderController : RecordControllerBase<OrderService, OrderRecordDto>
     {
-        public OrderController(OrderRecordService recordService, ILogger<RecordControllerBase<OrderRecordService, OrderRecordDto>> logger) : base(recordService, logger)
+        public OrderController(OrderService service, ILogger<RecordControllerBase<OrderService, OrderRecordDto>> logger) : base(service, logger)
         {
         }
 
-        [HttpGet("{jsonFilterParameters}")]
+        [HttpGet("special/{jsonFilterParameters}")]
         public async Task<ActionResult<IEnumerable<OrderRecordDto>>> GetOrderByFilter(
             string jsonFilterParameters)
         {

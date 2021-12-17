@@ -47,7 +47,7 @@ namespace Contracts.Contracts.Records
         public DateTime ShipmentDate { get; set; } 
         
         /// <summary>
-        /// Возвращает или устанавливает доставки
+        /// Возвращает или устанавливает дату доставки
         /// </summary>
         public DateTime DeliveryDate { get; set; } 
         
