@@ -1,5 +1,8 @@
 <template>
-  <showcase-create class="report" title="Отчеты">
+  <div class="report">
+    <showcase-title>
+      Отчеты
+    </showcase-title>
     <ul class="nav nav-tabs mb-5">
       <li
         v-for="(tab, index) in tabs"
@@ -21,16 +24,18 @@
         <component :is="Component" />
       </transition>
     </router-view>
-  </showcase-create>
+  </div>
 </template>
 
 <script>
 import ShowcaseCreate from '@/components/Showcase/showcase-create'
+import ShowcaseTitle from '@/components/Showcase/showcase-title'
 
 export default {
   name: 'Report',
   components: {
-    ShowcaseCreate
+    ShowcaseCreate,
+    ShowcaseTitle
   },
   data: () => {
     return {
@@ -59,6 +64,8 @@ export default {
 
 <style lang="scss">
 .report {
+  text-align: left;
+
   .filter__items {
     display: block;
   }
