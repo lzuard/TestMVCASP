@@ -17,21 +17,10 @@ namespace Presentation.ConsoleHost.Controllers
         {
         }
 
-        [HttpGet("special/{jsonFilterParameters}")]
+        [HttpGet("getByFilter")]
         public async Task<ActionResult<IEnumerable<OrderRecordDto>>> GetOrderByFilter(
-            string jsonFilterParameters)
+            OrderSearchParameters filterParameters)
         {
-            OrderSearchParameters filterParameters;
-
-            try
-            {
-                filterParameters = JsonConvert.DeserializeObject<OrderSearchParameters>(jsonFilterParameters);
-            }
-            catch (Exception e)
-            {
-                return BadRequest();
-            }
-
             var result = await Service.TryGetOrderByFilter(filterParameters);
 
             if (result.IsSuccess)

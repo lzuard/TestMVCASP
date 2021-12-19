@@ -58,7 +58,7 @@ namespace Services.Infrastructure.SearchParameters
         /// <summary>
         /// Возвращает или устанавливает статус заказа
         /// </summary>
-        public OrderStatus Status { get; set; }
+        public OrderStatus? Status { get; set; }
         
         /// <summary>
         /// Возвращает или устанавливает принято ли ТК

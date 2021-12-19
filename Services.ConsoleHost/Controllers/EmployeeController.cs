@@ -15,23 +15,13 @@ namespace Presentation.ConsoleHost.Controllers
         public EmployeeController(EmployeeService recordService) : base(recordService)
         {
         }
-        
-        [HttpPost ("special/{employeeLoginSearchParameters}")]
-        public virtual async Task<ActionResult<IEnumerable<bool>>> Authorization(string employeeLoginSearchParameters)
-        {
-            EmployeeLoginSearchParameters employeeLoginAndPassword;
-            
-            try
-            {
-                employeeLoginAndPassword = JsonConvert.DeserializeObject<EmployeeLoginSearchParameters>(employeeLoginSearchParameters);
-            }
-            catch (Exception e)
-            {
-                return BadRequest();
-            }
 
-            var result = await Service.TryAuthorization(employeeLoginAndPassword);
-            
+        [HttpPost("auth")]
+        public virtual async Task<ActionResult<IEnumerable<bool>>> Authorization(
+            EmployeeLoginSearchParameters parameters)
+        {
+            var result = await Service.TryAuthorization(parameters);
+
             if (result.IsSuccess)
             {
                 return Ok(result.Result);

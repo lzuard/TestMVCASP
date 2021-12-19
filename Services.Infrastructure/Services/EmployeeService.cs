@@ -16,7 +16,7 @@ namespace Services.Infrastructure.Services
         public async Task<OperationResult<bool>> TryAuthorization(
             EmployeeLoginSearchParameters searchParameters)
         {
-            string login = searchParameters.Password;
+            string login = searchParameters.Login;
             int passwordHash = searchParameters.Password.GetHashCode();
             
             return await Repository.TryAuthorization(login, passwordHash);

@@ -17,7 +17,7 @@ namespace Services.Infrastructure.Repositories
         {
             if (login == "admin" && passwordHash == ("123123").GetHashCode())
             {
-                Task.FromResult(new OperationResult<bool>(true));
+                return Task.FromResult(new OperationResult<bool>(true));
             }
             
             //bool result = await Context.Employees.AnyAsync(x => x.Password == passwordHash && x.Login == login);
