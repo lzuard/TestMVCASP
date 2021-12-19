@@ -1,6 +1,6 @@
 ﻿namespace Contracts.Contracts.Address
 {
-    public class AddressRecordDto : RecordDtoBase
+    public class AddressDto : RecordDtoBase
     {
         /// <summary>
         /// Возвращает или устанавливает индекс.

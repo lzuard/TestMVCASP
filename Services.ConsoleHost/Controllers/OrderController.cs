@@ -7,14 +7,14 @@ using Services.Infrastructure.Services;
 
 namespace Presentation.ConsoleHost.Controllers
 {
-    public class OrderController : RecordControllerBase<OrderService, OrderRecordDto>
+    public class OrderController : RecordControllerBase<OrderService, OrderDto>
     {
         public OrderController(OrderService service) : base(service)
         {
         }
 
         [HttpGet("getByFilter")]
-        public async Task<ActionResult<IEnumerable<OrderRecordDto>>> GetOrderByFilter(
+        public async Task<ActionResult<IEnumerable<OrderDto>>> GetOrderByFilter(
             OrderFilterParametersDto filterParametersDto)
         {
             var result = await Service.TryGetOrderByFilter(filterParametersDto);

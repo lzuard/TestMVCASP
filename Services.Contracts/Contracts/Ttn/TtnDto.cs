@@ -3,7 +3,7 @@ using Contracts.Contracts.StaticObjects;
 
 namespace Contracts.Contracts.Ttn
 {
-    public class TtnRecordDto : RecordDtoBase
+    public class TtnDto : RecordDtoBase
     {
         /// <summary>
         /// Возвращает или устанавливает тип ТТН.

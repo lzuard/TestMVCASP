@@ -1,6 +1,6 @@
 namespace Contracts.Contracts.AgentType
 {
-    public class AgentTypeRecordDto : RecordDtoBase
+    public class AgentTypeDto : RecordDtoBase
     {
         /// <summary>
         /// Возвращает или устанавливает название типа агента.

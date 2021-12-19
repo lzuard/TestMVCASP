@@ -1,8 +1,9 @@
-﻿using Contracts.Contracts.StaticObjects;
+﻿using Contracts.Contracts.Category;
+using Contracts.Contracts.StaticObjects;
 
 namespace Contracts.Contracts.Product
 {
-    public class ProductRecordDto : RecordDtoBase
+    public class ProductDto : RecordDtoBase
     {
         /// <summary>
         /// Возвращает или устанавливает артикул
@@ -20,20 +21,10 @@ namespace Contracts.Contracts.Product
         public string Name { get; set; }
         
         /// <summary>
-        /// Возвращает или устанавливает тип товара
-        /// </summary>
-        public string Type { get; set; }
-        
-        /// <summary>
         /// Возвращает или устанавливает категорию 
         /// </summary>
-        public string Category { get; set; }
-        
-        /// <summary>
-        /// Возвращает или устанавливает подкатегорию
-        /// </summary>
-        public string Subcategory { get; set; }
-        
+        public CategoryDto Category { get; set; }
+
         /// <summary>
         /// Возвращает или устанавливает тип упаковки
         /// </summary>

@@ -1,23 +1,26 @@
 ﻿using System;
+using Contracts.Contracts.Agent;
+using Contracts.Contracts.Employee;
+using Contracts.Contracts.Ttn;
 
 namespace Contracts.Contracts.Utilization
 {
-    public class UtilizationRecordDto : RecordDtoBase
+    public class UtilizationDto : RecordDtoBase
     {
         /// <summary>
-        /// Возвращает или устанавливает идентификатор сотрудника
+        /// Возвращает или устанавливает сотрудника
         /// </summary>
-        public int EmployeeId { get; set; }
+        public EmployeeDto Employee { get; set; }
 
         /// <summary>
-        /// Возвращает или устанавливает идентификатор ТТН
+        /// Возвращает или устанавливает ТТН
         /// </summary>
-        public string TtnId { get; set; }
+        public TtnDto Ttn { get; set; }
         
         /// <summary>
-        /// Возвращает или устанавливает идентификатор утилизатора
+        /// Возвращает или устанавливает утилизатора
         /// </summary>
-        public int UtilizerId { get; set; }
+        public AgentDto Utilizer { get; set; }
         
         /// <summary>
         /// Возвращает или устанавливает акт утилизации

@@ -1,35 +1,39 @@
 ﻿using System;
+using Contracts.Contracts.Address;
+using Contracts.Contracts.Agent;
+using Contracts.Contracts.Employee;
 using Contracts.Contracts.StaticObjects;
+using Contracts.Contracts.Ttn;
 
 namespace Contracts.Contracts.Order
 {
-    public class OrderRecordDto : RecordDtoBase
+    public class OrderDto : RecordDtoBase
     {
         /// <summary>
-        /// Возвращает или устанавливает идентификатор клиента
+        /// Возвращает или устанавливает клиента
         /// (идентификатор контрагента)
         /// </summary>
-        public int ClientId { get; set; }
+        public AgentDto Client { get; set; }
         
         /// <summary>
-        /// Возвращает или устанавливает идентификатор сотрудника
+        /// Возвращает или устанавливает сотрудника
         /// </summary>
-        public int EmployeeId { get; set; }
+        public EmployeeDto Employee { get; set; }
         
         /// <summary>
         /// Возвращает или устанавливает идентификатор ТК
         /// </summary>
-        public int TransportCompanyId { get; set; }
+        public AgentDto TransportCompany { get; set; }
         
         /// <summary>
         /// Возвращает или устанавливает идентификатор адреса
         /// </summary>
-        public int AddressId { get; set; }
+        public AddressDto Address { get; set; }
         
         /// <summary>
         /// Возвращает или устанавливает идентификатор ТТН
         /// </summary>
-        public int TtnId { get; set; }
+        public TtnDto Ttn { get; set; }
         
         /// <summary>
         /// Возвращает или устанавливает номер платежного документа

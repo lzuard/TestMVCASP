@@ -1,29 +1,32 @@
 ﻿using System;
+using Contracts.Contracts.Agent;
+using Contracts.Contracts.Employee;
+using Contracts.Contracts.Ttn;
 
 namespace Contracts.Contracts.Supply
 {
-    public class SupplyRecordDto : RecordDtoBase
+    public class SupplyDto : RecordDtoBase
     {
         /// <summary>
-        /// Возвращает или устанавливает идентификатор поставщика
+        /// Возвращает или устанавливает поставщика
         /// </summary>
-        public int SupplierId { get; set; }
+        public AgentDto Supplier { get; set; }
         
         /// <summary>
-        /// Возвращает или устанавливает идентификатор сотрудника
+        /// Возвращает или устанавливает сотрудника
         /// </summary>
-        public int EmployeeId { get; set; }
+        public EmployeeDto Employee { get; set; }
         
         /// <summary>
-        /// Возвращает или устанавливает идентификатор ТК
+        /// Возвращает или устанавливает ТК
         /// (идентификатор контрагента)
         /// </summary>
-        public int TransportCompanyId { get; set; }
+        public AgentDto TransportCompany { get; set; }
 
         /// <summary>
-        /// Возвращает или устанавливает идентификатор ТТН
+        /// Возвращает или устанавливает ТТН
         /// </summary>
-        public int TtnId { get; set; }
+        public TtnDto Ttn { get; set; }
         
         /// <summary>
         /// Возвращает или устанавливает платежного документа

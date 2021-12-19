@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,16 +10,18 @@ using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Repositories
 {
-    public class OrderRepository : RecordRepositoryBase<OrderRecordDto>
+    public class OrderRepository : RecordRepositoryBase<OrderDto>
     {
         public OrderRepository(ApplicationContext context) : base(context)
         {
         }
 
-        public async Task<OperationResult<IEnumerable<OrderRecordDto>>> GetOrderByFilter(
+        public async Task<OperationResult<IEnumerable<OrderDto>>> GetOrderByFilter(
             OrderFilterParametersDto filterParametersDto)
         {
-            IEnumerable<OrderRecordDto> result = await Context.Orders
+            throw new NotImplementedException();
+            /*
+            IEnumerable<OrderDto> result = await Context.Orders
                 .Where(x =>
                     Helpers.NullableEquals(x.Id, filterParametersDto.OrderId) &&
                     Helpers.NullableEquals(x.ClientId, filterParametersDto.ClientId) &&
@@ -35,7 +38,8 @@ namespace Services.Infrastructure.Repositories
                     Helpers.NullableEquals(x.Extra, filterParametersDto.Extra))
                 .ToListAsync();
 
-            return new OperationResult<IEnumerable<OrderRecordDto>>(result);
+            return new OperationResult<IEnumerable<OrderDto>>(result);
+            */
         }
     }
 }

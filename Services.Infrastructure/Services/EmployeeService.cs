@@ -6,7 +6,7 @@ using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Services
 {
-    public class EmployeeService: RecordServiceBase<EmployeeRepository, EmployeeRecordDto>
+    public class EmployeeService: RecordServiceBase<EmployeeRepository, EmployeeDto>
     {
         public EmployeeService(EmployeeRepository recordRepository) : base(recordRepository)
         {

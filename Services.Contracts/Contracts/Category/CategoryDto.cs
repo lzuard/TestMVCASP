@@ -1,6 +1,6 @@
 namespace Contracts.Contracts.Category
 {
-    public class CategoryRecordDto
+    public class CategoryDto : RecordDtoBase
     {
         /// <summary>
         /// Возвращает или устанавливает название категории.
@@ -8,8 +8,8 @@ namespace Contracts.Contracts.Category
         public string Name { get; set; }
         
         /// <summary>
-        /// Возвращает или устанавливает идентификатор родительской категории.
+        /// Возвращает или устанавливает родительской категории.
         /// </summary>
-        public int ParentCategoryId { get; set; }
+        public CategoryDto ParentCategory { get; set; }
     }
 }
