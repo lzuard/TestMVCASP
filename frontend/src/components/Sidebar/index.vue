@@ -35,7 +35,7 @@
         </div>
         <div class="sidebar__status">
           <h5 class="sidebar__status-name">
-            {{ fullName }}
+            {{ userName }}
           </h5>
           <log-out-icon class="sidebar__status-logout" />
         </div>
@@ -121,8 +121,12 @@ export default {
           path: '/reports',
           title: 'Отчеты'
         }
-      ],
-      fullName: 'USER_NAME'
+      ]
+    }
+  },
+  computed: {
+    userName () {
+      return this.$store.state.auth.userName || 'Аноним'
     }
   },
   methods: {
