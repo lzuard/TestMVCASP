@@ -1,13 +1,13 @@
 ﻿using System;
-using Contracts.Contracts.Base;
 using Contracts.Contracts.StaticObjects;
 
-namespace Contracts.Contracts.Records
+namespace Contracts.Contracts.Order
 {
     public class OrderRecordDto : RecordDtoBase
     {
         /// <summary>
         /// Возвращает или устанавливает идентификатор клиента
+        /// (идентификатор контрагента)
         /// </summary>
         public int ClientId { get; set; }
         

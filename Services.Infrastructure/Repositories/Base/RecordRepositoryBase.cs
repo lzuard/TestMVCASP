@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Contracts.Contracts.Base;
 using Data.LTS.Database;
 using Services.Infrastructure.Repositories.Interferes;
 using System.Threading.Tasks;
+using Contracts.Contracts;
 using Microsoft.EntityFrameworkCore;
 using Services.Infrastructure.Utils;
 
@@ -40,6 +40,15 @@ namespace Services.Infrastructure.Repositories.Base
 
         public virtual async Task<OperationResult<TModelDto>> Create(TModelDto model)
         {
+            int newId = 1;
+            
+            if (await Context.Set<TModelDto>().AnyAsync())
+            {
+                newId = await Context.Set<TModelDto>().MaxAsync(x => x.Id);
+            }
+            
+            model.Id = newId;
+            
             await Context.Set<TModelDto>().AddAsync(model);
 
             return await TrySaveChanges(model);
@@ -56,7 +65,9 @@ namespace Services.Infrastructure.Repositories.Base
                 return new OperationResult<TModelDto>(new OperationResult<TModelDto>.OperationResultError(error));
             }
 
+            int id = toUpdateModel.Id;
             toUpdateModel = model;
+            toUpdateModel.Id = id;
 
             Context.Update(toUpdateModel);
 

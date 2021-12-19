@@ -1,8 +1,7 @@
-﻿using Contracts.Contracts.Base;
-
-namespace Contracts.Contracts.Records
+﻿
+namespace Contracts.Contracts.ProductOrder
 {
-    public class ProductOrderRecordDto: RecordDtoBase
+    public class ProductOrderRecordDto : RecordDtoBase
     {
         /// <summary>
         /// Возвращает или устанавливает идентификатор заказа

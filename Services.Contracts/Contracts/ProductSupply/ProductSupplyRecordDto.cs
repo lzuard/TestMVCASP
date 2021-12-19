@@ -1,6 +1,4 @@
-﻿using Contracts.Contracts.Base;
-
-namespace Contracts.Contracts.Records
+﻿namespace Contracts.Contracts.ProductSupply
 {
     public class ProductSupplyRecordDto : RecordDtoBase
     {

@@ -1,5 +1,4 @@
 ﻿using System;
-using Contracts.Contracts.Base;
 
 namespace Contracts.Contracts.Records
 {
@@ -21,7 +20,7 @@ namespace Contracts.Contracts.Records
         public int TtnId { get; set; }
         
         /// <summary>
-        /// Возвращает или устанавливает идентификатор Сотрудника
+        /// Возвращает или устанавливает идентификатор сотрудника
         /// </summary>
         public int EmployeeId { get; set; }
         

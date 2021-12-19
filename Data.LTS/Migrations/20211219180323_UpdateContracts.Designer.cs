@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.LTS.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20211219105104_Test")]
-    partial class Test
+    [Migration("20211219180323_UpdateContracts")]
+    partial class UpdateContracts
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,7 @@ namespace Data.LTS.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Contracts.Contracts.Records.AddressRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.Address.AddressRecordDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -61,38 +61,7 @@ namespace Data.LTS.Migrations
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.Records.ClientRecordDto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AddressId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("CheckingAccount")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("text");
-
-                    b.Property<string>("IndividualTaxpayerNumber")
-                        .HasColumnType("text");
-
-                    b.Property<string>("OrganizationName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Clients");
-                });
-
-            modelBuilder.Entity("Contracts.Contracts.Records.EmployeeRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.Employee.EmployeeRecordDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -129,7 +98,7 @@ namespace Data.LTS.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.Records.OrderRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.Order.OrderRecordDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -181,29 +150,7 @@ namespace Data.LTS.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.Records.ProductOrderRecordDto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProductOrders");
-                });
-
-            modelBuilder.Entity("Contracts.Contracts.Records.ProductRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.Product.ProductRecordDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -270,7 +217,29 @@ namespace Data.LTS.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.Records.ProductSupplyRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.ProductOrder.ProductOrderRecordDto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductOrders");
+                });
+
+            modelBuilder.Entity("Contracts.Contracts.ProductSupply.ProductSupplyRecordDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -292,7 +261,7 @@ namespace Data.LTS.Migrations
                     b.ToTable("ProductSupplies");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.Records.ProductUtilRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.ProductUtil.ProductUtilRecordDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -357,38 +326,7 @@ namespace Data.LTS.Migrations
                     b.ToTable("Returns");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.Records.SupplierRecordDto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AddressId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("CheckingAccount")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("text");
-
-                    b.Property<string>("IndividualTaxpayerNumber")
-                        .HasColumnType("text");
-
-                    b.Property<string>("OrganizationName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Suppliers");
-                });
-
-            modelBuilder.Entity("Contracts.Contracts.Records.SupplyRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.Supply.SupplyRecordDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -425,38 +363,7 @@ namespace Data.LTS.Migrations
                     b.ToTable("Supplies");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.Records.TcRecordDto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AddressId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("CheckingAccount")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("text");
-
-                    b.Property<string>("IndividualTaxpayerNumber")
-                        .HasColumnType("text");
-
-                    b.Property<string>("OrganizationName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tcs");
-                });
-
-            modelBuilder.Entity("Contracts.Contracts.Records.TtnRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.Ttn.TtnRecordDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -478,7 +385,7 @@ namespace Data.LTS.Migrations
                     b.ToTable("Ttns");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.Records.UtilizationRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.Utilization.UtilizationRecordDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -504,37 +411,6 @@ namespace Data.LTS.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Utilizations");
-                });
-
-            modelBuilder.Entity("Contracts.Contracts.Records.UtilizerRecordDto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AddressId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("CheckingAccount")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("text");
-
-                    b.Property<string>("IndividualTaxpayerNumber")
-                        .HasColumnType("text");
-
-                    b.Property<string>("OrganizationName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Utilizers");
                 });
 #pragma warning restore 612, 618
         }

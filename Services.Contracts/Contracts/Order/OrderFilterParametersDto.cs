@@ -1,9 +1,9 @@
 using System;
 using Contracts.Contracts.StaticObjects;
 
-namespace Services.Infrastructure.SearchParameters
+namespace Contracts.Contracts.Order
 {
-    public class OrderSearchParameters
+    public class OrderFilterParametersDto
     {
         /// <summary>
         /// Возвращает или устанавливает идентификатор заказа

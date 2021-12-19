@@ -1,10 +1,8 @@
-﻿using System.Security.Cryptography;
-using Contracts.Contracts.Base;
-using Contracts.Contracts.StaticObjects;
+﻿using Contracts.Contracts.StaticObjects;
 
-namespace Contracts.Contracts.Records
+namespace Contracts.Contracts.Product
 {
-    public class ProductRecordDto: RecordDtoBase
+    public class ProductRecordDto : RecordDtoBase
     {
         /// <summary>
         /// Возвращает или устанавливает артикул

@@ -1,8 +1,6 @@
-﻿using Contracts.Contracts.Base;
-
-namespace Contracts.Contracts.Records
+﻿namespace Contracts.Contracts.ProductUtil
 {
-    public class ProductUtilRecordDto: RecordDtoBase
+    public class ProductUtilRecordDto : RecordDtoBase
     {
         /// <summary>
         /// Возвращает или устанавливает идентификатор товара в утилизации

@@ -1,6 +1,6 @@
-namespace Services.Infrastructure.SearchParameters
+namespace Contracts.Contracts.Employee
 {
-    public class EmployeeLoginSearchParameters
+    public class EmployeeAuthenticationParametersDto
     {
         public string Login { get; set; }
         

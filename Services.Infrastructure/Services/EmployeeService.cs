@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
-using Contracts.Contracts.Records;
+using Contracts.Contracts.Employee;
 using Services.Infrastructure.Repositories;
-using Services.Infrastructure.SearchParameters;
 using Services.Infrastructure.Services.Base;
 using Services.Infrastructure.Utils;
 
@@ -14,10 +13,10 @@ namespace Services.Infrastructure.Services
         }
         
         public async Task<OperationResult<bool>> TryAuthorization(
-            EmployeeLoginSearchParameters searchParameters)
+            EmployeeAuthenticationParametersDto searchParametersDto)
         {
-            string login = searchParameters.Login;
-            int passwordHash = searchParameters.Password.GetHashCode();
+            string login = searchParametersDto.Login;
+            int passwordHash = searchParametersDto.Password.GetHashCode();
             
             return await Repository.TryAuthorization(login, passwordHash);
         }

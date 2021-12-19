@@ -1,9 +1,8 @@
 ﻿using System;
-using Contracts.Contracts.Base;
 
-namespace Contracts.Contracts.Records
+namespace Contracts.Contracts.Utilization
 {
-    public class UtilizationRecordDto: RecordDtoBase
+    public class UtilizationRecordDto : RecordDtoBase
     {
         /// <summary>
         /// Возвращает или устанавливает идентификатор сотрудника

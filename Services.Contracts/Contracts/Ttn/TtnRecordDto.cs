@@ -1,10 +1,9 @@
 ﻿using System;
-using Contracts.Contracts.Base;
 using Contracts.Contracts.StaticObjects;
 
-namespace Contracts.Contracts.Records
+namespace Contracts.Contracts.Ttn
 {
-    public class TtnRecordDto: RecordDtoBase
+    public class TtnRecordDto : RecordDtoBase
     {
         /// <summary>
         /// Возвращает или устанавливает тип ТТН.

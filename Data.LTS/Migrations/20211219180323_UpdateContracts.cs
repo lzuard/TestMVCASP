@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Data.LTS.Migrations
 {
-    public partial class Test : Migration
+    public partial class UpdateContracts : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,24 +28,6 @@ namespace Data.LTS.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Addresses", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Clients",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AddressId = table.Column<int>(type: "integer", nullable: false),
-                    IndividualTaxpayerNumber = table.Column<string>(type: "text", nullable: true),
-                    OrganizationName = table.Column<string>(type: "text", nullable: true),
-                    CheckingAccount = table.Column<string>(type: "text", nullable: true),
-                    Phone = table.Column<string>(type: "text", nullable: true),
-                    Email = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Clients", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -191,24 +173,6 @@ namespace Data.LTS.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Suppliers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AddressId = table.Column<int>(type: "integer", nullable: false),
-                    IndividualTaxpayerNumber = table.Column<string>(type: "text", nullable: true),
-                    OrganizationName = table.Column<string>(type: "text", nullable: true),
-                    CheckingAccount = table.Column<string>(type: "text", nullable: true),
-                    Phone = table.Column<string>(type: "text", nullable: true),
-                    Email = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Suppliers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Supplies",
                 columns: table => new
                 {
@@ -226,24 +190,6 @@ namespace Data.LTS.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Supplies", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Tcs",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AddressId = table.Column<int>(type: "integer", nullable: false),
-                    IndividualTaxpayerNumber = table.Column<string>(type: "text", nullable: true),
-                    OrganizationName = table.Column<string>(type: "text", nullable: true),
-                    CheckingAccount = table.Column<string>(type: "text", nullable: true),
-                    Phone = table.Column<string>(type: "text", nullable: true),
-                    Email = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Tcs", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -277,33 +223,12 @@ namespace Data.LTS.Migrations
                 {
                     table.PrimaryKey("PK_Utilizations", x => x.Id);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Utilizers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AddressId = table.Column<int>(type: "integer", nullable: false),
-                    IndividualTaxpayerNumber = table.Column<string>(type: "text", nullable: true),
-                    OrganizationName = table.Column<string>(type: "text", nullable: true),
-                    CheckingAccount = table.Column<string>(type: "text", nullable: true),
-                    Phone = table.Column<string>(type: "text", nullable: true),
-                    Email = table.Column<string>(type: "text", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Utilizers", x => x.Id);
-                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Addresses");
-
-            migrationBuilder.DropTable(
-                name: "Clients");
 
             migrationBuilder.DropTable(
                 name: "Employees");
@@ -327,22 +252,13 @@ namespace Data.LTS.Migrations
                 name: "Returns");
 
             migrationBuilder.DropTable(
-                name: "Suppliers");
-
-            migrationBuilder.DropTable(
                 name: "Supplies");
-
-            migrationBuilder.DropTable(
-                name: "Tcs");
 
             migrationBuilder.DropTable(
                 name: "Ttns");
 
             migrationBuilder.DropTable(
                 name: "Utilizations");
-
-            migrationBuilder.DropTable(
-                name: "Utilizers");
         }
     }
 }

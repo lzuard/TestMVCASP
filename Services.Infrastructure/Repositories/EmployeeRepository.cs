@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Contracts.Contracts.Employee;
 using Contracts.Contracts.Records;
 using Data.LTS.Database;
 using Microsoft.EntityFrameworkCore;

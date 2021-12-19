@@ -1,4 +1,4 @@
-﻿namespace Contracts.Contracts.Base
+﻿namespace Contracts.Contracts
 {
     public abstract class RecordDtoBase
     {

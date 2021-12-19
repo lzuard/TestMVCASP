@@ -1,12 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Contracts.Contracts.Records;
+using Contracts.Contracts.Order;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using Presentation.ConsoleHost.Controllers.Base;
-using Services.Infrastructure.SearchParameters;
 using Services.Infrastructure.Services;
 
 namespace Presentation.ConsoleHost.Controllers
@@ -19,9 +15,9 @@ namespace Presentation.ConsoleHost.Controllers
 
         [HttpGet("getByFilter")]
         public async Task<ActionResult<IEnumerable<OrderRecordDto>>> GetOrderByFilter(
-            OrderSearchParameters filterParameters)
+            OrderFilterParametersDto filterParametersDto)
         {
-            var result = await Service.TryGetOrderByFilter(filterParameters);
+            var result = await Service.TryGetOrderByFilter(filterParametersDto);
 
             if (result.IsSuccess)
             {

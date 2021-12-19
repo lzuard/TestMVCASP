@@ -1,7 +1,6 @@
 ﻿using System;
-using Contracts.Contracts.Base;
 
-namespace Contracts.Contracts.Records
+namespace Contracts.Contracts.Supply
 {
     public class SupplyRecordDto : RecordDtoBase
     {
@@ -17,6 +16,7 @@ namespace Contracts.Contracts.Records
         
         /// <summary>
         /// Возвращает или устанавливает идентификатор ТК
+        /// (идентификатор контрагента)
         /// </summary>
         public int TransportCompanyId { get; set; }
 

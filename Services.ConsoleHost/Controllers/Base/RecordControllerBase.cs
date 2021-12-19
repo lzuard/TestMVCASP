@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Contracts.Contracts.Base;
+﻿using System.Threading.Tasks;
+using Contracts.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using Services.Infrastructure.Services.Interferes;
 
@@ -19,7 +18,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TModelDto>>> GetAll()
+        public async Task<IActionResult> GetAll()
         {
             var result = await Service.TryGetAll();
             
@@ -32,7 +31,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<TModelDto>> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
             var result = await Service.TryGet(id);
             
@@ -45,7 +44,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         }
 
         [HttpPost]
-        public async Task<ActionResult<TModelDto>> Create(TModelDto model)
+        public async Task<IActionResult> Create(TModelDto model)
         {
             var result = await Service.TryCreate(model);
             
@@ -58,7 +57,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         }
 
         [HttpPut]
-        public async Task<ActionResult<TModelDto>> Update(TModelDto model)
+        public async Task<IActionResult> Update(TModelDto model)
         {
             var result = await Service.TryUpdate(model);
             
@@ -71,7 +70,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int modelId)
+        public async Task<IActionResult> Delete(int modelId)
         {
             var result = await Service.TryDelete(modelId);
             
