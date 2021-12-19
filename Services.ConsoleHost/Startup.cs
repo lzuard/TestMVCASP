@@ -46,7 +46,12 @@ namespace Presentation.ConsoleHost
                 //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Services.ConsoleHost v1"));
             }
             
-            app.UseDefaultFiles();
+            DefaultFilesOptions options = new DefaultFilesOptions();
+            options.DefaultFileNames.Clear();
+            options.DefaultFileNames.Add("index.html");
+
+
+            app.UseDefaultFiles(options);
             app.UseStaticFiles();
 
             app.UseHttpsRedirection();
