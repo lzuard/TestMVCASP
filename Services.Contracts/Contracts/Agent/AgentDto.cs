@@ -1,16 +1,19 @@
+using Contracts.Contracts.Address;
+using Contracts.Contracts.AgentType;
+
 namespace Contracts.Contracts.Agent
 {
-    public class AgentRecordDto : RecordDtoBase
+    public class AgentDto : RecordDtoBase
     {
         /// <summary>
         /// Возвращает или устанавливает электронную тип контрагента.
         /// </summary>
-        public int TypeId { get; set; }
+        public AgentTypeDto Type { get; set; }
         
         /// <summary>
         /// Возвращает или устанавливает электронную адресс контрагента.
         /// </summary>
-        public int AddressId { get; set; }
+        public AddressDto Address { get; set; }
         
         /// <summary>
         /// Возвращает или устанавливает имя организации контрагента.

@@ -1,28 +1,26 @@
 ﻿using System;
+using Contracts.Contracts.Employee;
+using Contracts.Contracts.Order;
+using Contracts.Contracts.Ttn;
 
-namespace Contracts.Contracts.Records
+namespace Contracts.Contracts.Return
 {
-    public class ReturnRecordDto: RecordDtoBase
+    public class ReturnDto : RecordDtoBase
     {
-        /// <summary>
-        /// Возвращает или устанавливает идентификатор возврата
-        /// </summary>
-        public int ReturnId { get; set; }
-        
         /// <summary>
         /// Возвращает или устанавливает идентификатор заказа
         /// </summary>
-        public int OrderId { get; set; }
+        public OrderDto Order { get; set; }
         
         /// <summary>
-        /// Возвращает или устанавливает идентификатор ТТН
+        /// Возвращает или устанавливает ТТН
         /// </summary>
-        public int TtnId { get; set; }
+        public TtnDto Ttn { get; set; }
         
         /// <summary>
-        /// Возвращает или устанавливает идентификатор сотрудника
+        /// Возвращает или устанавливает сотрудника
         /// </summary>
-        public int EmployeeId { get; set; }
+        public EmployeeDto Employee { get; set; }
         
         /// <summary>
         /// Возвращает или устанавливает дату возврата

@@ -22,7 +22,7 @@ namespace Data.LTS.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Contracts.Contracts.Address.AddressRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.Address.AddressDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -59,7 +59,7 @@ namespace Data.LTS.Migrations
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.Agent.AgentRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.Agent.AgentDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,7 +67,7 @@ namespace Data.LTS.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AddressId")
+                    b.Property<int?>("AddressId")
                         .HasColumnType("integer");
 
                     b.Property<string>("CheckingAccount")
@@ -85,15 +85,19 @@ namespace Data.LTS.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("text");
 
-                    b.Property<int>("TypeId")
+                    b.Property<int?>("TypeId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AddressId");
+
+                    b.HasIndex("TypeId");
+
                     b.ToTable("Agents");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.AgentType.AgentTypeRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.AgentType.AgentTypeDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -109,7 +113,28 @@ namespace Data.LTS.Migrations
                     b.ToTable("AgentTypes");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.Employee.EmployeeRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.Category.CategoryDto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("ParentCategoryId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentCategoryId");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Contracts.Contracts.Employee.EmployeeDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -146,7 +171,7 @@ namespace Data.LTS.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.Order.OrderRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.Order.OrderDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -154,16 +179,16 @@ namespace Data.LTS.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AddressId")
+                    b.Property<int?>("AddressId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ClientId")
+                    b.Property<int?>("ClientId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("DeliveryDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Extra")
@@ -187,18 +212,28 @@ namespace Data.LTS.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("integer");
 
-                    b.Property<int>("TransportCompanyId")
+                    b.Property<int?>("TransportCompanyId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("TtnId")
+                    b.Property<int?>("TtnId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AddressId");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("TransportCompanyId");
+
+                    b.HasIndex("TtnId");
+
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.Product.ProductRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.Product.ProductDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -209,8 +244,8 @@ namespace Data.LTS.Migrations
                     b.Property<int>("Art")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Category")
-                        .HasColumnType("text");
+                    b.Property<int?>("CategoryId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -248,12 +283,6 @@ namespace Data.LTS.Migrations
                     b.Property<string>("Reason")
                         .HasColumnType("text");
 
-                    b.Property<string>("Subcategory")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("text");
-
                     b.Property<float>("Weight")
                         .HasColumnType("real");
 
@@ -262,10 +291,12 @@ namespace Data.LTS.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoryId");
+
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.ProductOrder.ProductOrderRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.ProductOrder.ProductOrderDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -273,21 +304,25 @@ namespace Data.LTS.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("OrderId")
+                    b.Property<int?>("OrderId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("integer");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("ProductOrders");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.ProductSupply.ProductSupplyRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.ProductSupply.ProductSupplyDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -295,21 +330,25 @@ namespace Data.LTS.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("integer");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
-                    b.Property<int>("SupplyId")
+                    b.Property<int?>("SupplyId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("SupplyId");
+
                     b.ToTable("ProductSupplies");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.ProductUtil.ProductUtilRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.ProductUtil.ProductUtilDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -317,13 +356,10 @@ namespace Data.LTS.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ProductUtilId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("integer");
 
                     b.Property<int>("Quantity")
@@ -332,15 +368,21 @@ namespace Data.LTS.Migrations
                     b.Property<string>("Reason")
                         .HasColumnType("text");
 
-                    b.Property<int>("UtilizationId")
+                    b.Property<int?>("UtilizationId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UtilizationId");
+
                     b.ToTable("ProductUtils");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.Records.ReturnRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.Return.ReturnDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -348,13 +390,13 @@ namespace Data.LTS.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("integer");
 
                     b.Property<bool>("IsAccepted")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("OrderId")
+                    b.Property<int?>("OrderId")
                         .HasColumnType("integer");
 
                     b.Property<string>("ReturnAct")
@@ -363,18 +405,21 @@ namespace Data.LTS.Migrations
                     b.Property<DateTime>("ReturnDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("ReturnId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("TtnId")
+                    b.Property<int?>("TtnId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("TtnId");
+
                     b.ToTable("Returns");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.Supply.SupplyRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.Supply.SupplyDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -382,7 +427,7 @@ namespace Data.LTS.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Extra")
@@ -394,24 +439,32 @@ namespace Data.LTS.Migrations
                     b.Property<string>("PaymentDocument")
                         .HasColumnType("text");
 
-                    b.Property<int>("SupplierId")
+                    b.Property<int?>("SupplierId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("SupplyDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("TransportCompanyId")
+                    b.Property<int?>("TransportCompanyId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("TtnId")
+                    b.Property<int?>("TtnId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("SupplierId");
+
+                    b.HasIndex("TransportCompanyId");
+
+                    b.HasIndex("TtnId");
+
                     b.ToTable("Supplies");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.Ttn.TtnRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.Ttn.TtnDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -433,7 +486,7 @@ namespace Data.LTS.Migrations
                     b.ToTable("Ttns");
                 });
 
-            modelBuilder.Entity("Contracts.Contracts.Utilization.UtilizationRecordDto", b =>
+            modelBuilder.Entity("Contracts.Contracts.Utilization.UtilizationDto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -441,24 +494,216 @@ namespace Data.LTS.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("EmployeeId")
+                    b.Property<int?>("EmployeeId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("ShipmentDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("TtnId")
-                        .HasColumnType("text");
+                    b.Property<int?>("TtnId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("UtilizationAct")
                         .HasColumnType("text");
 
-                    b.Property<int>("UtilizerId")
+                    b.Property<int?>("UtilizerId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("TtnId");
+
+                    b.HasIndex("UtilizerId");
+
                     b.ToTable("Utilizations");
+                });
+
+            modelBuilder.Entity("Contracts.Contracts.Agent.AgentDto", b =>
+                {
+                    b.HasOne("Contracts.Contracts.Address.AddressDto", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId");
+
+                    b.HasOne("Contracts.Contracts.AgentType.AgentTypeDto", "Type")
+                        .WithMany()
+                        .HasForeignKey("TypeId");
+
+                    b.Navigation("Address");
+
+                    b.Navigation("Type");
+                });
+
+            modelBuilder.Entity("Contracts.Contracts.Category.CategoryDto", b =>
+                {
+                    b.HasOne("Contracts.Contracts.Category.CategoryDto", "ParentCategory")
+                        .WithMany()
+                        .HasForeignKey("ParentCategoryId");
+
+                    b.Navigation("ParentCategory");
+                });
+
+            modelBuilder.Entity("Contracts.Contracts.Order.OrderDto", b =>
+                {
+                    b.HasOne("Contracts.Contracts.Address.AddressDto", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId");
+
+                    b.HasOne("Contracts.Contracts.Agent.AgentDto", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId");
+
+                    b.HasOne("Contracts.Contracts.Employee.EmployeeDto", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId");
+
+                    b.HasOne("Contracts.Contracts.Agent.AgentDto", "TransportCompany")
+                        .WithMany()
+                        .HasForeignKey("TransportCompanyId");
+
+                    b.HasOne("Contracts.Contracts.Ttn.TtnDto", "Ttn")
+                        .WithMany()
+                        .HasForeignKey("TtnId");
+
+                    b.Navigation("Address");
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("TransportCompany");
+
+                    b.Navigation("Ttn");
+                });
+
+            modelBuilder.Entity("Contracts.Contracts.Product.ProductDto", b =>
+                {
+                    b.HasOne("Contracts.Contracts.Category.CategoryDto", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("Contracts.Contracts.ProductOrder.ProductOrderDto", b =>
+                {
+                    b.HasOne("Contracts.Contracts.Order.OrderDto", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId");
+
+                    b.HasOne("Contracts.Contracts.Product.ProductDto", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Contracts.Contracts.ProductSupply.ProductSupplyDto", b =>
+                {
+                    b.HasOne("Contracts.Contracts.Product.ProductDto", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+
+                    b.HasOne("Contracts.Contracts.Supply.SupplyDto", "Supply")
+                        .WithMany()
+                        .HasForeignKey("SupplyId");
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Supply");
+                });
+
+            modelBuilder.Entity("Contracts.Contracts.ProductUtil.ProductUtilDto", b =>
+                {
+                    b.HasOne("Contracts.Contracts.Employee.EmployeeDto", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId");
+
+                    b.HasOne("Contracts.Contracts.Product.ProductDto", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+
+                    b.HasOne("Contracts.Contracts.Utilization.UtilizationDto", "Utilization")
+                        .WithMany()
+                        .HasForeignKey("UtilizationId");
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Utilization");
+                });
+
+            modelBuilder.Entity("Contracts.Contracts.Return.ReturnDto", b =>
+                {
+                    b.HasOne("Contracts.Contracts.Employee.EmployeeDto", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId");
+
+                    b.HasOne("Contracts.Contracts.Order.OrderDto", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId");
+
+                    b.HasOne("Contracts.Contracts.Ttn.TtnDto", "Ttn")
+                        .WithMany()
+                        .HasForeignKey("TtnId");
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Ttn");
+                });
+
+            modelBuilder.Entity("Contracts.Contracts.Supply.SupplyDto", b =>
+                {
+                    b.HasOne("Contracts.Contracts.Employee.EmployeeDto", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId");
+
+                    b.HasOne("Contracts.Contracts.Agent.AgentDto", "Supplier")
+                        .WithMany()
+                        .HasForeignKey("SupplierId");
+
+                    b.HasOne("Contracts.Contracts.Agent.AgentDto", "TransportCompany")
+                        .WithMany()
+                        .HasForeignKey("TransportCompanyId");
+
+                    b.HasOne("Contracts.Contracts.Ttn.TtnDto", "Ttn")
+                        .WithMany()
+                        .HasForeignKey("TtnId");
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Supplier");
+
+                    b.Navigation("TransportCompany");
+
+                    b.Navigation("Ttn");
+                });
+
+            modelBuilder.Entity("Contracts.Contracts.Utilization.UtilizationDto", b =>
+                {
+                    b.HasOne("Contracts.Contracts.Employee.EmployeeDto", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId");
+
+                    b.HasOne("Contracts.Contracts.Ttn.TtnDto", "Ttn")
+                        .WithMany()
+                        .HasForeignKey("TtnId");
+
+                    b.HasOne("Contracts.Contracts.Agent.AgentDto", "Utilizer")
+                        .WithMany()
+                        .HasForeignKey("UtilizerId");
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Ttn");
+
+                    b.Navigation("Utilizer");
                 });
 #pragma warning restore 612, 618
         }

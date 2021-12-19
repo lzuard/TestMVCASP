@@ -7,18 +7,18 @@ using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Services
 {
-    public class OrderService : RecordServiceBase<OrderRepository, OrderRecordDto>
+    public class OrderService : RecordServiceBase<OrderRepository, OrderDto>
     {
         public OrderService(OrderRepository recordRepository) : base(recordRepository)
         {
         }
 
-        public override async Task<OperationResult<List<OrderRecordDto>>> TryGetAll()
+        public override async Task<OperationResult<List<OrderDto>>> TryGetAll()
         {
             return await Repository.GetAll();
         }
 
-        public async Task<OperationResult<IEnumerable<OrderRecordDto>>> TryGetOrderByFilter(
+        public async Task<OperationResult<IEnumerable<OrderDto>>> TryGetOrderByFilter(
             OrderFilterParametersDto filterParametersDto)
         {
             return await Repository.GetOrderByFilter(filterParametersDto);

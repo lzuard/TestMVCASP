@@ -7,7 +7,7 @@ using Services.Infrastructure.Services;
 
 namespace Presentation.ConsoleHost.Controllers
 {
-    public class EmployeeController : RecordControllerBase<EmployeeService, EmployeeRecordDto>
+    public class EmployeeController : RecordControllerBase<EmployeeService, EmployeeDto>
     {
         public EmployeeController(EmployeeService recordService) : base(recordService)
         {

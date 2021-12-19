@@ -2,7 +2,7 @@
 
 namespace Contracts.Contracts.Employee
 {
-    public class EmployeeRecordDto : RecordDtoBase
+    public class EmployeeDto : RecordDtoBase
     {
         /// <summary>
         /// Возвращает или устанавливает фамилию 
