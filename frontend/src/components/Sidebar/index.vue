@@ -37,7 +37,10 @@
           <h5 class="sidebar__status-name">
             {{ userName }}
           </h5>
-          <log-out-icon class="sidebar__status-logout" />
+          <log-out-icon
+            @click="logout"
+            class="sidebar__status-logout"
+          />
         </div>
       </div>
     </div>
@@ -45,6 +48,7 @@
 </template>
 
 <script>
+import { SET_USERNAME, UPDATE_AUTH_STATE } from '@/store/modules/auth/mutation-types'
 import {
   BoxIcon,
   LogOutIcon,
@@ -132,6 +136,11 @@ export default {
   methods: {
     changeSidebarVisible (event, state = false) {
       this.$emit('update:modelValue', state)
+    },
+    logout () {
+      this.$store.commit(`auth/${UPDATE_AUTH_STATE}`, { isAuth: false })
+      this.$store.commit(`auth/${SET_USERNAME}`, { name: '' })
+      this.$router.push({ name: 'Authenticate' })
     }
   },
   emits: ['update:modelValue']
