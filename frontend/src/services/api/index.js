@@ -1,9 +1,7 @@
 import api from './axiosInstance'
 
 export const authorizeUser = (payload) => {
-  return api.post('/Employee/auth', payload).then(({ data }) => {
-    console.log(data)
-  })
+  return api.post('/Employee/auth', payload).then(({ data }) => data)
 }
 
 const logoutUser = (payload) => {

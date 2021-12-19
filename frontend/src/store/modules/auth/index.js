@@ -22,8 +22,9 @@ const mutations = {
 const actions = {
   authenticateUser ({ commit }, dataToAuth) {
     return authorizeUser(dataToAuth)
-      .then((name) => {
-        commit(UPDATE_AUTH_STATE, { isAuth: true })
+      .then((data) => {
+        commit(UPDATE_AUTH_STATE, { isAuth: data.resultAuthentication })
+        commit(SET_USERNAME, { name: data.message ?? '' })
       })
   }
 }
