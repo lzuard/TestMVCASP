@@ -7,8 +7,7 @@ namespace Presentation.ConsoleHost.Controllers
 {
     public class ClientController : RecordControllerBase<ClientService, ClientRecordDto>
     {
-        public ClientController(ClientService recordService, ILogger<RecordControllerBase<ClientService, ClientRecordDto>> logger) :
-            base(recordService, logger)
+        public ClientController(ClientService recordService) : base(recordService)
         {
         }
     }

@@ -4,7 +4,7 @@ using Contracts.Contracts.StaticObjects;
 
 namespace Contracts.Contracts.Records
 {
-    public class OrderRecordDto: RecordDtoBase
+    public class OrderRecordDto : RecordDtoBase
     {
         /// <summary>
         /// Возвращает или устанавливает идентификатор клиента

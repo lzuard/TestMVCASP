@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Contracts.Contracts.Records;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Presentation.ConsoleHost.Controllers.Base;
 using Services.Infrastructure.SearchParameters;
@@ -13,8 +12,7 @@ namespace Presentation.ConsoleHost.Controllers
 {
     public class EmployeeController : RecordControllerBase<EmployeeService, EmployeeRecordDto>
     {
-        public EmployeeController(EmployeeService recordService,
-            ILogger<RecordControllerBase<EmployeeService, EmployeeRecordDto>> logger) : base(recordService, logger)
+        public EmployeeController(EmployeeService recordService) : base(recordService)
         {
         }
         
@@ -38,8 +36,6 @@ namespace Presentation.ConsoleHost.Controllers
             {
                 return Ok(result.Result);
             }
-            
-            Logger.LogError(result.Error.Message);
 
             return BadRequest();
         }

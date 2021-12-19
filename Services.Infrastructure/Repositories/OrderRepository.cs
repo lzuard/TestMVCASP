@@ -51,7 +51,7 @@ namespace Services.Infrastructure.Repositories
             },
             new OrderRecordDto()
             {
-                Id = 1,
+                Id = 3,
                 AddressId = 1,
                 ClientId = 1,
                 EmployeeId = 1,
@@ -69,27 +69,6 @@ namespace Services.Infrastructure.Repositories
         
         public OrderRepository(ApplicationContext context) : base(context)
         {
-        }
-
-        public override Task<OperationResult<List<OrderRecordDto>>> GetAll()
-        {
-            return Task.FromResult(new OperationResult<List<OrderRecordDto>>(_orders));
-        }
-        
-        public override Task<OperationResult<OrderRecordDto>> Get(int modelId)
-        {
-            OrderRecordDto order = _orders.FirstOrDefault(x => x.Id == modelId);
-
-            if (order == null)
-            {
-                string error = $"Model with {modelId} not found";
-
-                return Task.FromResult(
-                    new OperationResult<OrderRecordDto>(
-                        new OperationResult<OrderRecordDto>.OperationResultError(error)));
-            }
-            
-            return Task.FromResult(new OperationResult<OrderRecordDto>(order));
         }
 
         public Task<OperationResult<IEnumerable<OrderRecordDto>>> GetOrderByFilter(

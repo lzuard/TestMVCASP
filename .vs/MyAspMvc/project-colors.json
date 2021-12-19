@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "c1ff310d-bcb8-4686-84f7-3d252709bcea": {
+      "ProjectGuid": "c1ff310d-bcb8-4686-84f7-3d252709bcea",
+      "DisplayName": "Services.ConsoleHost",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

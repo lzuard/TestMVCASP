@@ -16,11 +16,11 @@ namespace Services.Infrastructure.Repositories.Base
         {
             Context = context;
         }
-        
+
         public virtual async Task<OperationResult<List<TModelDto>>> GetAll()
         {
             List<TModelDto> result = await Context.Set<TModelDto>().ToListAsync();
-            
+
             return new OperationResult<List<TModelDto>>(result);
         }
 
@@ -30,7 +30,7 @@ namespace Services.Infrastructure.Repositories.Base
 
             if (model == null)
             {
-                string error = $"Model with {modelId} not found";
+                string error = $"Model with id {modelId} not found";
 
                 return new OperationResult<TModelDto>(new OperationResult<TModelDto>.OperationResultError(error));
             }
@@ -41,25 +41,25 @@ namespace Services.Infrastructure.Repositories.Base
         public virtual async Task<OperationResult<TModelDto>> Create(TModelDto model)
         {
             await Context.Set<TModelDto>().AddAsync(model);
-            
+
             return await TrySaveChanges(model);
         }
 
         public virtual async Task<OperationResult<TModelDto>> Update(TModelDto model)
         {
             TModelDto toUpdateModel = await Context.Set<TModelDto>().FirstOrDefaultAsync(x => x.Id == model.Id);
-            
+
             if (toUpdateModel == null)
             {
-                string error = $"Model with {model.Id} not found";
+                string error = $"Model with id{model.Id} not found";
 
                 return new OperationResult<TModelDto>(new OperationResult<TModelDto>.OperationResultError(error));
             }
-            
+
             toUpdateModel = model;
-            
+
             Context.Update(toUpdateModel);
-            
+
             return await TrySaveChanges(toUpdateModel);
         }
 
@@ -69,17 +69,17 @@ namespace Services.Infrastructure.Repositories.Base
 
             if (toDeleteModel == null)
             {
-                string error = $"Model with {modelId} not found";
+                string error = $"Model with id {modelId} not found";
 
                 return new OperationResult<bool>(new OperationResult<bool>.OperationResultError(error));
             }
-            
+
             Context.Set<TModelDto>().Remove(toDeleteModel);
 
             return await TrySaveChanges(result: true);
         }
 
-        private async Task<OperationResult<TResult>> TrySaveChanges<TResult>(TResult result)
+        protected async Task<OperationResult<TResult>> TrySaveChanges<TResult>(TResult result)
         {
             try
             {

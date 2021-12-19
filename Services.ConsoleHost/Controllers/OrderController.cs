@@ -13,7 +13,7 @@ namespace Presentation.ConsoleHost.Controllers
 {
     public class OrderController : RecordControllerBase<OrderService, OrderRecordDto>
     {
-        public OrderController(OrderService service, ILogger<RecordControllerBase<OrderService, OrderRecordDto>> logger) : base(service, logger)
+        public OrderController(OrderService service) : base(service)
         {
         }
 
@@ -22,7 +22,7 @@ namespace Presentation.ConsoleHost.Controllers
             string jsonFilterParameters)
         {
             OrderSearchParameters filterParameters;
-            
+
             try
             {
                 filterParameters = JsonConvert.DeserializeObject<OrderSearchParameters>(jsonFilterParameters);
@@ -33,13 +33,11 @@ namespace Presentation.ConsoleHost.Controllers
             }
 
             var result = await Service.TryGetOrderByFilter(filterParameters);
-            
+
             if (result.IsSuccess)
             {
                 return Ok(result.Result);
             }
-            
-            Logger.LogError(result.Error.Message);
 
             return NoContent();
         }

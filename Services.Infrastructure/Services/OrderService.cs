@@ -12,6 +12,12 @@ namespace Services.Infrastructure.Services
     {
         public OrderService(OrderRepository recordRepository) : base(recordRepository)
         {
+            
+        }
+
+        public override async Task<OperationResult<List<OrderRecordDto>>> TryGetAll()
+        {
+            return await Repository.GetAll();
         }
 
         public async Task<OperationResult<IEnumerable<OrderRecordDto>>> TryGetOrderByFilter(

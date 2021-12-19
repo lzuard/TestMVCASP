@@ -5,7 +5,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
 using Services.Infrastructure.Repositories;
 using Services.Infrastructure.Services;
 
@@ -24,13 +23,13 @@ namespace Presentation.ConsoleHost
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Services.ConsoleHost", Version = "v1" });
-            });
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Services.ConsoleHost", Version = "v1" });
+           // });
             
             services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(_connectionString));
-            
+
             services.AddScoped<OrderRepository>();
             services.AddScoped<OrderService>();
             services.AddScoped<EmployeeRepository>();
@@ -43,9 +42,12 @@ namespace Presentation.ConsoleHost
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Services.ConsoleHost v1"));
+                //app.UseSwagger();
+                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Services.ConsoleHost v1"));
             }
+            
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseHttpsRedirection();
             app.UseRouting();

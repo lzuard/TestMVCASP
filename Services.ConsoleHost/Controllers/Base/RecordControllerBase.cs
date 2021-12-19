@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Contracts.Contracts.Base;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Services.Infrastructure.Services.Interferes;
 
 namespace Presentation.ConsoleHost.Controllers.Base
@@ -12,18 +11,15 @@ namespace Presentation.ConsoleHost.Controllers.Base
     public class RecordControllerBase<TService, TModelDto> : ControllerBase
         where TService : IRecordService<TModelDto> where TModelDto : RecordDtoBase
     {
-        protected readonly ILogger<RecordControllerBase<TService, TModelDto>> Logger;
         protected readonly TService Service;
 
-        public RecordControllerBase(TService service,
-            ILogger<RecordControllerBase<TService, TModelDto>> logger)
+        public RecordControllerBase(TService service)
         {
             Service = service;
-            Logger = logger;
         }
 
         [HttpGet]
-        public virtual async Task<ActionResult<IEnumerable<TModelDto>>> GetAll()
+        public async Task<ActionResult<IEnumerable<TModelDto>>> GetAll()
         {
             var result = await Service.TryGetAll();
             
@@ -31,14 +27,12 @@ namespace Presentation.ConsoleHost.Controllers.Base
             {
                 return Ok(result.Result);
             }
-            
-            Logger.LogError(result.Error.Message);
 
             return NoContent();
         }
 
         [HttpGet("{id}")]
-        public virtual async Task<ActionResult<TModelDto>> Get(int id)
+        public async Task<ActionResult<TModelDto>> Get(int id)
         {
             var result = await Service.TryGet(id);
             
@@ -46,14 +40,12 @@ namespace Presentation.ConsoleHost.Controllers.Base
             {
                 return Ok(result.Result);
             }
-            
-            Logger.LogError(result.Error.Message);
 
-            return NotFound();
+            return Ok(result.Error.Message);
         }
 
-        [HttpPut]
-        public virtual async Task<ActionResult<TModelDto>> Create(TModelDto model)
+        [HttpPost]
+        public async Task<ActionResult<TModelDto>> Create(TModelDto model)
         {
             var result = await Service.TryCreate(model);
             
@@ -61,14 +53,12 @@ namespace Presentation.ConsoleHost.Controllers.Base
             {
                 return Ok(result.Result);
             }
-            
-            Logger.LogError(result.Error.Message);
 
             return NoContent();
         }
 
-        [HttpPost]
-        public virtual async Task<ActionResult<TModelDto>> Update(TModelDto model)
+        [HttpPut]
+        public async Task<ActionResult<TModelDto>> Update(TModelDto model)
         {
             var result = await Service.TryUpdate(model);
             
@@ -76,14 +66,12 @@ namespace Presentation.ConsoleHost.Controllers.Base
             {
                 return Ok(result.Result);
             }
-            
-            Logger.LogError(result.Error.Message);
 
             return NotFound();
         }
 
         [HttpDelete("{id}")]
-        public virtual async Task<ActionResult> Delete(int modelId)
+        public async Task<ActionResult> Delete(int modelId)
         {
             var result = await Service.TryDelete(modelId);
             
@@ -91,8 +79,6 @@ namespace Presentation.ConsoleHost.Controllers.Base
             {
                 return Ok();
             }
-            
-            Logger.LogError(result.Error.Message);
 
             return NotFound();
         }
