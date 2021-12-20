@@ -164,6 +164,10 @@ export default {
         this.dataToSend[key] = ''
       })
 
+      if (this.enableAddedFields) {
+        this.additionalItems = [{}]
+      }
+
       this.v$.$reset()
     },
 
