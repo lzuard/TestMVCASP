@@ -9,11 +9,16 @@
 <script>
 import ShowcaseCreate from '@/components/Showcase/showcase-create'
 import { required } from '@/utils/validation/i18n-validators'
+import { useToast } from 'vue-toastification'
 
 export default {
   name: 'TTNCreate',
   components: {
     ShowcaseCreate
+  },
+  setup () {
+    const toast = useToast()
+    return { toast }
   },
   data: () => {
     return {
@@ -21,39 +26,50 @@ export default {
         title: 'Создать ТТН',
         fields: [
           {
-            label: 'Номер',
+            label: 'Номер ТТН',
             placeholder: 'Номер',
             modelValue: 'number',
-            validation: { required }
-          },
-          {
-            label: 'Дата оформления',
-            placeholder: '01.01.1990',
-            type: 'date',
-            modelValue: 'issueDate',
+            cols: ['col-md-3'],
             validation: { required }
           },
           {
             label: 'Тип ТТН',
             placeholder: 'Тип ТТН',
             type: 'select',
-            modelValue: 'ttnType',
+            modelValue: 'type',
+            cols: ['col-md-3'],
             validation: { required },
             values: [
               {
-                text: 'Расход',
-                value: 'minus'
+                text: 'Товарная',
+                value: 0
               },
               {
-                text: 'Приход',
-                value: 'plus'
+                text: 'Товарно-транспортная',
+                value: 1
+              },
+              {
+                text: 'Накладная на отпуск материалов на сторону',
+                value: 2
+              },
+              {
+                text: 'Требование-накладная',
+                value: 3
               }
             ]
           },
           {
             label: 'Форма ТТН',
             placeholder: 'УТП-12',
-            modelValue: 'ttnForm',
+            modelValue: 'form',
+            cols: ['col-md-3'],
+            validation: { required }
+          },
+          {
+            label: 'Дата оформления',
+            type: 'date',
+            modelValue: 'date',
+            cols: ['col-md-3'],
             validation: { required }
           }
         ]
@@ -63,7 +79,14 @@ export default {
   methods: {
     createTTN (data) {
       console.log(data)
-      this.$refs.form.clearForm()
+      this.$api.ttn.createTTN(data)
+        .then(() => {
+          this.toast.success('ТТН успешно создан')
+          this.$refs.form.clearForm()
+        })
+        .catch(() => {
+          this.toast.error('Ошибка при создании ТТН, повторите позже')
+        })
     }
   }
 }
