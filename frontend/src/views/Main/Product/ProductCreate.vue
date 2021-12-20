@@ -1,5 +1,5 @@
 <template>
-  <showcase-create v-bind="createData" @onSend="createCategory($event)"/>
+  <showcase-create ref="form" v-bind="createData" @onSend="createCategory($event)"/>
 </template>
 
 <script>
