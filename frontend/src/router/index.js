@@ -4,6 +4,12 @@ import store from '@/store'
 import Auth from '@/views/Auth/Auth'
 import Main from '@/views/Main/Main'
 
+import AddressList from '@/views/Main/Address/AddressList'
+import AddressCreate from '@/views/Main/Address/AddressCreate'
+
+import CategoryList from '@/views/Main/Catergory/CategoryList'
+import CategoryCreate from '@/views/Main/Catergory/CategoryCreate'
+
 import AgentList from '@/views/Main/Agent/AgentList'
 import AgentCreate from '@/views/Main/Agent/AgentCreate'
 
@@ -50,6 +56,38 @@ const routes = [
       auth: true
     },
     children: [
+      {
+        path: '/category',
+        name: 'Show category',
+        component: CategoryList,
+        meta: {
+          title: 'Список категорий'
+        }
+      },
+      {
+        path: '/category/create',
+        name: 'Create category',
+        component: CategoryCreate,
+        meta: {
+          title: 'Создать категорию'
+        }
+      },
+      {
+        path: '/address',
+        name: 'Show address',
+        component: AddressList,
+        meta: {
+          title: 'Список адресов'
+        }
+      },
+      {
+        path: '/address/create',
+        name: 'Create address',
+        component: AddressCreate,
+        meta: {
+          title: 'Создать адрес'
+        }
+      },
       {
         path: '/agents',
         name: 'Show agents',
