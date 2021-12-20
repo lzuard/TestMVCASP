@@ -35,6 +35,9 @@ namespace Presentation.ConsoleHost
 
             services.AddScoped<AgentTypeRepository>();
             services.AddScoped<AgentTypeService>();
+            
+            services.AddScoped<CategoryRepository>();
+            services.AddScoped<CategoryService>();
             //services.AddScoped<OrderRepository>();
             //services.AddScoped<OrderService>();
             
