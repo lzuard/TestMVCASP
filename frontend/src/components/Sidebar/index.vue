@@ -50,6 +50,7 @@
 <script>
 import { SET_USERNAME, UPDATE_AUTH_STATE } from '@/store/modules/auth/mutation-types'
 import {
+  BuildingIcon,
   BoxIcon,
   LogOutIcon,
   IndentRightIcon,
@@ -65,6 +66,7 @@ import {
 export default {
   name: 'Sidebar',
   components: {
+    BuildingIcon,
     BoxIcon,
     LogOutIcon,
     IndentRightIcon,
@@ -85,6 +87,11 @@ export default {
   data: () => {
     return {
       sidebarRoutes: [
+        {
+          icon: 'BuildingIcon',
+          path: '/address',
+          title: 'Адреса'
+        },
         {
           icon: 'IndentRightIcon',
           path: '/orders',
