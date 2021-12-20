@@ -24,13 +24,11 @@ namespace Presentation.ConsoleHost
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Services.ConsoleHost", Version = "v1" });
-           // });
-            
+
             services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(_connectionString));
 
+            services.AddScoped<AddressRepository>();
+            services.AddScoped<AddressService>();
             services.AddScoped<OrderRepository>();
             services.AddScoped<OrderService>();
             services.AddScoped<EmployeeRepository>();
@@ -43,8 +41,6 @@ namespace Presentation.ConsoleHost
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseSwagger();
-                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Services.ConsoleHost v1"));
             }
             
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);

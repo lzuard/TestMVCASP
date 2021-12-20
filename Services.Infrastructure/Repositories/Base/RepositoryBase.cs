@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Data.LTS.Database;
 using Services.Infrastructure.Repositories.Interferes;
@@ -18,11 +19,11 @@ namespace Services.Infrastructure.Repositories.Base
             Context = context;
         }
 
-        public virtual async Task<OperationResult<List<TModelDto>>> GetAll()
+        public virtual async Task<OperationResult<IEnumerable<TModelDto>>> GetAll()
         {
-            List<TModelDto> result = await Context.Set<TModelDto>().ToListAsync();
+            IEnumerable<TModelDto> result = await Context.Set<TModelDto>().ToListAsync();
 
-            return new OperationResult<List<TModelDto>>(result);
+            return OperationResult<IEnumerable<TModelDto>>.GetSuccessResult(result);
         }
 
         public virtual async Task<OperationResult<TModelDto>> Get(int modelId)
@@ -33,10 +34,10 @@ namespace Services.Infrastructure.Repositories.Base
             {
                 string error = $"Model with id {modelId} not found";
 
-                return new OperationResult<TModelDto>(new OperationResult<TModelDto>.OperationResultError(error));
+                return OperationResult<TModelDto>.GetUnsuccessfulResult(error);
             }
 
-            return new OperationResult<TModelDto>(model);
+            return OperationResult<TModelDto>.GetSuccessResult(model);
         }
 
         public virtual async Task<OperationResult<TModelDto>> Create(TModelDto model)
@@ -63,7 +64,7 @@ namespace Services.Infrastructure.Repositories.Base
             {
                 string error = $"Model with id {model.Id} not found";
 
-                return new OperationResult<TModelDto>(new OperationResult<TModelDto>.OperationResultError(error));
+                return OperationResult<TModelDto>.GetUnsuccessfulResult(error);
             }
 
             model.Id = toUpdateModel.Id;
@@ -82,7 +83,7 @@ namespace Services.Infrastructure.Repositories.Base
             {
                 string error = $"Model with id {modelId} not found";
 
-                return new OperationResult<bool>(new OperationResult<bool>.OperationResultError(error));
+                return OperationResult<bool>.GetUnsuccessfulResult(error);
             }
 
             Context.Set<TModelDto>().Remove(toDeleteModel);
@@ -98,10 +99,10 @@ namespace Services.Infrastructure.Repositories.Base
             }
             catch(Exception ex)
             {
-                return new OperationResult<TResult>(new OperationResult<TResult>.OperationResultError(ex.Message));
+                return OperationResult<TResult>.GetUnsuccessfulResult(ex.Message);
             }
 
-            return new OperationResult<TResult>(result);
+            return OperationResult<TResult>.GetSuccessResult(result);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Contracts.Contracts;
 using Services.Infrastructure.Utils;
@@ -7,7 +8,7 @@ namespace Services.Infrastructure.Repositories.Interferes
 {
     public interface IRecordRepository<TModelDto> where TModelDto : RecordDtoBase
     {
-        public Task<OperationResult<List<TModelDto>>> GetAll();
+        public Task<OperationResult<IEnumerable<TModelDto>>> GetAll();
         
         public Task<OperationResult<TModelDto>> Get(int modelId);
         

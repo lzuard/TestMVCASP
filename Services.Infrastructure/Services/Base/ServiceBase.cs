@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Contracts.Contracts;
 using Services.Infrastructure.Repositories.Interferes;
@@ -7,17 +8,17 @@ using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Services.Base
 {
-    public class RecordServiceBase<TRepository, TModelDto> : IRecordService<TModelDto>
+    public class ServiceBase<TRepository, TModelDto> : IRecordService<TModelDto>
         where TRepository : IRecordRepository<TModelDto> where TModelDto : RecordDtoBase
     {
         protected readonly TRepository Repository;
 
-        public RecordServiceBase(TRepository recordRepository)
+        public ServiceBase(TRepository recordRepository)
         {
             Repository = recordRepository;
         }
 
-        public virtual async Task<OperationResult<List<TModelDto>>>TryGetAll()
+        public virtual async Task<OperationResult<IEnumerable<TModelDto>>>TryGetAll()
         {
             return await Repository.GetAll();
         }
