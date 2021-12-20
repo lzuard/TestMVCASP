@@ -25,6 +25,8 @@ const actions = {
       .then((data) => {
         commit(UPDATE_AUTH_STATE, { isAuth: data.resultAuthentication })
         commit(SET_USERNAME, { name: data.message ?? '' })
+
+        return data.resultAuthentication
       })
   }
 }
