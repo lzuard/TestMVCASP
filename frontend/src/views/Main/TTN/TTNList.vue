@@ -3,7 +3,9 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
 import Showcase from '@/components/Showcase'
+import { TTN_TYPES } from '@/services/dictionaries'
 
 export default {
   name: 'TTNList',
@@ -17,23 +19,37 @@ export default {
         linkToCreate: '/ttn/create',
         createCaption: 'Создать ТТН',
         tableHeaders: [
-          'Номер',
+          '№',
+          'Номер ТТН',
+          'Тип',
           'Форма',
-          'Тип'
+          'Дата оформления'
         ],
-        tableData: [
-          {
-            id: 'СЛУ-1/19273',
-            form: 'СЛУ-1',
-            type: 'Поставка'
-          }
-        ],
+        tableData: [],
         sortTypes: [
-          'Номер',
-          'Форма',
-          'Тип'
+          'Номер ТТН',
+          'Тип',
+          'Форма'
         ]
       }
+    }
+  },
+  created () {
+    this.$api.ttn.getTTN()
+      .then((data) => {
+        this.getHandlingData(data)
+        this.showCaseData.tableData = data
+      })
+      .catch(() => {
+        this.toast.error('Ошибка при загрузке ТТН')
+      })
+  },
+  methods: {
+    getHandlingData (data) {
+      data.forEach(item => {
+        item.type = TTN_TYPES[item.type]
+        item.date = dayjs(item.date).locale('ru-ru').format('DD/MM/YYYY')
+      })
     }
   }
 }
