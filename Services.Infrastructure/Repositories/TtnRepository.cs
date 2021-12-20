@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Contracts.Contracts.Employee;
 using Contracts.Contracts.Ttn;
 using Data.LTS.Database;
 using Microsoft.EntityFrameworkCore;

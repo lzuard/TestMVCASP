@@ -93,9 +93,9 @@ namespace Services.Infrastructure.Services
         {
             OperationResult<AgentDto> clientResult = await _agentService.TryGet(apiModel.ClientId);
             OperationResult<EmployeeDto> employeeResult = await _employeeService.TryGet(apiModel.EmployeeId);
-            OperationResult<AgentDto> transportCompanyResult = await _agentService.TryGet(apiModel.ClientId);
-            OperationResult<AddressDto> addressResult = await _addressService.TryGet(apiModel.ClientId);
-            OperationResult<TtnDto> ttnResult = await _ttnService.TryGet(apiModel.ClientId);
+            OperationResult<AgentDto> transportCompanyResult = await _agentService.TryGet(apiModel.TransportCompanyId);
+            OperationResult<AddressDto> addressResult = await _addressService.TryGet(apiModel.AddressId);
+            OperationResult<TtnDto> ttnResult = await _ttnService.TryGet(apiModel.TtnId);
 
             if (!clientResult.IsSuccess)
             {

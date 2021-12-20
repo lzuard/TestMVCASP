@@ -8,7 +8,7 @@ namespace Contracts.Contracts.Ttn
         /// <summary>
         /// Возвращает или устанавливает идентификатор ТТН.
         /// </summary>
-        public int TtnId { get; set; }
+        public int? TtnId { get; set; }
         
         /// <summary>
         /// Возвращает или устанавливает номер ТТН.
