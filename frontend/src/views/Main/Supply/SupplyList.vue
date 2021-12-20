@@ -4,11 +4,17 @@
 
 <script>
 import Showcase from '@/components/Showcase'
+import { useToast } from 'vue-toastification'
+import dayjs from 'dayjs'
 
 export default {
   name: 'SupplyList',
   components: {
     Showcase
+  },
+  setup () {
+    const toast = useToast()
+    return { toast }
   },
   data: () => {
     return {
@@ -17,34 +23,41 @@ export default {
         linkToCreate: '/supplies/create',
         createCaption: 'Создать поставку',
         tableHeaders: [
+          '№',
           'Поставщик',
+          'Сотрудник',
           'ТК',
-          'Номер ТТН',
+          'ТТН',
           'Номер платежного док.',
-          'Стоимость поставки',
           'Дата поставки',
           'Принято',
           'Примечание'
         ],
-        tableData: [
-          {
-            supplier: 'МеталлТрейд',
-            tc: 'ПЭК',
-            ttn: '29873/НУ1',
-            payment_doc: '597824',
-            price: '42 000',
-            accept: '-',
-            supplyData: '21.10.2021',
-            extra: '-'
-          }
-        ],
-        sortTypes: [
-          'Поставщик',
-          'ТК',
-          'Номер ТТН',
-          'Номер платежного док.'
-        ]
+        tableData: [],
+        sortTypes: []
       }
+    }
+  },
+  created () {
+    this.$api.supply.getSupplies()
+      .then((data) => {
+        this.handlingSupplies(data)
+        this.showCaseData.tableData = data
+      })
+      .catch(() => {
+        this.toast.error('Ошибка при загрузке поставок')
+      })
+  },
+  methods: {
+    handlingSupplies (data) {
+      data.forEach((item) => {
+        item.supplier = item.supplier.organizationName
+        item.employee = `${item.employee.secondName} ${item.employee.firstName}`
+        item.transportCompany = item.transportCompany.organizationName
+        item.ttn = item.ttn.number
+        item.supplyDate = dayjs(item.supplyDate).locale('ru-ru').format('DD/MM/YYYY')
+        item.isAccepted = item.isAccepted ? 'Да' : 'Нет'
+      })
     }
   }
 }
