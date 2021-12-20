@@ -1,10 +1,15 @@
-﻿using System;
+using System;
 using Contracts.Contracts.StaticObjects;
 
 namespace Contracts.Contracts.Ttn
 {
-    public class TtnDto : RecordDtoBase
+    public class TtnFilterDto
     {
+        /// <summary>
+        /// Возвращает или устанавливает идентификатор ТТН.
+        /// </summary>
+        public int TtnId { get; set; }
+        
         /// <summary>
         /// Возвращает или устанавливает номер ТТН.
         /// </summary>
@@ -13,7 +18,7 @@ namespace Contracts.Contracts.Ttn
         /// <summary>
         /// Возвращает или устанавливает тип ТТН.
         /// </summary>
-        public TtnType Type { get; set; }
+        public TtnType? Type { get; set; }
         
         /// <summary>
         /// Возвращает или устанавливает форму ТТН.
@@ -23,6 +28,6 @@ namespace Contracts.Contracts.Ttn
         /// <summary>
         /// Возвращает или устанавливает дату оформления.
         /// </summary>
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
     }
 }
