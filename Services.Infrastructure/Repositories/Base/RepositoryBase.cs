@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using Data.LTS.Database;
 using Services.Infrastructure.Repositories.Interferes;
@@ -32,7 +31,7 @@ namespace Services.Infrastructure.Repositories.Base
 
             if (model == null)
             {
-                string error = $"Model with id {modelId} not found";
+                string error = $"{typeof(TModelDto)} with id {modelId} not found";
 
                 return OperationResult<TModelDto>.GetUnsuccessfulResult(error);
             }
@@ -62,7 +61,7 @@ namespace Services.Infrastructure.Repositories.Base
 
             if (toUpdateModel == null)
             {
-                string error = $"Model with id {model.Id} not found";
+                string error = $"{typeof(TModelDto)} with id {model.Id} not found";
 
                 return OperationResult<TModelDto>.GetUnsuccessfulResult(error);
             }
@@ -81,7 +80,7 @@ namespace Services.Infrastructure.Repositories.Base
 
             if (toDeleteModel == null)
             {
-                string error = $"Model with id {modelId} not found";
+                string error = $"{typeof(TModelDto)} with id {modelId} not found";
 
                 return OperationResult<bool>.GetUnsuccessfulResult(error);
             }

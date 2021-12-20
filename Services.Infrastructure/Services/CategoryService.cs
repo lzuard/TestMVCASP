@@ -14,56 +14,26 @@ namespace Services.Infrastructure.Services
 
         public async Task<OperationResult<CategoryDto>> TryCreate(CategoryApiDto apiModel)
         {
-            CategoryDto parentCategory = null;
+            OperationResult<CategoryDto> result = await GetModelByModelApi(apiModel);
 
-            if (apiModel.ParentCategoryId != null)
+            if (result.IsSuccess)
             {
-                var result = await Repository.Get((int)apiModel.ParentCategoryId);
-
-                if (result.IsSuccess)
-                {
-                    parentCategory = result.Result;
-                }
-                else
-                {
-                    return OperationResult<CategoryDto>.GetUnsuccessfulResult(result.Error.Message);
-                }
+                return await Repository.Create(result.Result);
             }
 
-            var category = new CategoryDto
-            {
-                Name = apiModel.Name,
-                ParentCategory = parentCategory
-            };
-
-            return await Repository.Create(category);
+            return result;
         }
 
         public async Task<OperationResult<CategoryDto>> TryUpdate(CategoryApiDto apiModel)
         {
-            CategoryDto parentCategory = null;
+            OperationResult<CategoryDto> result = await GetModelByModelApi(apiModel);
 
-            if (apiModel.ParentCategoryId != null)
+            if (result.IsSuccess)
             {
-                var result = await Repository.Get((int)apiModel.ParentCategoryId);
-
-                if (result.IsSuccess)
-                {
-                    parentCategory = result.Result;
-                }
-                else
-                {
-                    return OperationResult<CategoryDto>.GetUnsuccessfulResult(result.Error.Message);
-                }
+                return await Repository.Update(result.Result);
             }
 
-            var category = new CategoryDto
-            {
-                Name = apiModel.Name,
-                ParentCategory = parentCategory
-            };
-
-            return await Repository.Update(category);
+            return result;
         }
 
         public override Task<OperationResult<CategoryDto>> TryCreate(CategoryDto model)
@@ -91,6 +61,33 @@ namespace Services.Infrastructure.Services
             var result = OperationResult<bool>.GetUnsuccessfulResult(message);
 
             return Task.FromResult(result);
+        }
+
+        private async Task<OperationResult<CategoryDto>> GetModelByModelApi(CategoryApiDto apiModel)
+        {
+            CategoryDto parentCategory = null;
+
+            if (apiModel.ParentCategoryId != null)
+            {
+                var result = await Repository.Get((int)apiModel.ParentCategoryId);
+
+                if (result.IsSuccess)
+                {
+                    parentCategory = result.Result;
+                }
+                else
+                {
+                    return OperationResult<CategoryDto>.GetUnsuccessfulResult(result.Error.Message);
+                }
+            }
+
+            var category = new CategoryDto
+            {
+                Name = apiModel.Name,
+                ParentCategory = parentCategory
+            };
+
+            return OperationResult<CategoryDto>.GetSuccessResult(category);
         }
     }
 }

@@ -1,19 +1,19 @@
 using System.Threading.Tasks;
-using Contracts.Contracts.Category;
+using Contracts.Contracts.Product;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.ConsoleHost.Controllers.Base;
 using Services.Infrastructure.Services;
 
 namespace Presentation.ConsoleHost.Controllers
 {
-    public class CategoryController : RecordControllerBase<CategoryService,CategoryDto>
+    public class ProductController : RecordControllerBase<ProductService, ProductDto>
     {
-        public CategoryController(CategoryService service) : base(service)
+        public ProductController(ProductService service) : base(service)
         {
         }
         
-        [HttpPost ("create")]
-        public async Task<IActionResult> Create(CategoryApiDto apiModel)
+        [HttpPost("create")]
+        public async Task<IActionResult> Create(ProductApiDto apiModel)
         {
             var result = await Service.TryCreate(apiModel);
             
@@ -26,7 +26,7 @@ namespace Presentation.ConsoleHost.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<IActionResult> Update(CategoryApiDto apiModel)
+        public async Task<IActionResult> Update(ProductApiDto apiModel)
         {
             var result = await Service.TryUpdate(apiModel);
             

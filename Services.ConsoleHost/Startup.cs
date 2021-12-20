@@ -38,6 +38,10 @@ namespace Presentation.ConsoleHost
             
             services.AddScoped<CategoryRepository>();
             services.AddScoped<CategoryService>();
+            
+            services.AddScoped<ProductRepository>();
+            services.AddScoped<ProductService>();
+            
             //services.AddScoped<OrderRepository>();
             //services.AddScoped<OrderService>();
             
