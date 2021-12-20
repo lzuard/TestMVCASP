@@ -50,6 +50,9 @@ namespace Presentation.ConsoleHost
             
             services.AddScoped<OrderRepository>();
             services.AddScoped<OrderService>();
+            
+            services.AddScoped<ReturnRepository>();
+            services.AddScoped<ReturnService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
