@@ -1,20 +1,19 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using Contracts.Contracts.Agent;
+using Contracts.Contracts.Supply;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.ConsoleHost.Controllers.Base;
 using Services.Infrastructure.Services;
 
 namespace Presentation.ConsoleHost.Controllers
 {
-    public class AgentController : RecordControllerBase<AgentService, AgentDto>
+    public class SupplyController : RecordControllerBase<SupplyService, SupplyDto>
     {
-        public AgentController(AgentService service) : base(service)
+        public SupplyController(SupplyService service) : base(service)
         {
         }
 
         [HttpPost("create")]
-        public async Task<IActionResult> Create(AgentApiDto apiModel)
+        public async Task<IActionResult> Create(SupplyApiDto apiModel)
         {
             var result = await Service.TryCreate(apiModel);
 
@@ -27,7 +26,7 @@ namespace Presentation.ConsoleHost.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<IActionResult> Update(AgentApiDto apiModel)
+        public async Task<IActionResult> Update(SupplyApiDto apiModel)
         {
             var result = await Service.TryUpdate(apiModel);
 
@@ -37,19 +36,6 @@ namespace Presentation.ConsoleHost.Controllers
             }
 
             return NotFound();
-        }
-        
-        [HttpPost("getByFilter")]
-        public async Task<ActionResult<IEnumerable<AgentDto>>> GetOrderByFilter(AgentFilterDto filterDto)
-        {
-            var result = await Service.TryGetOrderByFilter(filterDto);
-
-            if (result.IsSuccess)
-            {
-                return Ok(result.Result);
-            }
-
-            return NoContent();
         }
     }
 }
