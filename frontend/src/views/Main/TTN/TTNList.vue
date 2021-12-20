@@ -37,8 +37,7 @@ export default {
   created () {
     this.$api.ttn.getTTN()
       .then((data) => {
-        this.getHandlingData(data)
-        this.showCaseData.tableData = data
+        this.showCaseData.tableData = this.getHandlingData(data)
       })
       .catch(() => {
         this.toast.error('Ошибка при загрузке ТТН')
@@ -46,10 +45,14 @@ export default {
   },
   methods: {
     getHandlingData (data) {
-      data.forEach(item => {
+      const newData = JSON.parse(JSON.stringify(data))
+
+      newData.forEach(item => {
         item.type = TTN_TYPES[item.type]
         item.date = dayjs(item.date).locale('ru-ru').format('DD/MM/YYYY')
       })
+
+      return newData
     }
   }
 }
