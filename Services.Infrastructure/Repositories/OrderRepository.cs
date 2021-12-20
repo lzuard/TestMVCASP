@@ -10,36 +10,34 @@ using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Repositories
 {
-    public class OrderRepository : RecordRepositoryBase<OrderDto>
+    public class OrderRepository : RepositoryBase<OrderDto>
     {
         public OrderRepository(ApplicationContext context) : base(context)
         {
         }
 
-        public async Task<OperationResult<IEnumerable<OrderDto>>> GetOrderByFilter(
-            OrderFilterParametersDto filterParametersDto)
+        public async Task<OperationResult<IEnumerable<OrderDto>>> GetByFilter(
+            OrderFilterDto filterDto)
         {
-            throw new NotImplementedException();
-            /*
             IEnumerable<OrderDto> result = await Context.Orders
                 .Where(x =>
-                    Helpers.NullableEquals(x.Id, filterParametersDto.OrderId) &&
-                    Helpers.NullableEquals(x.ClientId, filterParametersDto.ClientId) &&
-                    Helpers.NullableEquals(x.EmployeeId, filterParametersDto.EmployeeId) &&
-                    Helpers.NullableEquals(x.TransportCompanyId, filterParametersDto.TransportCompanyId) &&
-                    Helpers.NullableEquals(x.TtnId, filterParametersDto.TtnId) &&
-                    Helpers.NullableEquals(x.PaymentDocument, filterParametersDto.PaymentDocument) &&
-                    Helpers.NullableEquals(x.OrderingDate, filterParametersDto.OrderingDate) &&
-                    Helpers.NullableEquals(x.ShipmentDate, filterParametersDto.ShipmentDate) &&
-                    Helpers.NullableEquals(x.DeliveryDate, filterParametersDto.DeliveryDate) &&
-                    Helpers.NullableEquals(x.Status, filterParametersDto.Status) &&
-                    Helpers.NullableEquals(x.IsAcceptTransportCompany, filterParametersDto.IsAcceptTransportCompany) &&
-                    Helpers.NullableEquals(x.IsAcceptClient, filterParametersDto.IsAcceptClient) &&
-                    Helpers.NullableEquals(x.Extra, filterParametersDto.Extra))
+                    (x.Id == filterDto.OrderId || filterDto.OrderId == null) &&
+                    (x.Client.Id == filterDto.ClientId || filterDto.ClientId == null) &&
+                    (x.Employee.Id == filterDto.EmployeeId || filterDto.EmployeeId == null) &&
+                    (x.TransportCompany.Id == filterDto.TransportCompanyId || filterDto.TransportCompanyId == null) &&
+                    (x.Ttn.Id == filterDto.TtnId || filterDto.TtnId == null) &&
+                    (x.PaymentDocument == filterDto.PaymentDocument || filterDto.PaymentDocument == null) &&
+                    (x.OrderingDate == filterDto.OrderingDate || filterDto.OrderingDate == null) &&
+                    (x.ShipmentDate == filterDto.ShipmentDate || filterDto.ShipmentDate == null) &&
+                    (x.DeliveryDate == filterDto.DeliveryDate || filterDto.DeliveryDate == null) &&
+                    (x.Status == filterDto.Status || filterDto.Status == null) &&
+                    (x.IsAcceptTransportCompany == filterDto.IsAcceptTransportCompany ||
+                     filterDto.IsAcceptTransportCompany == null) &&
+                    (x.IsAcceptClient == filterDto.IsAcceptClient || filterDto.IsAcceptClient == null) &&
+                    (x.Extra == filterDto.Extra || filterDto.Extra == null))
                 .ToListAsync();
 
             return new OperationResult<IEnumerable<OrderDto>>(result);
-            */
         }
     }
 }

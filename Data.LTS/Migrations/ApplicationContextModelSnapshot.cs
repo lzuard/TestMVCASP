@@ -154,8 +154,8 @@ namespace Data.LTS.Migrations
                     b.Property<string>("Login")
                         .HasColumnType("text");
 
-                    b.Property<long>("Password")
-                        .HasColumnType("bigint");
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("text");

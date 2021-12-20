@@ -14,8 +14,7 @@ namespace Presentation.ConsoleHost.Controllers
         }
 
         [HttpPost("auth")]
-        public virtual async Task<ActionResult<IEnumerable<bool>>> Authorization(
-            EmployeeAuthenticationParametersDto parametersDto)
+        public virtual async Task<IActionResult> Authorization(EmployeeAuthenticationParametersDto parametersDto)
         {
             var result = await Service.TryAuthorization(parametersDto);
 

@@ -15,9 +15,9 @@ namespace Presentation.ConsoleHost.Controllers
 
         [HttpGet("getByFilter")]
         public async Task<ActionResult<IEnumerable<OrderDto>>> GetOrderByFilter(
-            OrderFilterParametersDto filterParametersDto)
+            OrderFilterDto filterDto)
         {
-            var result = await Service.TryGetOrderByFilter(filterParametersDto);
+            var result = await Service.TryGetOrderByFilter(filterDto);
 
             if (result.IsSuccess)
             {

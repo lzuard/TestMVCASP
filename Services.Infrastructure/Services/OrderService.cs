@@ -19,9 +19,9 @@ namespace Services.Infrastructure.Services
         }
 
         public async Task<OperationResult<IEnumerable<OrderDto>>> TryGetOrderByFilter(
-            OrderFilterParametersDto filterParametersDto)
+            OrderFilterDto filterDto)
         {
-            return await Repository.GetOrderByFilter(filterParametersDto);
+            return await Repository.GetByFilter(filterDto);
         }
     }
 }

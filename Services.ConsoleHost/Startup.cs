@@ -1,3 +1,4 @@
+using System;
 using Data.LTS.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -46,10 +47,11 @@ namespace Presentation.ConsoleHost
                 //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Services.ConsoleHost v1"));
             }
             
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            
             DefaultFilesOptions options = new DefaultFilesOptions();
             options.DefaultFileNames.Clear();
             options.DefaultFileNames.Add("index.html");
-
 
             app.UseDefaultFiles(options);
             app.UseStaticFiles();
