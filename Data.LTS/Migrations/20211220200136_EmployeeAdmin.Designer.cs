@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.LTS.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20211220074702_DataBase")]
-    partial class DataBase
+    [Migration("20211220200136_EmployeeAdmin")]
+    partial class EmployeeAdmin
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -478,6 +478,9 @@ namespace Data.LTS.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Form")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Number")
                         .HasColumnType("text");
 
                     b.Property<int>("Type")

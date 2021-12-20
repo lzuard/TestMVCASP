@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using Contracts.Contracts.Category;
 using Contracts.Contracts.Product;
 using Services.Infrastructure.Repositories;
 using Services.Infrastructure.Services.Base;
@@ -41,15 +40,6 @@ namespace Services.Infrastructure.Services
         }
         
         public override Task<OperationResult<ProductDto>> TryCreate(ProductDto model)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<ProductDto>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
-        }
-
-        public override Task<OperationResult<ProductDto>> TryUpdate(ProductDto model)
         {
             string message = "You have no permission";
 

@@ -1,12 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.VisualBasic;
 using System;
 
 #nullable disable
 
 namespace Data.LTS.Migrations
 {
-    public partial class EmployeeSetAdmin : Migration
+    public partial class EmployeeAdmin : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -17,31 +17,60 @@ namespace Services.Infrastructure.Services
         private readonly EmployeeService _employeeService;
         private readonly AddressService _addressService;
         private readonly TtnService _ttnService;
+        private readonly ProductOrderService _productOrderService;
 
         public OrderService(
             OrderRepository recordRepository,
             AgentService agentService,
             EmployeeService employeeService,
             AddressService addressService,
-            TtnService ttnService)
+            TtnService ttnService,
+            ProductOrderService productOrderService)
             : base(recordRepository)
         {
             _agentService = agentService;
             _employeeService = employeeService;
             _addressService = addressService;
             _ttnService = ttnService;
+            _productOrderService = productOrderService;
         }
 
         public async Task<OperationResult<OrderDto>> TryCreate(OrderApiDto apiModel)
         {
             OperationResult<OrderDto> result = await GetModelByModelApi(apiModel);
 
-            if (result.IsSuccess)
+            if (!result.IsSuccess)
             {
-                return await Repository.Create(result.Result);
+                return result;
+            }
+            
+            var createOrderResult = await Repository.Create(result.Result);
+
+            if (!createOrderResult.IsSuccess)
+            {
+                OperationResult<OrderDto>.GetUnsuccessfulResult(createOrderResult.Error.Message);
             }
 
-            return result;
+            OrderDto order = createOrderResult.Result;
+
+            var productOrdersResult =
+                await _productOrderService.CreateProductOrderByOrder(result.Result, apiModel.OrderProducts);
+            
+            if (!productOrdersResult.IsSuccess)
+            {
+                var deleteResult = await Repository.Delete(order.Id);
+
+                if (!deleteResult.IsSuccess)
+                {
+                    string message = $"Fail in transaction. Please delete order with id {order}. ";
+
+                    return OperationResult<OrderDto>.GetUnsuccessfulResult(message + deleteResult.Error.Message);
+                }
+                
+                return OperationResult<OrderDto>.GetUnsuccessfulResult(productOrdersResult.Error.Message);
+            }
+
+            return createOrderResult;
         }
 
         public async Task<OperationResult<OrderDto>> TryUpdate(OrderApiDto apiModel)

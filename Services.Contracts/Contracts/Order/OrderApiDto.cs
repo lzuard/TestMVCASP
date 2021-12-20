@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Contracts.Contracts.ProductOrder;
 using Contracts.Contracts.StaticObjects;
 
 namespace Contracts.Contracts.Order
@@ -70,5 +72,10 @@ namespace Contracts.Contracts.Order
         /// Возвращает или устанавливает примечание
         /// </summary>
         public string Extra { get; set; }
+
+        /// <summary>
+        /// Возвращает или устанавливает список продуктов и их количесвто
+        /// </summary>
+        public List<ProductOrderApiDto> OrderProducts { get; set; } = new();
     }
 }
