@@ -60,12 +60,14 @@ import {
   TrashIcon,
   TruckIcon,
   FileTextIcon,
-  PieChartIcon
+  PieChartIcon,
+  BookmarkIcon
 } from '@iconicicons/vue3'
 
 export default {
   name: 'Sidebar',
   components: {
+    BookmarkIcon,
     BuildingIcon,
     BoxIcon,
     LogOutIcon,
@@ -87,11 +89,6 @@ export default {
   data: () => {
     return {
       sidebarRoutes: [
-        {
-          icon: 'BuildingIcon',
-          path: '/address',
-          title: 'Адреса'
-        },
         {
           icon: 'IndentRightIcon',
           path: '/orders',
@@ -131,6 +128,16 @@ export default {
           icon: 'PieChartIcon',
           path: '/reports',
           title: 'Отчеты'
+        },
+        {
+          icon: 'BuildingIcon',
+          path: '/address',
+          title: 'Адреса'
+        },
+        {
+          icon: 'BookmarkIcon',
+          path: '/category',
+          title: 'Категории'
         }
       ]
     }
