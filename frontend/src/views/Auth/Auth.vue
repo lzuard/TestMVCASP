@@ -54,10 +54,14 @@ export default {
       this.isLoading = true
 
       this.$store.dispatch('auth/authenticateUser', data)
-        .then(() => {
-          this.$router.push({ name: 'Main page' })
+        .then((isAuth) => {
+          if (isAuth) {
+            this.toast.error('Ошибка. Проверьте введенный логин и пароль')
+          } else {
+            this.$router.push({ name: 'Main page' })
+          }
         })
-        .catch((e) => {
+        .catch(() => {
           this.isLoading = false
           this.toast.error('Ошибка при авторизации')
         })

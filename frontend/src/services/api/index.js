@@ -1,15 +1,7 @@
 import api from './axiosInstance'
 
 export const authorizeUser = (payload) => {
-  return api.post('/auth', payload).then(({ data }) => {
-    console.log(data)
-  })
-}
-
-const logoutUser = (payload) => {
-  return api.post('/logout', payload).then(({ data }) => {
-    console.log(data)
-  })
+  return api.post('/Employee/auth', payload).then(({ data }) => data)
 }
 
 const getAgents = (payload) => {
@@ -38,7 +30,6 @@ const createTTN = (payload) => {
 
 export default {
   authorizeUser,
-  logoutUser,
   agents: {
     getAgents,
     createAgent

@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "c1ff310d-bcb8-4686-84f7-3d252709bcea": {
+      "ProjectGuid": "c1ff310d-bcb8-4686-84f7-3d252709bcea",
+      "DisplayName": "Services.ConsoleHost",
+      "ColorIndex": 0
+    },
+    "148a3003-365a-4faf-a849-99ff4bb2413c": {
+      "ProjectGuid": "148a3003-365a-4faf-a849-99ff4bb2413c",
+      "DisplayName": "Services.Infrastructure",
+      "ColorIndex": 1
+    },
+    "e4863e74-2dc1-4fdd-8063-2684717faac8": {
+      "ProjectGuid": "e4863e74-2dc1-4fdd-8063-2684717faac8",
+      "DisplayName": "Data.LTS",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Прочие файлы",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 3
+}

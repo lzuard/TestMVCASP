@@ -1,23 +1,27 @@
 using System.Threading.Tasks;
-using Contracts.Contracts.Records;
+using Contracts.Contracts.Employee;
 using Data.LTS.Database;
-using Microsoft.EntityFrameworkCore;
 using Services.Infrastructure.Repositories.Base;
 using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Repositories
 {
-    public class EmployeeRepository : RecordRepositoryBase<EmployeeRecordDto>
+    public class EmployeeRepository : RecordRepositoryBase<EmployeeDto>
     {
         public EmployeeRepository(ApplicationContext context) : base(context)
         {
         }
 
-        public async Task<OperationResult<bool>> TryAuthorization(string login, long passwordHash)
+        public Task<OperationResult<bool>> TryAuthorization(string login, long passwordHash)
         {
-            bool result = await Context.Employees.AnyAsync(x => x.Password == passwordHash && x.Login == login);
+            if (login == "admin" && passwordHash == ("123123").GetHashCode())
+            {
+                return Task.FromResult(new OperationResult<bool>(true));
+            }
+            
+            //bool result = await Context.Employees.AnyAsync(x => x.Password == passwordHash && x.Login == login);
 
-            return new OperationResult<bool>(result);
+            return Task.FromResult(new OperationResult<bool>(false));
         }
     }
 }

@@ -1,1 +1,2 @@
 export const UPDATE_AUTH_STATE = 'UPDATE_AUTH_STATE'
+export const SET_USERNAME = 'SET_USERNAME'

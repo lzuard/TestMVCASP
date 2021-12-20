@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { state as stateOnFront } from '@/store/modules/auth'
+import store from '@/store'
 
 import Auth from '@/views/Auth/Auth'
 import Main from '@/views/Main/Main'
@@ -37,7 +37,8 @@ const routes = [
     name: 'Authenticate',
     component: Auth,
     meta: {
-      title: 'Войти в систему'
+      title: 'Войти в систему',
+      auth: false
     }
   },
   {
@@ -211,11 +212,16 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.auth && !stateOnFront.isAuth) {
-    next({ name: 'Authenticate' })
-  }
+  const userIsAuth = store.state.auth.isAuth
+  const directionAuth = to.meta.auth
 
-  next()
+  if (directionAuth && !userIsAuth) {
+    next({ name: 'Authenticate' })
+  } else if (directionAuth === false && userIsAuth) {
+    next(from.path)
+  } else {
+    next()
+  }
 })
 
 router.beforeEach((to, from, next) => {

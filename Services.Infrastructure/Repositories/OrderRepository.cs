@@ -1,42 +1,45 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Contracts.Contracts.Records;
+using Contracts.Contracts.Order;
 using Data.LTS.Database;
 using Microsoft.EntityFrameworkCore;
 using Services.Infrastructure.Repositories.Base;
 using Services.Infrastructure.Utils;
-using Services.Infrastructure.SearchParameters;
 
 namespace Services.Infrastructure.Repositories
 {
-    public class OrderRepository : RecordRepositoryBase<OrderRecordDto>
+    public class OrderRepository : RecordRepositoryBase<OrderDto>
     {
         public OrderRepository(ApplicationContext context) : base(context)
         {
         }
 
-        public async Task<OperationResult<IEnumerable<OrderRecordDto>>> GetOrderByFilter(
-            OrderSearchParameters searchParameters)
+        public async Task<OperationResult<IEnumerable<OrderDto>>> GetOrderByFilter(
+            OrderFilterParametersDto filterParametersDto)
         {
-            IEnumerable<OrderRecordDto> result = await Context.Orders
+            throw new NotImplementedException();
+            /*
+            IEnumerable<OrderDto> result = await Context.Orders
                 .Where(x =>
-                    Helpers.NullableEquals(x.Id, searchParameters.OrderId) &&
-                    Helpers.NullableEquals(x.ClientId, searchParameters.ClientId) &&
-                    Helpers.NullableEquals(x.EmployeeId, searchParameters.EmployeeId) &&
-                    Helpers.NullableEquals(x.TransportCompanyId, searchParameters.TransportCompanyId) &&
-                    Helpers.NullableEquals(x.TtnId, searchParameters.TtnId) &&
-                    Helpers.NullableEquals(x.PaymentDocument, searchParameters.PaymentDocument) &&
-                    Helpers.NullableEquals(x.OrderingDate, searchParameters.OrderingDate) &&
-                    Helpers.NullableEquals(x.ShipmentDate, searchParameters.ShipmentDate) &&
-                    Helpers.NullableEquals(x.DeliveryDate, searchParameters.DeliveryDate) &&
-                    Helpers.NullableEquals(x.Status, searchParameters.Status) &&
-                    Helpers.NullableEquals(x.IsAcceptTransportCompany, searchParameters.IsAcceptTransportCompany) &&
-                    Helpers.NullableEquals(x.IsAcceptClient, searchParameters.IsAcceptClient) &&
-                    Helpers.NullableEquals(x.Extra, searchParameters.Extra))
+                    Helpers.NullableEquals(x.Id, filterParametersDto.OrderId) &&
+                    Helpers.NullableEquals(x.ClientId, filterParametersDto.ClientId) &&
+                    Helpers.NullableEquals(x.EmployeeId, filterParametersDto.EmployeeId) &&
+                    Helpers.NullableEquals(x.TransportCompanyId, filterParametersDto.TransportCompanyId) &&
+                    Helpers.NullableEquals(x.TtnId, filterParametersDto.TtnId) &&
+                    Helpers.NullableEquals(x.PaymentDocument, filterParametersDto.PaymentDocument) &&
+                    Helpers.NullableEquals(x.OrderingDate, filterParametersDto.OrderingDate) &&
+                    Helpers.NullableEquals(x.ShipmentDate, filterParametersDto.ShipmentDate) &&
+                    Helpers.NullableEquals(x.DeliveryDate, filterParametersDto.DeliveryDate) &&
+                    Helpers.NullableEquals(x.Status, filterParametersDto.Status) &&
+                    Helpers.NullableEquals(x.IsAcceptTransportCompany, filterParametersDto.IsAcceptTransportCompany) &&
+                    Helpers.NullableEquals(x.IsAcceptClient, filterParametersDto.IsAcceptClient) &&
+                    Helpers.NullableEquals(x.Extra, filterParametersDto.Extra))
                 .ToListAsync();
 
-            return new OperationResult<IEnumerable<OrderRecordDto>>(result);
+            return new OperationResult<IEnumerable<OrderDto>>(result);
+            */
         }
     }
 }

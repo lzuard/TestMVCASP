@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Contracts.Contracts.Base;
+using Contracts.Contracts;
 using Services.Infrastructure.Repositories.Interferes;
 using Services.Infrastructure.Services.Interferes;
 using Services.Infrastructure.Utils;
@@ -8,8 +8,7 @@ using Services.Infrastructure.Utils;
 namespace Services.Infrastructure.Services.Base
 {
     public class RecordServiceBase<TRepository, TModelDto> : IRecordService<TModelDto>
-        where TRepository : IRecordRepository<TModelDto>
-        where TModelDto : RecordDtoBase
+        where TRepository : IRecordRepository<TModelDto> where TModelDto : RecordDtoBase
     {
         protected readonly TRepository Repository;
 

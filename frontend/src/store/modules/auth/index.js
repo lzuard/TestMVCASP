@@ -1,21 +1,32 @@
-import { UPDATE_AUTH_STATE } from '@/store/modules/auth/mutation-types'
 import { authorizeUser } from '@/services/api'
+import {
+  UPDATE_AUTH_STATE,
+  SET_USERNAME
+} from './mutation-types'
 
-export const state = {
-  isAuth: true
+const state = {
+  isAuth: false,
+  userName: null
 }
 
 const mutations = {
-  [UPDATE_AUTH_STATE] (state, isAuth) {
-    state.isAuth = isAuth
+  [UPDATE_AUTH_STATE] (state, payload) {
+    state.isAuth = payload.isAuth
+  },
+
+  [SET_USERNAME] (state, payload) {
+    state.userName = payload.name
   }
 }
 
 const actions = {
   authenticateUser ({ commit }, dataToAuth) {
     return authorizeUser(dataToAuth)
-      .then(() => {
-        commit(UPDATE_AUTH_STATE, true)
+      .then((data) => {
+        commit(UPDATE_AUTH_STATE, { isAuth: data.resultAuthentication })
+        commit(SET_USERNAME, { name: data.message ?? '' })
+
+        return data.resultAuthentication
       })
   }
 }
