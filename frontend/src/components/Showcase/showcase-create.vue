@@ -134,7 +134,7 @@ export default {
   created () {
     this.dataToSend = {
       ...this.fields.reduce((result, current) => {
-        result[current.modelValue] = ''
+        result[current.modelValue] = null
         return result
       }, {})
     }

@@ -8,7 +8,7 @@
         }
       ]"
       :value="modelValue"
-      @change="$emit('update:modelValue', $event.target.value)"
+      @change="$emit('update:modelValue', +$event.target.value)"
     >
       <option selected disabled>
         {{ placeholder }}
@@ -46,8 +46,8 @@ export default {
       required: true
     },
     modelValue: {
-      type: String,
-      default: ''
+      type: Number,
+      default: null
     },
     isError: {
       type: Boolean,
