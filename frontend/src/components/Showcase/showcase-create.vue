@@ -144,7 +144,9 @@ export default {
     async onSend () {
       const isReady = await this.v$.$validate()
 
-      if (isReady) {
+      if (isReady && this.enableAddedFields) {
+        this.$emit('onSend', this.dataToSend, this.additionalItems)
+      } else if (isReady) {
         this.$emit('onSend', this.dataToSend)
       }
     },
