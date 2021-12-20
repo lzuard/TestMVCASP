@@ -8,7 +8,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
     [Route("api/[controller]")]
     [ApiController]
     public class RecordControllerBase<TService, TModelDto> : ControllerBase
-        where TService : IRecordService<TModelDto> where TModelDto : RecordDtoBase
+        where TService : IService<TModelDto> where TModelDto : RecordDtoBase
     {
         protected readonly TService Service;
 

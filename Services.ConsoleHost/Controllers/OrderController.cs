@@ -13,6 +13,32 @@ namespace Presentation.ConsoleHost.Controllers
         {
         }
 
+        [HttpPost("create")]
+        public async Task<IActionResult> Create(OrderApiDto apiModel)
+        {
+            var result = await Service.TryCreate(apiModel);
+            
+            if (result.IsSuccess)
+            {
+                return Ok(result.Result);
+            }
+
+            return BadRequest(result.Error.Message);
+        }
+
+        [HttpPut("update")]
+        public async Task<IActionResult> Update(OrderApiDto apiModel)
+        {
+            var result = await Service.TryUpdate(apiModel);
+            
+            if (result.IsSuccess)
+            {
+                return Ok(result.Result);
+            }
+
+            return NotFound();
+        }
+        
         [HttpGet("getByFilter")]
         public async Task<ActionResult<IEnumerable<OrderDto>>> GetOrderByFilter(
             OrderFilterDto filterDto)

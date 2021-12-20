@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Contracts.Contracts;
 using Services.Infrastructure.Repositories.Interferes;
@@ -8,7 +7,7 @@ using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Services.Base
 {
-    public class ServiceBase<TRepository, TModelDto> : IRecordService<TModelDto>
+    public class ServiceBase<TRepository, TModelDto> : IService<TModelDto>
         where TRepository : IRecordRepository<TModelDto> where TModelDto : RecordDtoBase
     {
         protected readonly TRepository Repository;
@@ -41,6 +40,18 @@ namespace Services.Infrastructure.Services.Base
         public virtual async Task<OperationResult<bool>> TryDelete(int modelId)
         {
             return await Repository.Delete(modelId);
+        }
+        
+        protected async Task<OperationResult<T>> GetModel<T>(IService<T> service, int id) where T : RecordDtoBase
+        {
+            OperationResult<T> modelResult = await service.TryGet(id);
+
+            if (modelResult.IsSuccess)
+            {
+                return OperationResult<T>.GetSuccessResult(modelResult.Result);
+            }
+
+            return OperationResult<T>.GetUnsuccessfulResult(modelResult.Error.Message);
         }
     }
 }

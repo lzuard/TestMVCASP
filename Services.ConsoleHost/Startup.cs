@@ -42,11 +42,14 @@ namespace Presentation.ConsoleHost
             services.AddScoped<ProductRepository>();
             services.AddScoped<ProductService>();
             
-            //services.AddScoped<OrderRepository>();
-            //services.AddScoped<OrderService>();
-            
             services.AddScoped<EmployeeRepository>();
             services.AddScoped<EmployeeService>();
+            
+            services.AddScoped<AgentRepository>();
+            services.AddScoped<AgentService>();
+            
+            services.AddScoped<OrderRepository>();
+            services.AddScoped<OrderService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

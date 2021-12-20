@@ -5,7 +5,7 @@ using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Services.Interferes
 {
-    public interface IRecordService<TModelDto> where TModelDto : RecordDtoBase
+    public interface IService<TModelDto> where TModelDto : RecordDtoBase
     {
         public Task<OperationResult<IEnumerable<TModelDto>>> TryGetAll();
         
