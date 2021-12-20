@@ -5,6 +5,7 @@
 <script>
 import Showcase from '@/components/Showcase'
 import { useToast } from 'vue-toastification'
+import { PACKAGE_TYPES } from '@/services/dictionaries'
 
 export default {
   name: 'ProductList',
@@ -58,6 +59,7 @@ export default {
   methods: {
     handlingProducts (data) {
       data.forEach((item) => {
+        item.packageType = PACKAGE_TYPES[item.packageType]
         item.category = item.category.name
         item.isDiscount = item.isDiscount ? 'Да' : 'Нет'
       })
