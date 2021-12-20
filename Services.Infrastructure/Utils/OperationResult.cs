@@ -44,5 +44,17 @@ namespace Services.Infrastructure.Utils
             IsSuccess = false;
             Error = error;
         }
+
+        public static OperationResult<TResult> GetSuccessResult(TResult result)
+        {
+            return new OperationResult<TResult>(result);
+        }
+        
+        public static OperationResult<TResult> GetUnsuccessfulResult(string message)
+        {
+            var error = new OperationResultError(message);
+            
+            return new OperationResult<TResult>(error);
+        }
     }
 }

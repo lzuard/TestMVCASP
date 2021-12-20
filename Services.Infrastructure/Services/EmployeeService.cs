@@ -1,26 +1,69 @@
+using Contracts.Contracts.Employee;
+using Services.Infrastructure.Repositories;
+using Services.Infrastructure.Services.Base;
+using Services.Infrastructure.Utils;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using Contracts.Contracts.Employee;
-using Services.Infrastructure.Repositories;
-using Services.Infrastructure.Services.Base;
-using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Services
 {
-    public class EmployeeService: RecordServiceBase<EmployeeRepository, EmployeeDto>
+    public class EmployeeService: ServiceBase<EmployeeRepository, EmployeeDto>
     {
         public EmployeeService(EmployeeRepository recordRepository) : base(recordRepository)
         {
         }
 
-        public override Task<OperationResult<EmployeeDto>> TryCreate(EmployeeDto model)
+        public override async Task<OperationResult<IEnumerable<EmployeeDto>>> TryGetAll()
+        {
+            var result = await base.TryGetAll();
+
+            if (result.IsSuccess)
+            {
+                foreach (EmployeeDto employee in result.Result)
+                {
+                    employee.Password = null;
+                }
+            }
+
+            return result;
+        }
+
+        public override async Task<OperationResult<EmployeeDto>> TryGet(int modelId)
+        {
+            var result = await base.TryGet(modelId);
+
+            if (result.IsSuccess)
+            {
+                result.Result.Password = null;
+            }
+            
+            return result;
+        }
+
+        public override Task<OperationResult<bool>> TryDelete(int modelId)
+        {
+            string message = "You have no permission";
+            
+            var result = OperationResult<bool>.GetUnsuccessfulResult(message);
+
+            return Task.FromResult(result);
+        }
+
+        public override async Task<OperationResult<EmployeeDto>> TryUpdate(EmployeeDto model)
         {
             model.Password = HashPassword(model.Password);
             
-            return base.TryCreate(model);
+            return await base.TryUpdate(model);
+        }
+
+        public override  async Task<OperationResult<EmployeeDto>> TryCreate(EmployeeDto model)
+        {
+            model.Password = HashPassword(model.Password);
+            
+            return await base.TryCreate(model);
         }
 
         public async Task<OperationResult<EmployeeAuthenticationResultDto>> TryAuthorization(
@@ -50,11 +93,10 @@ namespace Services.Infrastructure.Services
                     authorizationResult.ResultAuthentication = false;
                 }
                 
-                return new OperationResult<EmployeeAuthenticationResultDto>(authorizationResult);
+                return OperationResult<EmployeeAuthenticationResultDto>.GetSuccessResult(authorizationResult);
             }
 
-            return new OperationResult<EmployeeAuthenticationResultDto>(
-                new OperationResult<EmployeeAuthenticationResultDto>.OperationResultError(result.Error.Message));
+            return OperationResult<EmployeeAuthenticationResultDto>.GetUnsuccessfulResult(result.Error.Message);
         }
 
         public string HashPassword(string password)

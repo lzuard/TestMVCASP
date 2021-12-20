@@ -478,6 +478,9 @@ namespace Data.LTS.Migrations
                     b.Property<string>("Form")
                         .HasColumnType("text");
 
+                    b.Property<string>("Number")
+                        .HasColumnType("text");
+
                     b.Property<int>("Type")
                         .HasColumnType("integer");
 

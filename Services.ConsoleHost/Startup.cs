@@ -24,17 +24,44 @@ namespace Presentation.ConsoleHost
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            //services.AddSwaggerGen(c =>
-            //{
-            //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Services.ConsoleHost", Version = "v1" });
-           // });
-            
+
             services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(_connectionString));
 
-            services.AddScoped<OrderRepository>();
-            services.AddScoped<OrderService>();
+            services.AddScoped<AddressRepository>();
+            services.AddScoped<AddressService>();
+            
+            services.AddScoped<TtnRepository>();
+            services.AddScoped<TtnService>();
+
+            services.AddScoped<AgentTypeRepository>();
+            services.AddScoped<AgentTypeService>();
+            
+            services.AddScoped<CategoryRepository>();
+            services.AddScoped<CategoryService>();
+            
+            services.AddScoped<ProductRepository>();
+            services.AddScoped<ProductService>();
+            
             services.AddScoped<EmployeeRepository>();
             services.AddScoped<EmployeeService>();
+            
+            services.AddScoped<AgentRepository>();
+            services.AddScoped<AgentService>();
+            
+            services.AddScoped<ProductOrderRepository>();
+            services.AddScoped<ProductOrderService>();
+            
+            services.AddScoped<OrderRepository>();
+            services.AddScoped<OrderService>();
+            
+            services.AddScoped<SupplyRepository>();
+            services.AddScoped<SupplyService>();
+            
+            services.AddScoped<ReturnRepository>();
+            services.AddScoped<ReturnService>();
+            
+            services.AddScoped<UtilizationRepository>();
+            services.AddScoped<UtilizationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,8 +70,6 @@ namespace Presentation.ConsoleHost
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                //app.UseSwagger();
-                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Services.ConsoleHost v1"));
             }
             
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);

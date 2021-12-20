@@ -11,7 +11,6 @@ namespace Contracts.Contracts.Order
     {
         /// <summary>
         /// Возвращает или устанавливает клиента
-        /// (идентификатор контрагента)
         /// </summary>
         public AgentDto Client { get; set; }
         
@@ -21,12 +20,12 @@ namespace Contracts.Contracts.Order
         public EmployeeDto Employee { get; set; }
         
         /// <summary>
-        /// Возвращает или устанавливает идентификатор ТК
+        /// Возвращает или устанавливает ТК
         /// </summary>
         public AgentDto TransportCompany { get; set; }
         
         /// <summary>
-        /// Возвращает или устанавливает идентификатор адреса
+        /// Возвращает или устанавливает адреса
         /// </summary>
         public AddressDto Address { get; set; }
         

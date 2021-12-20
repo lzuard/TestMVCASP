@@ -6,6 +6,11 @@ namespace Contracts.Contracts.Ttn
     public class TtnDto : RecordDtoBase
     {
         /// <summary>
+        /// Возвращает или устанавливает номер ТТН.
+        /// </summary>
+        public string Number { get; set; }
+        
+        /// <summary>
         /// Возвращает или устанавливает тип ТТН.
         /// </summary>
         public TtnType Type { get; set; }

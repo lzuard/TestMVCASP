@@ -6,12 +6,12 @@ namespace Contracts.Contracts.Agent
     public class AgentDto : RecordDtoBase
     {
         /// <summary>
-        /// Возвращает или устанавливает электронную тип контрагента.
+        /// Возвращает или устанавливает тип контрагента.
         /// </summary>
         public AgentTypeDto Type { get; set; }
         
         /// <summary>
-        /// Возвращает или устанавливает электронную адресс контрагента.
+        /// Возвращает или устанавливает адресс контрагента.
         /// </summary>
         public AddressDto Address { get; set; }
         
