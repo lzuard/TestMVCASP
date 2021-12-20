@@ -33,12 +33,14 @@
       </div>
     </section>
 
-    <section class="showcase__result">
-      <editing-table
-        :table-headers="tableHeaders"
-        :table-data="tableData"
-      />
-    </section>
+    <transition name="fade">
+      <section v-show="tableData.length" class="showcase__result">
+        <editing-table
+          :table-headers="tableHeaders"
+          :table-data="tableData"
+        />
+      </section>
+    </transition>
   </div>
 </template>
 
