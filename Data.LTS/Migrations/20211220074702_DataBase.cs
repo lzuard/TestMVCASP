@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Data.LTS.Migrations
 {
-    public partial class TableLink : Migration
+    public partial class DataBase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,7 +44,7 @@ namespace Data.LTS.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CategoryDto",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -54,11 +54,11 @@ namespace Data.LTS.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoryDto", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CategoryDto_CategoryDto_ParentCategoryId",
+                        name: "FK_Categories_Categories_ParentCategoryId",
                         column: x => x.ParentCategoryId,
-                        principalTable: "CategoryDto",
+                        principalTable: "Categories",
                         principalColumn: "Id");
                 });
 
@@ -73,7 +73,7 @@ namespace Data.LTS.Migrations
                     ThirdName = table.Column<string>(type: "text", nullable: true),
                     BirthDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     PhoneNumber = table.Column<string>(type: "text", nullable: true),
-                    Password = table.Column<long>(type: "bigint", nullable: false),
+                    Password = table.Column<string>(type: "text", nullable: true),
                     Login = table.Column<string>(type: "text", nullable: true),
                     IsFired = table.Column<bool>(type: "boolean", nullable: false)
                 },
@@ -153,9 +153,9 @@ namespace Data.LTS.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_CategoryDto_CategoryId",
+                        name: "FK_Products_Categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "CategoryDto",
+                        principalTable: "Categories",
                         principalColumn: "Id");
                 });
 
@@ -407,8 +407,8 @@ namespace Data.LTS.Migrations
                 column: "TypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CategoryDto_ParentCategoryId",
-                table: "CategoryDto",
+                name: "IX_Categories_ParentCategoryId",
+                table: "Categories",
                 column: "ParentCategoryId");
 
             migrationBuilder.CreateIndex(
@@ -554,7 +554,7 @@ namespace Data.LTS.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "CategoryDto");
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Agents");

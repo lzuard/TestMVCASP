@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Data.LTS.Database;
 using Services.Infrastructure.Repositories.Interferes;
 using System.Threading.Tasks;
@@ -8,11 +9,11 @@ using Services.Infrastructure.Utils;
 
 namespace Services.Infrastructure.Repositories.Base
 {
-    public class RecordRepositoryBase<TModelDto> : IRecordRepository<TModelDto> where TModelDto : RecordDtoBase
+    public class RepositoryBase<TModelDto> : IRecordRepository<TModelDto> where TModelDto : RecordDtoBase
     {
         protected readonly ApplicationContext Context;
 
-        public RecordRepositoryBase(ApplicationContext context)
+        public RepositoryBase(ApplicationContext context)
         {
             Context = context;
         }
@@ -44,11 +45,11 @@ namespace Services.Infrastructure.Repositories.Base
             
             if (await Context.Set<TModelDto>().AnyAsync())
             {
-                newId = await Context.Set<TModelDto>().MaxAsync(x => x.Id);
+                newId = await Context.Set<TModelDto>().MaxAsync(x => x.Id) + 1;
             }
             
             model.Id = newId;
-            
+
             await Context.Set<TModelDto>().AddAsync(model);
 
             return await TrySaveChanges(model);
@@ -60,14 +61,13 @@ namespace Services.Infrastructure.Repositories.Base
 
             if (toUpdateModel == null)
             {
-                string error = $"Model with id{model.Id} not found";
+                string error = $"Model with id {model.Id} not found";
 
                 return new OperationResult<TModelDto>(new OperationResult<TModelDto>.OperationResultError(error));
             }
 
-            int id = toUpdateModel.Id;
+            model.Id = toUpdateModel.Id;
             toUpdateModel = model;
-            toUpdateModel.Id = id;
 
             Context.Update(toUpdateModel);
 
@@ -96,11 +96,9 @@ namespace Services.Infrastructure.Repositories.Base
             {
                 await Context.SaveChangesAsync();
             }
-            catch
+            catch(Exception ex)
             {
-                string error = $"Failed to save changes";
-
-                return new OperationResult<TResult>(new OperationResult<TResult>.OperationResultError(error));
+                return new OperationResult<TResult>(new OperationResult<TResult>.OperationResultError(ex.Message));
             }
 
             return new OperationResult<TResult>(result);

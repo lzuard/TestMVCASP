@@ -1,9 +1,14 @@
-﻿using System;
+using System;
 
 namespace Contracts.Contracts.Employee
 {
-    public class EmployeeDto : RecordDtoBase
+    public class EmployeeFilterDto
     {
+        /// <summary>
+        /// Возвращает или устанавливает идентификатор сотрудника
+        /// </summary>
+        public int? EmployeeId { get; set; }
+        
         /// <summary>
         /// Возвращает или устанавливает фамилию 
         /// </summary>
@@ -22,7 +27,7 @@ namespace Contracts.Contracts.Employee
         /// <summary>
         /// Возвращает или устанавливает дату рождения.
         /// </summary>
-        public DateTime BirthDate { get; set; }
+        public DateTimeOffset? BirthDate { get; set; }
 
         /// <summary>
         /// Возвращает или устанавливает номер телефона.
@@ -42,6 +47,6 @@ namespace Contracts.Contracts.Employee
         /// <summary>
         /// Возвращает или устанавливает уволен ли сотрудник.
         /// </summary>
-        public bool IsFired { get; set; }
+        public bool? IsFired { get; set; }
     }
 }

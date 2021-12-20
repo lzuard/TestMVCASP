@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Data.LTS.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20211219191941_TableLink")]
-    partial class TableLink
+    [Migration("20211220074702_DataBase")]
+    partial class DataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -133,7 +133,7 @@ namespace Data.LTS.Migrations
 
                     b.HasIndex("ParentCategoryId");
 
-                    b.ToTable("CategoryDto");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Contracts.Contracts.Employee.EmployeeDto", b =>
@@ -156,8 +156,8 @@ namespace Data.LTS.Migrations
                     b.Property<string>("Login")
                         .HasColumnType("text");
 
-                    b.Property<long>("Password")
-                        .HasColumnType("bigint");
+                    b.Property<string>("Password")
+                        .HasColumnType("text");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("text");

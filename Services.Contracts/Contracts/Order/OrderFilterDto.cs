@@ -3,7 +3,7 @@ using Contracts.Contracts.StaticObjects;
 
 namespace Contracts.Contracts.Order
 {
-    public class OrderFilterParametersDto
+    public class OrderFilterDto
     {
         /// <summary>
         /// Возвращает или устанавливает идентификатор заказа

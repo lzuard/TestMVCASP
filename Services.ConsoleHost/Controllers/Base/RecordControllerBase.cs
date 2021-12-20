@@ -53,7 +53,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
                 return Ok(result.Result);
             }
 
-            return NoContent();
+            return BadRequest(result.Error.Message);
         }
 
         [HttpPut]
