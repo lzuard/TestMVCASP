@@ -29,8 +29,15 @@ namespace Presentation.ConsoleHost
 
             services.AddScoped<AddressRepository>();
             services.AddScoped<AddressService>();
-            services.AddScoped<OrderRepository>();
-            services.AddScoped<OrderService>();
+            
+            services.AddScoped<TtnRepository>();
+            services.AddScoped<TtnService>();
+
+            services.AddScoped<AgentTypeRepository>();
+            services.AddScoped<AgentTypeService>();
+            //services.AddScoped<OrderRepository>();
+            //services.AddScoped<OrderService>();
+            
             services.AddScoped<EmployeeRepository>();
             services.AddScoped<EmployeeService>();
         }
