@@ -41,17 +41,5 @@ namespace Services.Infrastructure.Services.Base
         {
             return await Repository.Delete(modelId);
         }
-        
-        protected async Task<OperationResult<T>> GetModel<T>(IService<T> service, int id) where T : RecordDtoBase
-        {
-            OperationResult<T> modelResult = await service.TryGet(id);
-
-            if (modelResult.IsSuccess)
-            {
-                return OperationResult<T>.GetSuccessResult(modelResult.Result);
-            }
-
-            return OperationResult<T>.GetUnsuccessfulResult(modelResult.Error.Message);
-        }
     }
 }

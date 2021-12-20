@@ -69,15 +69,9 @@ namespace Services.Infrastructure.Services
         
         private async Task<OperationResult<ProductDto>> GetModelByModelApi(ProductApiDto apiModel)
         {
-            CategoryDto category;
-
             var categoryResult = await _categoryService.TryGet(apiModel.CategoryId);
 
-            if (categoryResult.IsSuccess)
-            {
-                category = categoryResult.Result;
-            }
-            else
+            if (!categoryResult.IsSuccess)
             {
                 return OperationResult<ProductDto>.GetUnsuccessfulResult(categoryResult.Error.Message);
             }
@@ -87,7 +81,7 @@ namespace Services.Infrastructure.Services
                 Art = apiModel.Art,
                 Manufacture = apiModel.Manufacture,
                 Name = apiModel.Name,
-                Category = category,
+                Category = categoryResult.Result,
                 PackageType = apiModel.PackageType,
                 PackageNumber = apiModel.PackageNumber,
                 Quantity = apiModel.Quantity,

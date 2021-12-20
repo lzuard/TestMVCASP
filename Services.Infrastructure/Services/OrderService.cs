@@ -91,11 +91,11 @@ namespace Services.Infrastructure.Services
 
         private async Task<OperationResult<OrderDto>> GetModelByModelApi(OrderApiDto apiModel)
         {
-            OperationResult<AgentDto> clientResult = await GetModel(_agentService, apiModel.ClientId);
-            OperationResult<EmployeeDto> employeeResult = await GetModel(_employeeService, apiModel.EmployeeId);
-            OperationResult<AgentDto> transportCompanyResult = await GetModel(_agentService, apiModel.ClientId);
-            OperationResult<AddressDto> addressResult = await GetModel(_addressService, apiModel.ClientId);
-            OperationResult<TtnDto> ttnResult = await GetModel(_ttnService, apiModel.ClientId);
+            OperationResult<AgentDto> clientResult = await _agentService.TryGet(apiModel.ClientId);
+            OperationResult<EmployeeDto> employeeResult = await _employeeService.TryGet(apiModel.EmployeeId);
+            OperationResult<AgentDto> transportCompanyResult = await _agentService.TryGet(apiModel.ClientId);
+            OperationResult<AddressDto> addressResult = await _addressService.TryGet(apiModel.ClientId);
+            OperationResult<TtnDto> ttnResult = await _ttnService.TryGet(apiModel.ClientId);
 
             if (!clientResult.IsSuccess)
             {
