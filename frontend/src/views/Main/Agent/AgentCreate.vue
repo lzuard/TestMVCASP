@@ -1,5 +1,5 @@
 <template>
-  <showcase-create v-bind="createData" @onSend="createAgent($event)"/>
+  <showcase-create ref="form" v-bind="createData" @onSend="createAgent($event)"/>
 </template>
 
 <script>
@@ -117,7 +117,7 @@ export default {
       .then((data) => {
         this.createData.fields.find(item => item.modelValue === 'addressId').values = data.map(item => {
           return Object.assign({}, {
-            text: `${item.index}, ${item.subject}, ${item.location}, ${item.street}, ${item.house}`,
+            text: `${item.index}, ${item.subject}, ${item.location}, ${item.street ?? '-'}, ${item.house ?? ''}`,
             value: item.id
           })
         })
