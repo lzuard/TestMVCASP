@@ -48,11 +48,20 @@ export default {
   created () {
     this.$api.product.getProducts()
       .then((data) => {
+        this.handlingProducts(data)
         this.showCaseData.tableData = data
       })
       .catch(() => {
         this.toast.error('Ошибка при загрузке продукции')
       })
+  },
+  methods: {
+    handlingProducts (data) {
+      data.forEach((item) => {
+        item.category = item.category.name
+        item.isDiscount = item.isDiscount ? 'Да' : 'Нет'
+      })
+    }
   }
 }
 </script>
