@@ -4,11 +4,16 @@
 
 <script>
 import Showcase from '@/components/Showcase'
+import { useToast } from 'vue-toastification'
 
 export default {
   name: 'AgentList',
   components: {
     Showcase
+  },
+  setup () {
+    const toast = useToast()
+    return { toast }
   },
   data: () => {
     return {
@@ -17,35 +22,36 @@ export default {
         linkToCreate: '/agents/create',
         createCaption: 'Создать контрагента',
         tableHeaders: [
+          '№',
           'Тип',
           'Адрес',
           'Наименование',
-          'ИНН',
           'Расчетный счет',
+          'ИНН',
           'Телефон',
           'Электронная почта'
         ],
-        tableData: [
-          {
-            type: 'ТК',
-            address: 'Адрес',
-            name: 'Автотрейд',
-            inn: '54352544235',
-            bill: '5435236267',
-            phone: '+799970012312',
-            email: 'admin@gmail.com'
-          }
-        ],
-        sortTypes: [
-          'Тип',
-          'Адрес',
-          'Наименование',
-          'ИНН',
-          'Расчетный счет',
-          'Телефон',
-          'Электронная почта'
-        ]
+        tableData: [],
+        sortTypes: []
       }
+    }
+  },
+  created () {
+    this.$api.agent.getAgents()
+      .then((data) => {
+        this.handlingAgentData(data)
+        this.showCaseData.tableData = data
+      })
+      .catch(() => {
+        this.toast.error('Ошибка при загрузке контрагентов')
+      })
+  },
+  methods: {
+    handlingAgentData (data) {
+      data.forEach((item) => {
+        item.type = item.type.name
+        item.address = `${item.address.index}, ${item.address.subject}, ${item.address.location}, ${item.address.street}, ${item.address.house}`
+      })
     }
   }
 }

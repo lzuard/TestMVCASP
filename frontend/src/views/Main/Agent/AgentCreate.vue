@@ -12,11 +12,16 @@ import {
   email,
   phone
 } from '@/utils/validation/i18n-validators'
+import { useToast } from 'vue-toastification'
 
 export default {
   name: 'AgentCreate',
   components: {
     ShowcaseCreate
+  },
+  setup () {
+    const toast = useToast()
+    return { toast }
   },
   data: () => {
     return {
@@ -24,64 +29,49 @@ export default {
         title: 'Создать контрагента',
         fields: [
           {
-            label: 'Наименование',
-            placeholder: 'Наименование',
-            modelValue: 'name',
-            validation: { required }
+            label: 'Тип',
+            placeholder: 'Тип контрагента',
+            type: 'select',
+            modelValue: 'agentTypeId',
+            validation: { required },
+            values: []
           },
           {
             label: 'Адрес',
             placeholder: 'Адрес',
-            modelValue: 'address',
-            validation: { required }
-          },
-          {
-            label: 'Тип',
-            placeholder: 'Тип контрагента',
             type: 'select',
-            modelValue: 'agentType',
-            cols: ['col-md-4'],
+            modelValue: 'addressId',
             validation: { required },
-            values: [
-              {
-                text: 'Утилизатор',
-                value: 'util'
-              },
-              {
-                text: 'Клиент',
-                value: 'client'
-              },
-              {
-                text: 'Поставщик',
-                value: 'supplier'
-              },
-              {
-                text: 'ТК',
-                value: 'tk'
-              }
-            ]
+            values: []
           },
           {
-            label: 'ИНН',
-            placeholder: 'ИНН',
-            modelValue: 'inn',
-            validation: {
-              required,
-              numeric,
-              minLength: minLength(10),
-              maxLength: maxLength(12)
-            },
-            cols: ['col-md-4']
+            label: 'Наименование',
+            placeholder: 'Наименование',
+            modelValue: 'organizationName',
+            cols: ['col-md-4'],
+            validation: { required }
           },
           {
             label: 'Расчетный счет',
             placeholder: 'Расчетный счет',
-            modelValue: 'bill',
+            modelValue: 'checkingAccount',
             validation: {
               required,
               numeric,
               minLength: minLength(20),
               maxLength: maxLength(20)
+            },
+            cols: ['col-md-4']
+          },
+          {
+            label: 'ИНН',
+            placeholder: 'ИНН',
+            modelValue: 'individualTaxpayerNumber',
+            validation: {
+              required,
+              numeric,
+              minLength: minLength(10),
+              maxLength: maxLength(12)
             },
             cols: ['col-md-4']
           },
@@ -104,7 +94,34 @@ export default {
     }
   },
   methods: {
-    createAgent (data) {}
+    createAgent (data) {
+      this.$api.agent.createAgent(data)
+        .then(() => {
+          this.toast.success('Контрагент успешно создан')
+          this.$refs.form.clearForm()
+        })
+        .catch(() => {
+          this.toast.error('Ошибка при создании контрагента, повторите позже')
+        })
+    }
+  },
+  created () {
+    this.$api.agent.getAgentTypes()
+      .then(data => {
+        this.createData.fields.find(item => item.modelValue === 'agentTypeId').values = data.map(item => {
+          return Object.assign({}, { text: item.name, value: item.id })
+        })
+      })
+
+    this.$api.address.getAddressForUsing()
+      .then((data) => {
+        this.createData.fields.find(item => item.modelValue === 'addressId').values = data.map(item => {
+          return Object.assign({}, {
+            text: `${item.index}, ${item.subject}, ${item.location}, ${item.street}, ${item.house}`,
+            value: item.id
+          })
+        })
+      })
   }
 }
 </script>
