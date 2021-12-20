@@ -4,12 +4,6 @@ export const authorizeUser = (payload) => {
   return api.post('/Employee/auth', payload).then(({ data }) => data)
 }
 
-const logoutUser = (payload) => {
-  return api.post('/logout', payload).then(({ data }) => {
-    console.log(data)
-  })
-}
-
 const getAgents = (payload) => {
   return api.get('/agents', payload).then(({ data }) => {
     console.log(data)
@@ -36,7 +30,6 @@ const createTTN = (payload) => {
 
 export default {
   authorizeUser,
-  logoutUser,
   agents: {
     getAgents,
     createAgent
