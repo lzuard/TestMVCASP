@@ -55,8 +55,9 @@ export default {
 
       this.$store.dispatch('auth/authenticateUser', data)
         .then((isAuth) => {
-          if (isAuth) {
+          if (!isAuth) {
             this.toast.error('Ошибка. Проверьте введенный логин и пароль')
+            this.isLoading = false
           } else {
             this.$router.push({ name: 'Main page' })
           }
