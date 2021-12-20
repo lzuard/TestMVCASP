@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Contracts.Contracts.Agent;
 using Data.LTS.Database;
@@ -39,6 +40,26 @@ namespace Services.Infrastructure.Repositories
             }
 
             return OperationResult<AgentDto>.GetSuccessResult(model);
+        }
+
+        public async Task<OperationResult<IEnumerable<AgentDto>>> GetByFilter(AgentFilterDto filterDto)
+        {
+            IEnumerable<AgentDto> result = await Context.Agents
+                .Include(x => x.Type)
+                .Include(x => x.Address)
+                .Where(x =>
+                    (x.Id == filterDto.AgentId || filterDto.AgentId == null) &&
+                    (x.Type.Id == filterDto.TypeId || filterDto.TypeId == null) &&
+                    (x.Address.Id == filterDto.AddressId || filterDto.AddressId == null) &&
+                    (x.OrganizationName == filterDto.OrganizationName || filterDto.OrganizationName == null) &&
+                    (x.CheckingAccount == filterDto.CheckingAccount || filterDto.CheckingAccount == null) &&
+                    (x.IndividualTaxpayerNumber == filterDto.IndividualTaxpayerNumber ||
+                     filterDto.IndividualTaxpayerNumber == null) &&
+                    (x.Phone == filterDto.Phone || filterDto.Phone == null) &&
+                    (x.Email == filterDto.Email || filterDto.Email == null))
+                .ToListAsync();
+
+            return new OperationResult<IEnumerable<AgentDto>>(result);
         }
     }
 }

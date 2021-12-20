@@ -40,8 +40,7 @@ namespace Presentation.ConsoleHost.Controllers
         }
         
         [HttpGet("getByFilter")]
-        public async Task<ActionResult<IEnumerable<OrderDto>>> GetOrderByFilter(
-            OrderFilterDto filterDto)
+        public async Task<ActionResult<IEnumerable<OrderDto>>> GetOrderByFilter(OrderFilterDto filterDto)
         {
             var result = await Service.TryGetOrderByFilter(filterDto);
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Contracts.Contracts.Agent;
 using Microsoft.AspNetCore.Mvc;
@@ -36,6 +37,19 @@ namespace Presentation.ConsoleHost.Controllers
             }
 
             return NotFound();
+        }
+        
+        [HttpGet("getByFilter")]
+        public async Task<ActionResult<IEnumerable<AgentDto>>> GetOrderByFilter(AgentFilterDto filterDto)
+        {
+            var result = await Service.TryGetOrderByFilter(filterDto);
+
+            if (result.IsSuccess)
+            {
+                return Ok(result.Result);
+            }
+
+            return NoContent();
         }
     }
 }

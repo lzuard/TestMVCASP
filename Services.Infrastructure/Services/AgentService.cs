@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Contracts.Contracts.Address;
 using Contracts.Contracts.Agent;
@@ -60,6 +61,12 @@ namespace Services.Infrastructure.Services
             var result = OperationResult<AgentDto>.GetUnsuccessfulResult(message);
 
             return Task.FromResult(result);
+        }
+        
+        public async Task<OperationResult<IEnumerable<AgentDto>>> TryGetOrderByFilter(
+            AgentFilterDto filterDto)
+        {
+            return await Repository.GetByFilter(filterDto);
         }
 
         public override Task<OperationResult<bool>> TryDelete(int modelId)
