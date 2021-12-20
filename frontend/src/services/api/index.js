@@ -4,6 +4,10 @@ export const authorizeUser = (payload) => {
   return api.post('/Employee/auth', payload).then(({ data }) => data)
 }
 
+const getEmployee = () => {
+  return api.get('/Employee').then(({ data }) => data)
+}
+
 const createAddress = (payload) => {
   return api.post('/Address', payload).then(({ data }) => data)
 }
@@ -13,11 +17,15 @@ const getAddress = () => {
 }
 
 const getAddressForUsing = () => {
-  return api.get('/Address').then(({ data }) => serialize(data))
+  return api.get('/Address').then(({ data }) => data)
 }
 
 const getTTN = () => {
   return api.get('/Ttn').then(({ data }) => serialize(data))
+}
+
+const getTTNForUsing = () => {
+  return api.get('/Ttn').then(({ data }) => data)
 }
 
 const createTTN = (payload) => {
@@ -40,6 +48,10 @@ const getProducts = () => {
   return api.get('/Product').then(({ data }) => serialize(data))
 }
 
+const getProductsForUsing = () => {
+  return api.get('/Product').then(({ data }) => data)
+}
+
 const createProduct = (payload) => {
   return api.post('/Product/create', payload).then(({ data }) => data)
 }
@@ -52,8 +64,28 @@ const getAgents = () => {
   return api.get('/Agent').then(({ data }) => serialize(data))
 }
 
+const getAgentByCategory = (id) => {
+  return api.post('/Agent/getByFilter', { typeId: id }).then(({ data }) => data)
+}
+
 const createAgent = (payload) => {
   return api.post('/Agent/create', payload).then(({ data }) => data)
+}
+
+const getOrders = () => {
+  return api.get('/Order').then(({ data }) => serialize(data))
+}
+
+const createOrder = (payload) => {
+  return api.post('/Order/create', payload).then(({ data }) => data)
+}
+
+const getSupplies = () => {
+  return api.get('/Supply').then(({ data }) => serialize(data))
+}
+
+const createSupply = (payload) => {
+  return api.post('/Supply/create', payload).then(({ data }) => data)
 }
 
 const serialize = (payload) => {
@@ -61,7 +93,7 @@ const serialize = (payload) => {
     delete item.id
 
     for (const key in item) {
-      if (!item[key]) {
+      if (item[key] === null) {
         item[key] = '-'
       }
     }
@@ -72,6 +104,9 @@ const serialize = (payload) => {
 
 export default {
   authorizeUser,
+  employee: {
+    getEmployee
+  },
   address: {
     createAddress,
     getAddress,
@@ -79,6 +114,7 @@ export default {
   },
   ttn: {
     getTTN,
+    getTTNForUsing,
     createTTN
   },
   category: {
@@ -88,11 +124,21 @@ export default {
   },
   product: {
     getProducts,
+    getProductsForUsing,
     createProduct
   },
   agent: {
     getAgentTypes,
     getAgents,
+    getAgentByCategory,
     createAgent
+  },
+  order: {
+    getOrders,
+    createOrder
+  },
+  supply: {
+    getSupplies,
+    createSupply
   }
 }
