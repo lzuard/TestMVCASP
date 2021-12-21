@@ -38,25 +38,26 @@ namespace Services.Infrastructure.Services
 
             return result;
         }
-        
-        public override Task<OperationResult<ProductDto>> TryCreate(ProductDto model)
+
+        public async Task<OperationResult<ProductDto>> TryChangeQuantity(ProductDto product, int newQuantity)
         {
-            string message = "You have no permission";
+            if (newQuantity < 0)
+            {
+                string message = $"The quantity of goods in stock cannot be negative {product.Name}";
+                    
+                return OperationResult<ProductDto>.GetUnsuccessfulResult(message);
+            }
 
-            var result = OperationResult<ProductDto>.GetUnsuccessfulResult(message);
+            var updateResult = await Repository.Update(product);
+                
+            if (!updateResult.IsSuccess)
+            {
+                return OperationResult<ProductDto>.GetUnsuccessfulResult(updateResult.Error.Message);
+            }
 
-            return Task.FromResult(result);
+            return updateResult;
         }
 
-        public override Task<OperationResult<bool>> TryDelete(int modelId)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<bool>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
-        }
-        
         private async Task<OperationResult<ProductDto>> GetModelByModelApi(ProductApiDto apiModel)
         {
             var categoryResult = await _categoryService.TryGet(apiModel.CategoryId);

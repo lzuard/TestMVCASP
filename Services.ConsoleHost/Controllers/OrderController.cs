@@ -12,6 +12,16 @@ namespace Presentation.ConsoleHost.Controllers
         public OrderController(OrderService service) : base(service)
         {
         }
+        
+        public override async Task<IActionResult> Create(OrderDto model)
+        {
+            return BadRequest(error:"You have no permission");
+        }
+
+        public override async Task<IActionResult> Update(OrderDto model)
+        {
+            return BadRequest(error:"You have no permission");
+        }
 
         [HttpPost("create")]
         public async Task<IActionResult> Create(OrderApiDto apiModel)

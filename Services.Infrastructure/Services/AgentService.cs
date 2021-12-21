@@ -45,37 +45,10 @@ namespace Services.Infrastructure.Services
             return result;
         }
 
-        public override Task<OperationResult<AgentDto>> TryCreate(AgentDto model)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<AgentDto>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
-        }
-
-        public override Task<OperationResult<AgentDto>> TryUpdate(AgentDto model)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<AgentDto>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
-        }
-        
         public async Task<OperationResult<IEnumerable<AgentDto>>> TryGetOrderByFilter(
             AgentFilterDto filterDto)
         {
             return await Repository.GetByFilter(filterDto);
-        }
-
-        public override Task<OperationResult<bool>> TryDelete(int modelId)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<bool>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
         }
 
         private async Task<OperationResult<AgentDto>> GetModelByModelApi(AgentApiDto apiModel)

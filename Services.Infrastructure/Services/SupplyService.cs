@@ -11,28 +11,50 @@ namespace Services.Infrastructure.Services
         private readonly AgentService _agentService;
         private readonly EmployeeService _employeeService;
         private readonly TtnService _ttnService;
+        private readonly ProductSupplyService _productSupplyService;
 
         public SupplyService(SupplyRepository recordRepository,
             AgentService agentService,
             EmployeeService employeeService,
-            TtnService ttnService)
+            TtnService ttnService,
+            ProductSupplyService productSupplyService)
             : base(recordRepository)
         {
             _agentService = agentService;
             _employeeService = employeeService;
             _ttnService = ttnService;
+            _productSupplyService = productSupplyService;
         }
 
         public async Task<OperationResult<SupplyDto>> TryCreate(SupplyApiDto apiModel)
         {
-            OperationResult<SupplyDto> result = await GetModelByModelApi(apiModel);
+            OperationResult<SupplyDto> convertResult = await GetModelByModelApi(apiModel);
 
-            if (result.IsSuccess)
+            if (!convertResult.IsSuccess)
             {
-                return await Repository.Create(result.Result);
+                return convertResult;
             }
 
-            return result;
+            OperationResult<SupplyDto> createSupplyResult = await Repository.Create(convertResult.Result);
+
+            if (!createSupplyResult.IsSuccess)
+            {
+                return createSupplyResult;
+            }
+
+            SupplyDto supply = createSupplyResult.Result;
+
+            var createSupplyProductsResult =
+                await _productSupplyService.CreateSupplyProductsByOrder(supply, apiModel.SupplyProducts);
+
+            if (!createSupplyProductsResult.IsSuccess)
+            {
+                await Repository.Delete(supply.Id);
+
+                return OperationResult<SupplyDto>.GetUnsuccessfulResult(createSupplyProductsResult.Error.Message);
+            }
+
+            return createSupplyResult;
         }
 
         public async Task<OperationResult<SupplyDto>> TryUpdate(SupplyApiDto apiModel)
@@ -45,33 +67,6 @@ namespace Services.Infrastructure.Services
             }
 
             return result;
-        }
-
-        public override Task<OperationResult<SupplyDto>> TryCreate(SupplyDto model)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<SupplyDto>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
-        }
-
-        public override Task<OperationResult<SupplyDto>> TryUpdate(SupplyDto model)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<SupplyDto>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
-        }
-
-        public override Task<OperationResult<bool>> TryDelete(int modelId)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<bool>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
         }
 
         private async Task<OperationResult<SupplyDto>> GetModelByModelApi(SupplyApiDto apiModel)

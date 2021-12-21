@@ -47,33 +47,6 @@ namespace Services.Infrastructure.Services
             return result;
         }
 
-        public override Task<OperationResult<ReturnDto>> TryCreate(ReturnDto model)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<ReturnDto>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
-        }
-
-        public override Task<OperationResult<ReturnDto>> TryUpdate(ReturnDto model)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<ReturnDto>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
-        }
-
-        public override Task<OperationResult<bool>> TryDelete(int modelId)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<bool>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
-        }
-
         private async Task<OperationResult<ReturnDto>> GetModelByModelApi(ReturnApiDto apiModel)
         {
             var orderResult = await _orderService.TryGet(apiModel.OrderId);

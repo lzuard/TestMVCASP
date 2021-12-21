@@ -60,14 +60,5 @@ namespace Services.Infrastructure.Services
 
             return await base.TryUpdate(model);
         }
-
-        public override Task<OperationResult<bool>> TryDelete(int modelId)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<bool>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
-        }
     }
 }

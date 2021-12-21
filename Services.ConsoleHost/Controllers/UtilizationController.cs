@@ -11,6 +11,16 @@ namespace Presentation.ConsoleHost.Controllers
         public UtilizationController(UtilizationService service) : base(service)
         {
         }
+        
+        public override async Task<IActionResult> Create(UtilizationDto model)
+        {
+            return BadRequest(error:"You have no permission");
+        }
+
+        public override async Task<IActionResult> Update(UtilizationDto model)
+        {
+            return BadRequest(error:"You have no permission");
+        }
 
         [HttpPost("create")]
         public async Task<IActionResult> Create(UtilizationApiDto apiModel)

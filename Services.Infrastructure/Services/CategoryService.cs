@@ -36,33 +36,6 @@ namespace Services.Infrastructure.Services
             return result;
         }
 
-        public override Task<OperationResult<CategoryDto>> TryCreate(CategoryDto model)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<CategoryDto>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
-        }
-
-        public override Task<OperationResult<CategoryDto>> TryUpdate(CategoryDto model)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<CategoryDto>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
-        }
-
-        public override Task<OperationResult<bool>> TryDelete(int modelId)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<bool>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
-        }
-
         private async Task<OperationResult<CategoryDto>> GetModelByModelApi(CategoryApiDto apiModel)
         {
             CategoryDto parentCategory = null;
