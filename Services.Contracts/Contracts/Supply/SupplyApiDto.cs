@@ -50,6 +50,6 @@ namespace Contracts.Contracts.Supply
         /// <summary>
         /// Возвращает или устанавливает список продуктов и их количесвто
         /// </summary>
-        public List<ProductSupplyApiDto> SupplyProducts = new();
+        public List<ProductSupplyApiDto> SupplyProducts { get; set; } = new();
     }
 }

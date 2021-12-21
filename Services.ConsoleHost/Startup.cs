@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Services.Infrastructure.Repositories;
 using Services.Infrastructure.Services;
+using Services.Infrastructure.Services.Reports;
 
 namespace Presentation.ConsoleHost
 {
@@ -68,6 +69,9 @@ namespace Presentation.ConsoleHost
             
             services.AddScoped<UtilizationRepository>();
             services.AddScoped<UtilizationService>();
+
+            services.AddScoped<ReportRepository>();
+            services.AddScoped<ReportService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

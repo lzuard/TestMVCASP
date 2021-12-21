@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "Services.ConsoleHost/1.0.0": {
         "dependencies": {
+          "Microsoft.Web.Iis.Rewrite": "7.2.2",
           "Services.Infrastructure": "1.0.0",
           "Swashbuckle.AspNetCore": "6.0.0",
           "WebGrease": "1.6.0"
@@ -310,6 +311,7 @@
           }
         }
       },
+      "Microsoft.Web.Iis.Rewrite/7.2.2": {},
       "Newtonsoft.Json/13.0.1": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
@@ -975,6 +977,13 @@
       "sha512": "sha512-Nug3rO+7Kl5/SBAadzSMAVgqDlfGjJZ0GenQrLywJ84XGKO0uRqkunz5Wyl0SDwcR71bAATXvSdbdzPrYRYKGw==",
       "path": "microsoft.openapi/1.2.3",
       "hashPath": "microsoft.openapi.1.2.3.nupkg.sha512"
+    },
+    "Microsoft.Web.Iis.Rewrite/7.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ULBCVJJ0Mmpsox0YVPYkNxk7U8j5dZE7mtrRFi+OEzpv/XAgtOhaf3wjpr8GFBJ1zt9NJMcr0X0acVRjxyGDdQ==",
+      "path": "microsoft.web.iis.rewrite/7.2.2",
+      "hashPath": "microsoft.web.iis.rewrite.7.2.2.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.1": {
       "type": "package",
