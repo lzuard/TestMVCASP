@@ -45,7 +45,7 @@ namespace Services.Infrastructure.Services
             SupplyDto supply = createSupplyResult.Result;
 
             var createSupplyProductsResult =
-                await _productSupplyService.CreateSupplyProductsByOrder(supply, apiModel.SupplyProducts);
+                await _productSupplyService.TryCreateSupplyProductsByOrder(supply, apiModel.SupplyProducts);
 
             if (!createSupplyProductsResult.IsSuccess)
             {

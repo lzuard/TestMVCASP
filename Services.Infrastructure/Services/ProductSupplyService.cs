@@ -21,7 +21,7 @@ namespace Services.Infrastructure.Services
             _productService = productService;
         }
 
-        public async Task<OperationResult<List<ProductSupplyDto>>> CreateSupplyProductsByOrder(
+        public async Task<OperationResult<List<ProductSupplyDto>>> TryCreateSupplyProductsByOrder(
             SupplyDto supply,
             List<ProductSupplyApiDto> supplyProducts)
         {
@@ -55,7 +55,7 @@ namespace Services.Infrastructure.Services
 
                 createdSupplyProducts.Add(model);
 
-                int newQuantity = product.Quantity -= supplyProduct.Quantity;
+                int newQuantity = product.Quantity += supplyProduct.Quantity;
 
                 var changeQuantityResult = await _productService.TryChangeQuantity(product, newQuantity);
 

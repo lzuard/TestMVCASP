@@ -54,7 +54,7 @@ namespace Services.Infrastructure.Services
             OrderDto order = createOrderResult.Result;
 
             var productOrdersResult =
-                await _productOrderService.CreateProductOrderByOrder(result.Result, apiModel.OrderProducts);
+                await _productOrderService.TryCreateProductOrderByOrder(result.Result, apiModel.OrderProducts);
             
             if (!productOrdersResult.IsSuccess)
             {

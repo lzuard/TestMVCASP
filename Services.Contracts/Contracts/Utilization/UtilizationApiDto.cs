@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Contracts.Contracts.ProductUtil;
 
 namespace Contracts.Contracts.Utilization
 {
@@ -28,5 +30,10 @@ namespace Contracts.Contracts.Utilization
         /// Возвращает или устанавливает дату отгрузки
         /// </summary>
         public DateTime ShipmentDate { get; set; }
+        
+        /// <summary>
+        /// Возвращает или устанавливает список продуктов
+        /// </summary>
+        public List<ProductUtilApiDto> UtilProducts = new();
     }
 }

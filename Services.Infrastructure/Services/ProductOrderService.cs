@@ -21,7 +21,7 @@ namespace Services.Infrastructure.Services
             _productService = productService;
         }
 
-        public async Task<OperationResult<List<ProductOrderDto>>> CreateProductOrderByOrder(OrderDto order,
+        public async Task<OperationResult<List<ProductOrderDto>>> TryCreateProductOrderByOrder(OrderDto order,
             List<ProductOrderApiDto> orderProducts)
         {
             var createdOrderProducts = new List<ProductOrderDto>();
