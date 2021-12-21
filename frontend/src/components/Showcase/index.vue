@@ -6,7 +6,7 @@
       :link-to-create="linkToCreate"
     />
 
-    <section class="showcase__search">
+    <section v-if="enableSearch" class="showcase__search">
       <div class="showcase__search-title">
         Поиск:
       </div>
@@ -15,6 +15,7 @@
           v-model="searchValue"
           placeholder="Поиск"
           class="showcase__search-input"
+          @input="onSearch"
         />
         <filter-board class="showcase__search-radio" title="Поле поиска">
           <label
@@ -24,16 +25,17 @@
             <input
               type="radio"
               class="form-check-input"
-              :value="sort"
+              :value="sort.value"
               v-model="sortValue"
+              @change="onSearch"
             >
-            {{ sort }}
+            {{ sort.text }}
           </label>
         </filter-board>
       </div>
     </section>
 
-    <transition name="fade">
+    <transition name="fade" mode="out-in">
       <section v-show="tableData.length" class="showcase__result">
         <editing-table
           :table-headers="tableHeaders"
@@ -77,6 +79,10 @@ export default {
       type: String,
       require: true
     },
+    enableSearch: {
+      type: Boolean,
+      default: false
+    },
     tableHeaders: {
       type: Array,
       default: () => ([])
@@ -94,7 +100,15 @@ export default {
     if (this.sortTypes && this.sortTypes.length) {
       this.sortValue = this.sortTypes[0]
     }
-  }
+  },
+  methods: {
+    onSearch () {
+      if (this.sortValue && this.searchValue) {
+        this.$emit('onSearch', { value: this.searchValue, sortValue: this.sortValue })
+      }
+    }
+  },
+  emits: ['onSearch']
 }
 </script>
 
