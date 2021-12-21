@@ -6,14 +6,14 @@ namespace Services.Infrastructure.Services.Interferes
 {
     public interface IReportService
     {
-        Task<OperationResult<CostOrderAndProductListResultDto>> GetCostOrderAndProductList(
+        Task<OperationResult<CostOrderAndProductListResultDto>> TryGetCostOrderAndProductList(
             CostOrderAndProductListApiParametersDto parameters);
 
-        Task<OperationResult<SuppliersAndQuantityProductSupplierResultDto>> GetSuppliersAndQuantityProductSupplier
-            (SuppliersAndQuantityProductSupplierApiParametersDto parameters);
+        Task<OperationResult<SuppliersForPeriodResultDto>> TryGetSuppliersForPeriod
+            (SuppliersForPeriodApiParametersDto parameters);
 
-        Task<OperationResult<ClientOrderListResultDto>> GetClientOrderList(ClientOrderListApiParametersDto parameters);
+        Task<OperationResult<ClientOrderListResultDto>> TryGetClientOrderList(ClientOrderListApiParametersDto parameters);
 
-        Task<OperationResult<PopularOrdersResultDto>> GetPopularOrders();
+        Task<OperationResult<PopularOrdersResultDto>> TryGetPopularOrders();
     }
 }
