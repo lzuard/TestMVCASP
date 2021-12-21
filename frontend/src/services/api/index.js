@@ -100,6 +100,14 @@ const createReturn = (payload) => {
   return api.post('/Return/create', payload).then(({ data }) => data)
 }
 
+const getUtils = () => {
+  return api.get('/Utilization').then(({ data }) => serialize(data))
+}
+
+const createUtil = (payload) => {
+  return api.post('/Utilization/create', payload).then(({ data }) => data)
+}
+
 const serialize = (payload) => {
   return payload.map((item, index) => {
     delete item.id
@@ -157,5 +165,9 @@ export default {
   returns: {
     getReturns,
     createReturn
+  },
+  util: {
+    getUtils,
+    createUtil
   }
 }
