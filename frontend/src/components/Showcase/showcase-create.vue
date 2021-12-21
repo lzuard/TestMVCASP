@@ -52,6 +52,11 @@
               />
             </showcase-label-field>
           </div>
+
+          <layout-button :state="['danger']" v-if="key !== 0" @click="deleteAdditionalItem(key)">
+            <close-icon />
+            Удалить
+          </layout-button>
         </div>
 
         <showcase-submit @click="addItem">
@@ -73,14 +78,16 @@ import { useVuelidate } from '@vuelidate/core'
 import ShowcaseTitle from './showcase-title'
 import ShowcaseLabelField from './showcase-label-field'
 import ShowcaseSubmit from './showcase-submit-button'
-import { FloppyDiscIcon, PlusIcon } from '@iconicicons/vue3'
+import { FloppyDiscIcon, PlusIcon, CloseIcon } from '@iconicicons/vue3'
 import InputField from '@/components/UI/inputField'
 import SelectField from '@/components/UI/selectField'
 import TextareaField from '@/components/UI/textareaField'
+import LayoutButton from '@/components/Layouts/layout-button'
 
 export default {
   name: 'showcase-create',
   components: {
+    LayoutButton,
     TextareaField,
     InputField,
     SelectField,
@@ -88,6 +95,7 @@ export default {
     ShowcaseSubmit,
     ShowcaseTitle,
     FloppyDiscIcon,
+    CloseIcon,
     PlusIcon
   },
   setup () {
@@ -181,6 +189,10 @@ export default {
 
     addItem () {
       this.additionalItems.push({})
+    },
+
+    deleteAdditionalItem (index) {
+      this.additionalItems.splice(index, 1)
     }
   }
 }
