@@ -1,9 +1,8 @@
 <template>
   <button
-    class="btn btn-primary"
+    class="btn"
     :class="[
-      'btn',
-      'btn-primary',
+      ...additionalClasses,
       {
         'gradient-custom': isGradient
       }
@@ -21,6 +20,15 @@ export default {
     isGradient: {
       type: Boolean,
       default: false
+    },
+    state: {
+      type: Array,
+      default: () => (['primary'])
+    }
+  },
+  computed: {
+    additionalClasses () {
+      return this.state.map(item => `btn-${item}`)
     }
   }
 }
