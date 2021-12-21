@@ -48,7 +48,7 @@ export default {
 
   &__body {
     flex-grow: 1;
-    padding: $mainGapY $mainGapX;
+    padding: $mainGapY $mainGapX 80px;
     overflow-y: scroll;
   }
 }
