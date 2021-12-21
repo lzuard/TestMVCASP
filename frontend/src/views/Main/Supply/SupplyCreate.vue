@@ -1,15 +1,20 @@
 <template>
-  <showcase-create v-bind="createData" />
+  <showcase-create ref="form" @onSend="createSupply" v-bind="createData" />
 </template>
 
 <script>
 import ShowcaseCreate from '@/components/Showcase/showcase-create'
 import { required } from '@/utils/validation/i18n-validators'
+import { useToast } from 'vue-toastification'
 
 export default {
   name: 'SupplyCreate',
   components: {
     ShowcaseCreate
+  },
+  setup () {
+    const toast = useToast()
+    return { toast }
   },
   data: () => {
     return {
@@ -18,59 +23,44 @@ export default {
         fields: [
           {
             label: 'Поставщик',
-            placeholder: 'Поставщик',
-            modelValue: 'supplier',
+            placeholder: 'Выберите поставщика',
+            modelValue: 'supplierId',
             type: 'select',
             validation: { required },
-            values: [
-              {
-                text: 'УтилПро',
-                value: 1
-              },
-              {
-                text: 'УтилМакс',
-                value: 2
-              }
-            ]
+            values: []
+          },
+          {
+            label: 'Сотрудник',
+            placeholder: 'Выберите сотрудника',
+            modelValue: 'employeeId',
+            type: 'select',
+            validation: { required },
+            values: []
           },
           {
             label: 'ТК',
             placeholder: 'ТК',
-            modelValue: 'supplier',
+            modelValue: 'transportCompanyId',
             type: 'select',
             validation: { required },
-            values: [
-              {
-                text: 'Автотрейд',
-                value: 1
-              },
-              {
-                text: 'КИТ',
-                value: 2
-              }
-            ]
+            values: []
           },
           {
             label: 'Номер ТТН',
             placeholder: 'ТТН',
-            modelValue: 'ttn',
-            validation: { required }
+            modelValue: 'ttnId',
+            type: 'select',
+            validation: { required },
+            values: []
           },
           {
             label: 'Номер платежного документа',
             placeholder: 'Номер платежного док',
-            modelValue: 'paymentDoc',
-            validation: { required }
-          },
-          {
-            label: 'Стоимость поставки',
-            placeholder: 'Стоимость',
-            modelValue: 'supplyCost',
+            modelValue: 'paymentDocument',
             validation: { required }
           },
           {
             label: 'Дата поставки',
-            placeholder: 'Дада',
             modelValue: 'supplyDate',
             type: 'date',
             validation: { required }
@@ -84,7 +74,7 @@ export default {
           },
           {
             label: 'Принято',
-            modelValue: 'accept',
+            modelValue: 'isAccepted',
             cols: ['col-auto'],
             type: 'checkbox'
           }
@@ -93,18 +83,85 @@ export default {
         subtitle: 'Товары на поставку',
         addedFields: [
           {
-            label: 'Артикул',
+            label: 'Товар',
             placeholder: 'Артикул',
-            modelValue: 'art'
+            type: 'select',
+            modelValue: 'productId',
+            values: []
           },
           {
             label: 'Количество',
             placeholder: 'Кол-во',
             type: 'number',
-            modelValue: 'count'
+            modelValue: 'quantity'
           }
         ]
       }
+    }
+  },
+  created () {
+    this.$api.agent.getAgentByCategory(2)
+      .then((data) => {
+        this.createData.fields.find(item => item.modelValue === 'supplierId').values = data.map(item => {
+          return Object.assign({}, {
+            text: item.organizationName,
+            value: item.id
+          })
+        })
+      })
+
+    this.$api.agent.getAgentByCategory(3)
+      .then((data) => {
+        this.createData.fields.find(item => item.modelValue === 'transportCompanyId').values = data.map(item => {
+          return Object.assign({}, {
+            text: item.organizationName,
+            value: item.id
+          })
+        })
+      })
+
+    this.$api.employee.getEmployee()
+      .then((data) => {
+        this.createData.fields.find(item => item.modelValue === 'employeeId').values = data.map(item => {
+          return Object.assign({}, {
+            text: `${item.secondName} ${item.firstName} ${item.thirdName}`,
+            value: item.id
+          })
+        })
+      })
+
+    this.$api.ttn.getTTNForUsing()
+      .then((data) => {
+        this.createData.fields.find(item => item.modelValue === 'ttnId').values = data.map(item => {
+          return Object.assign({}, {
+            text: item.number,
+            value: item.id
+          })
+        })
+      })
+
+    this.$api.product.getProductsForUsing()
+      .then((data) => {
+        this.createData.addedFields.find(item => item.modelValue === 'productId').values = data.map(innerItem => {
+          return {
+            text: `${innerItem.name} | Артикул: ${innerItem.art}`,
+            value: innerItem.id
+          }
+        })
+      })
+  },
+  methods: {
+    createSupply (data, additional) {
+      const newData = { ...data, supplyProducts: additional }
+
+      this.$api.supply.createSupply(newData)
+        .then(() => {
+          this.toast.success('Поставка успешно создана')
+          this.$refs.form.clearForm()
+        })
+        .catch(() => {
+          this.toast.error('Ошибка при создании поставки, повторите позже')
+        })
     }
   }
 }
