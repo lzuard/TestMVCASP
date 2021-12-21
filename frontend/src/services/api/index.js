@@ -76,6 +76,10 @@ const getOrders = () => {
   return api.get('/Order').then(({ data }) => serialize(data))
 }
 
+const getOrdersForUsing = () => {
+  return api.get('/Order').then(({ data }) => data)
+}
+
 const createOrder = (payload) => {
   return api.post('/Order/create', payload).then(({ data }) => data)
 }
@@ -86,6 +90,14 @@ const getSupplies = () => {
 
 const createSupply = (payload) => {
   return api.post('/Supply/create', payload).then(({ data }) => data)
+}
+
+const getReturns = () => {
+  return api.get('/Return').then(({ data }) => serialize(data))
+}
+
+const createReturn = (payload) => {
+  return api.post('/Return/create', payload).then(({ data }) => data)
 }
 
 const serialize = (payload) => {
@@ -135,10 +147,15 @@ export default {
   },
   order: {
     getOrders,
+    getOrdersForUsing,
     createOrder
   },
   supply: {
     getSupplies,
     createSupply
+  },
+  returns: {
+    getReturns,
+    createReturn
   }
 }
