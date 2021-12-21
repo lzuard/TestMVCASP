@@ -68,6 +68,10 @@ const getAgentByCategory = (id) => {
   return api.post('/Agent/getByFilter', { typeId: id }).then(({ data }) => data)
 }
 
+const getFilteredAgents = (searchField, value) => {
+  return api.post('/Agent/getByFilter', { [searchField]: value }).then(({ data }) => serialize(data))
+}
+
 const createAgent = (payload) => {
   return api.post('/Agent/create', payload).then(({ data }) => data)
 }
@@ -151,6 +155,7 @@ export default {
     getAgentTypes,
     getAgents,
     getAgentByCategory,
+    getFilteredAgents,
     createAgent
   },
   order: {
