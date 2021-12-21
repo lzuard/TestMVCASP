@@ -18,7 +18,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public virtual async Task<IActionResult> GetAll()
         {
             var result = await Service.TryGetAll();
             
@@ -31,7 +31,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public virtual async Task<IActionResult> Get(int id)
         {
             var result = await Service.TryGet(id);
             
@@ -44,7 +44,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(TModelDto model)
+        public virtual async Task<IActionResult> Create(TModelDto model)
         {
             var result = await Service.TryCreate(model);
             
@@ -57,7 +57,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(TModelDto model)
+        public virtual async Task<IActionResult> Update(TModelDto model)
         {
             var result = await Service.TryUpdate(model);
             
@@ -70,8 +70,10 @@ namespace Presentation.ConsoleHost.Controllers.Base
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int modelId)
+        public virtual async Task<IActionResult> Delete(int modelId)
         {
+            return BadRequest(error:"You have no permission");
+            
             var result = await Service.TryDelete(modelId);
             
             if (result.IsSuccess)

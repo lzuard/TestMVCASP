@@ -51,6 +51,12 @@ namespace Presentation.ConsoleHost
             services.AddScoped<ProductOrderRepository>();
             services.AddScoped<ProductOrderService>();
             
+            services.AddScoped<ProductSupplyRepository>();
+            services.AddScoped<ProductSupplyService>();
+            
+            services.AddScoped<ProductUtilRepository>();
+            services.AddScoped<ProductUtilService>();
+            
             services.AddScoped<OrderRepository>();
             services.AddScoped<OrderService>();
             
@@ -88,6 +94,9 @@ namespace Presentation.ConsoleHost
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller}/{action=Index}/{id?}");
             });
         }
     }

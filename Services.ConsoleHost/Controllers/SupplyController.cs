@@ -11,6 +11,16 @@ namespace Presentation.ConsoleHost.Controllers
         public SupplyController(SupplyService service) : base(service)
         {
         }
+        
+        public override async Task<IActionResult> Create(SupplyDto model)
+        {
+            return BadRequest(error:"You have no permission");
+        }
+
+        public override async Task<IActionResult> Update(SupplyDto model)
+        {
+            return BadRequest(error:"You have no permission");
+        }
 
         [HttpPost("create")]
         public async Task<IActionResult> Create(SupplyApiDto apiModel)

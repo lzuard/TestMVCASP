@@ -13,6 +13,16 @@ namespace Presentation.ConsoleHost.Controllers
         {
         }
 
+        public override async Task<IActionResult> Create(AgentDto model)
+        {
+            return BadRequest(error: "You have no permission");
+        }
+
+        public override async Task<IActionResult> Update(AgentDto model)
+        {
+            return BadRequest(error: "You have no permission");
+        }
+
         [HttpPost("create")]
         public async Task<IActionResult> Create(AgentApiDto apiModel)
         {
@@ -38,7 +48,7 @@ namespace Presentation.ConsoleHost.Controllers
 
             return NotFound();
         }
-        
+
         [HttpPost("getByFilter")]
         public async Task<ActionResult<IEnumerable<AgentDto>>> GetOrderByFilter(AgentFilterDto filterDto)
         {

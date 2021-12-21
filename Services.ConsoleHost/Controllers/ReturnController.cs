@@ -11,6 +11,16 @@ namespace Presentation.ConsoleHost.Controllers
         public ReturnController(ReturnService service) : base(service)
         {
         }
+        
+        public override async Task<IActionResult> Create(ReturnDto model)
+        {
+            return BadRequest(error:"You have no permission");
+        }
+
+        public override async Task<IActionResult> Update(ReturnDto model)
+        {
+            return BadRequest(error:"You have no permission");
+        }
 
         [HttpPost("create")]
         public async Task<IActionResult> Create(ReturnApiDto apiModel)

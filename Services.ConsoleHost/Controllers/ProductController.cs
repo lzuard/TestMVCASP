@@ -12,6 +12,16 @@ namespace Presentation.ConsoleHost.Controllers
         {
         }
         
+        public override async Task<IActionResult> Create(ProductDto model)
+        {
+            return BadRequest(error:"You have no permission");
+        }
+
+        public override async Task<IActionResult> Update(ProductDto model)
+        {
+            return BadRequest(error:"You have no permission");
+        }
+        
         [HttpPost("create")]
         public async Task<IActionResult> Create(ProductApiDto apiModel)
         {

@@ -43,15 +43,6 @@ namespace Services.Infrastructure.Services
             return result;
         }
 
-        public override Task<OperationResult<bool>> TryDelete(int modelId)
-        {
-            string message = "You have no permission";
-            
-            var result = OperationResult<bool>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
-        }
-
         public override async Task<OperationResult<EmployeeDto>> TryUpdate(EmployeeDto model)
         {
             model.Password = HashPassword(model.Password);

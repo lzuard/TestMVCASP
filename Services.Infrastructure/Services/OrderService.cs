@@ -54,18 +54,11 @@ namespace Services.Infrastructure.Services
             OrderDto order = createOrderResult.Result;
 
             var productOrdersResult =
-                await _productOrderService.CreateProductOrderByOrder(result.Result, apiModel.OrderProducts);
+                await _productOrderService.TryCreateProductOrderByOrder(result.Result, apiModel.OrderProducts);
             
             if (!productOrdersResult.IsSuccess)
             {
-                var deleteResult = await Repository.Delete(order.Id);
-
-                if (!deleteResult.IsSuccess)
-                {
-                    string message = $"Fail in transaction. Please delete order with id {order}. ";
-
-                    return OperationResult<OrderDto>.GetUnsuccessfulResult(message + deleteResult.Error.Message);
-                }
+                await Repository.Delete(order.Id);
                 
                 return OperationResult<OrderDto>.GetUnsuccessfulResult(productOrdersResult.Error.Message);
             }
@@ -83,33 +76,6 @@ namespace Services.Infrastructure.Services
             }
 
             return result;
-        }
-
-        public override Task<OperationResult<OrderDto>> TryCreate(OrderDto model)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<OrderDto>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
-        }
-
-        public override Task<OperationResult<OrderDto>> TryUpdate(OrderDto model)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<OrderDto>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
-        }
-
-        public override Task<OperationResult<bool>> TryDelete(int modelId)
-        {
-            string message = "You have no permission";
-
-            var result = OperationResult<bool>.GetUnsuccessfulResult(message);
-
-            return Task.FromResult(result);
         }
 
         public async Task<OperationResult<IEnumerable<OrderDto>>> TryGetOrderByFilter(

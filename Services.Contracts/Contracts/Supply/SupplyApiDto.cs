@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Contracts.Contracts.ProductSupply;
 
 namespace Contracts.Contracts.Supply
 {
@@ -44,5 +46,10 @@ namespace Contracts.Contracts.Supply
         /// Возвращает или устанавливает примечание
         /// </summary>
         public string Extra { get; set; }
+
+        /// <summary>
+        /// Возвращает или устанавливает список продуктов и их количесвто
+        /// </summary>
+        public List<ProductSupplyApiDto> SupplyProducts = new();
     }
 }
