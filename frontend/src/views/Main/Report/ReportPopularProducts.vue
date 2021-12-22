@@ -16,21 +16,16 @@ export default {
   },
   data: () => {
     return {
-      chartData: [
-        {
-          label: 'Цемент',
-          value: 15000
-        },
-        {
-          label: 'Арматура',
-          value: 12000
-        },
-        {
-          label: 'Утеплитель',
-          value: 9000
-        }
-      ]
+      chartData: []
     }
+  },
+  created () {
+    this.$api.reports.getPopularProducts()
+      .then(data => {
+        this.chartData = data.items.map(innerItem => {
+          return { label: innerItem.productName, value: innerItem.count }
+        })
+      })
   }
 }
 </script>
