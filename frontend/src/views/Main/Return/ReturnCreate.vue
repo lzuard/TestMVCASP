@@ -61,8 +61,7 @@ export default {
             label: 'Принято',
             modelValue: 'isAccepted',
             type: 'checkbox',
-            cols: ['col-auto'],
-            validation: { required }
+            cols: ['col-auto']
           }
         ]
       }
