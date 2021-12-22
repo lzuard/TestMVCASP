@@ -77,7 +77,7 @@ namespace Services.Infrastructure.Services
                     EmployeeDto employee = result.Result.First();
 
                     authorizationResult.ResultAuthentication = true;
-                    authorizationResult.Message = GetAuthorizationMessage(employee);
+                    authorizationResult.Message = Helpers.GetEmployeeFormatName(employee);
                 }
                 else
                 {
@@ -104,21 +104,6 @@ namespace Services.Infrastructure.Services
                 }
                 return sb.ToString();
             }
-        }
-
-        private string GetAuthorizationMessage(EmployeeDto employee)
-        {
-            string firstName = employee.FirstName.ToUpper()[0] + ".";
-            string thirdName = string.Empty;
-
-            if (!string.IsNullOrEmpty(employee.ThirdName))
-            {
-                thirdName = employee.ThirdName[0] + ".";
-            }
-
-            string message = string.Format("{0} {1}{2}", employee.SecondName, firstName, thirdName);
-
-            return message;
         }
     }
 }

@@ -34,6 +34,6 @@ namespace Contracts.Contracts.Utilization
         /// <summary>
         /// Возвращает или устанавливает список продуктов
         /// </summary>
-        public List<ProductUtilApiDto> UtilProducts = new();
+        public List<ProductUtilApiDto> UtilProducts { get; set; } = new();
     }
 }
