@@ -25,7 +25,7 @@ export default {
         labels: [...this.chartData.map(data => data.label)],
         datasets: [
           {
-            label: 'Продажи',
+            label: 'Продажи, ед.',
             data: [...this.chartData.map(data => data.value)],
             backgroundColor: '#5558DAFF'
           }
