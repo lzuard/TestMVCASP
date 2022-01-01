@@ -1,3 +1,4 @@
+using Contracts.Contracts.Category;
 using Contracts.Contracts.StaticObjects;
 
 namespace Services.Infrastructure.Services.Reports
@@ -27,7 +28,7 @@ namespace Services.Infrastructure.Services.Reports
         /// <summary>
         /// Возвращает или устанавливает категорию 
         /// </summary>
-        public string CategoryName { get; set; }
+        public CategoryDto Category { get; set; }
         
         /// <summary>
         /// Возвращает или устанавливает количество на складе

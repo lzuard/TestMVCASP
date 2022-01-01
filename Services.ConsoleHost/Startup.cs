@@ -24,6 +24,7 @@ namespace Presentation.ConsoleHost
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddControllers();
 
             services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(_connectionString));
@@ -94,6 +95,12 @@ namespace Presentation.ConsoleHost
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
+            
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(_ => true) 
+                .AllowCredentials()); 
 
             app.UseEndpoints(endpoints =>
             {

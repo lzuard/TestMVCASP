@@ -18,6 +18,7 @@ namespace Services.Infrastructure.Repositories
         {
             IEnumerable<ProductDto> result = await Context.Products
                 .Include(x => x.Category)
+                .Include(x => x.Category.ParentCategory)
                 .ToListAsync();
 
             return OperationResult<IEnumerable<ProductDto>>.GetSuccessResult(result);
@@ -27,6 +28,7 @@ namespace Services.Infrastructure.Repositories
         {
             ProductDto model = await Context.Products
                 .Include(x => x.Category)
+                .Include(x => x.Category.ParentCategory)
                 .FirstOrDefaultAsync(x => x.Id == modelId);
 
             if (model == null)

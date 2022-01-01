@@ -40,7 +40,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
                 return Ok(result.Result);
             }
 
-            return Ok(result.Error.Message);
+            return BadRequest(result.Error.Message);
         }
 
         [HttpPost]
@@ -66,7 +66,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
                 return Ok(result.Result);
             }
 
-            return NotFound();
+            return BadRequest(result.Error.Message);
         }
 
         [HttpDelete("{id}")]
@@ -81,7 +81,7 @@ namespace Presentation.ConsoleHost.Controllers.Base
                 return Ok();
             }
 
-            return NotFound();
+            return BadRequest(result.Error.Message);
         }
     }
 }

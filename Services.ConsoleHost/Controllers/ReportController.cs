@@ -15,7 +15,7 @@ namespace Presentation.ConsoleHost.Controllers
             _service = service;
         }
         
-        [HttpGet("getCostOrderAndProductList")]
+        [HttpPost("getCostOrderAndProductList")]
         public virtual async Task<IActionResult> GetCostOrderAndProductList(CostOrderAndProductListApiParametersDto parameters)
         {
             var result = await _service.TryGetCostOrderAndProductList(parameters);
@@ -28,7 +28,7 @@ namespace Presentation.ConsoleHost.Controllers
             return BadRequest(result.Error.Message);
         }
                 
-        [HttpGet("getSuppliersForPeriod")]
+        [HttpPost("getSuppliersForPeriod")]
         public virtual async Task<IActionResult> GetSuppliersForPeriod(SuppliersForPeriodApiParametersDto parameters)
         {
             var result = await _service.TryGetSuppliersForPeriod(parameters);
@@ -41,7 +41,7 @@ namespace Presentation.ConsoleHost.Controllers
             return BadRequest(result.Error.Message);
         }
         
-        [HttpGet("getClientOrderList")]
+        [HttpPost("getClientOrderList")]
         public virtual async Task<IActionResult> GetClientOrderList(ClientOrderListApiParametersDto parameters)
         {
             var result = await _service.TryGetClientOrderList(parameters);

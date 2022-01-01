@@ -23,7 +23,7 @@ namespace Services.Infrastructure.Services.Reports
         /// <summary>
         /// 
         /// </summary>
-        public int AddressId { get; set; }
+        public string Address { get; set; }
         
         /// <summary>
         /// Возвращает или устанавливает номер платежного документа

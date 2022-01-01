@@ -49,7 +49,7 @@ namespace Presentation.ConsoleHost.Controllers
             return NotFound();
         }
         
-        [HttpGet("getByFilter")]
+        [HttpPost("getByFilter")]
         public async Task<ActionResult<IEnumerable<OrderDto>>> GetOrderByFilter(OrderFilterDto filterDto)
         {
             var result = await Service.TryGetOrderByFilter(filterDto);

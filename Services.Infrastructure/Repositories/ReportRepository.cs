@@ -26,6 +26,7 @@ namespace Services.Infrastructure.Repositories
                 var result = await _context.ProductOrders
                     .Include(x => x.Order)
                     .Include(x => x.Product)
+                    .Include(x => x.Product.Category.ParentCategory)
                     .Where(x => x.Order.Id == orderId)
                     .GroupBy(x => x.Product.Id)
                     .Select(x => new CostOrderAndProductListListItemDto
@@ -34,7 +35,7 @@ namespace Services.Infrastructure.Repositories
                         Manufacture = x.First().Product.Manufacture,
                         Name = x.First().Product.Name,
                         PackageType = x.First().Product.PackageType,
-                        CategoryName = x.First().Product.Category.Name,
+                        Category = x.First().Product.Category,
                         Quantity = x.Sum(z => z.Quantity),
                         Price = x.First().Product.Price
                     }).ToListAsync();
@@ -54,15 +55,16 @@ namespace Services.Infrastructure.Repositories
             try
             {
                 var result = await _context.Supplies
+                    .Include(x => x.Supplier)
                     .Where(x => x.SupplyDate >= startDate && x.SupplyDate <= endDate)
+                    .GroupBy(x => x.Supplier.Id)
                     .Select(x => new SuppliersForPeriodListItemDto
                     {
-                        SupplierId = x.Id,
-                        SupplierName = x.Supplier.OrganizationName,
-                        SupplyCount = _context.ProductSupplies.Where(p => p.Supply.Id == x.Id).Sum(s => s.Quantity)
+                        SupplierName = x.First().Supplier.OrganizationName,
+                        SupplyCount = x.Count()
                     })
                     .ToListAsync();
-
+                
 
                 return OperationResult<IEnumerable<SuppliersForPeriodListItemDto>>.GetSuccessResult(result);
             }
@@ -87,7 +89,7 @@ namespace Services.Infrastructure.Repositories
                         OrderId = x.Id,
                         EmployeeName = Helpers.GetEmployeeFormatName(x.Employee),
                         TransportCompanyName = x.TransportCompany.OrganizationName,
-                        AddressId = x.Address.Id,
+                        Address = $"{x.Address.Index}, {x.Address.Subject}, {x.Address.Location}",
                         PaymentDocument = x.PaymentDocument,
                         OrderingDate = x.OrderingDate,
                         ShipmentDate = x.ShipmentDate,
@@ -139,7 +141,6 @@ namespace Services.Infrastructure.Repositories
                         Count = x.Sum(s => s.Quantity)
                     })
                     .OrderByDescending(x => x.Count)
-                    .Take(3)
                     .ToListAsync();
 
                 return OperationResult<IEnumerable<PopularOrdersListItemDto>>.GetSuccessResult(result);
