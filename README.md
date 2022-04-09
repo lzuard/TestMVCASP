@@ -1,7 +1,7 @@
 
 # 🏢 WarehouseStoreIS
 
-Warehouse accounting system
+Warehouse turnover management system
 
 
 ## Tech Stack
